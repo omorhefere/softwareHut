@@ -131,5 +131,5 @@ namespace :deploy do
 end
 
 ## Restart delayed_job during the deployment process
-after  'deploy:updated',  'delayed_job:stop'
-before 'deploy:finished', 'delayed_job:start'
+#after  'deploy:updated',  'delayed_job:stop'
+#before 'deploy:finished', 'delayed_job:start'
