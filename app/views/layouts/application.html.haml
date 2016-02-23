@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Team6 - #{content_for(:title)}
+    %title Sheffield Water Centre - #{content_for(:title)}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{ :'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
     = stylesheet_link_tag    "application", media: :all
@@ -36,19 +36,22 @@
           .navbar-header
             %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
               %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            = link_to :root, class: 'navbar-brand hidden-sm' do
-              Team6
+            = link_to '#', class: 'navbar-brand hidden-sm', identifier: :title do
+              Team 06 Project
 
           .collapse.navbar-collapse
-            %ul.nav.navbar-nav
+            %ul.nav.navbar-nav.navbar-right
               = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                 = fa_icon 'home'
                 Home
-              = navbar_link_to '#', title: "Go to another page", identifier: :another_page do
-                = fa_icon 'question-circle'
-                Another Page
+              = navbar_link_to '#', title: "Add new project", identifier: :add_new_project do
+                = fa_icon 'plus'
+                Add New Project
+              = navbar_link_to '#', title: "Log Out", identifier: :log_out do
+                = fa_icon 'lock'
+                Log Out
+
+
             -# - if user_signed_in?
             -#   %ul.nav.navbar-nav.navbar-right
             -#     %li.dropdown
@@ -68,5 +71,4 @@
     %footer#footer
       .container
         %p
-          &copy;#{Date.today.year}
-          = link_to 'epiGenesys', 'https://www.epigenesys.org.uk', target: '_blank', title: 'Goto the epiGenesys website'
+          &copy; Team 06 Project - Software Hut - #{Date.today.year}

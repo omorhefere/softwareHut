@@ -10,3 +10,13 @@
   *= require custom_flash
   *= require environment_notice
 */
+.navbar {
+  background-color: #80bfff;
+  text-color: black;
+}
+#footer {
+  text-align: center;
+  font-size: 15px;
+  text-decoration-color: #80bfff;
+  background-color: #80bfff;
+}
