@@ -128,8 +128,17 @@ namespace :deploy do
       end
     end
   end
+
+  ## Fix the permissions on the bin folder
+  after :updating, :fix_bin_perms do
+    on roles(:app) do
+      within release_path do
+        execute :chmod, '+x', 'bin/*', raise_on_non_zero_exit: false
+      end
+    end
+  end
 end
 
 ## Restart delayed_job during the deployment process
-#after  'deploy:updated',  'delayed_job:stop'
-#before 'deploy:finished', 'delayed_job:start'
+after  'deploy:updated',  'delayed_job:stop'
+before 'deploy:finished', 'delayed_job:start'
