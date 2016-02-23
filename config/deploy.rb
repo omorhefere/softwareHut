@@ -1,7 +1,7 @@
 ## Application configuration
 set :application,             'team6'
 set :scm,                     :git
-set :repo_url,                'git@git.software-hut.org.uk:team06/project.git'
+set :repo_url,                'git@git.software-hut.org.uk:hut-team06/project.git'
 set :linked_files,            fetch(:linked_files,  fetch(:env_links, [])).push('config/database.yml', 'config/secrets.yml')
 set :linked_dirs,             fetch(:linked_dirs, []).push('log', 'tmp/pids', 'uploads')
 # set the locations to look for changed assets to determine whether to precompile
