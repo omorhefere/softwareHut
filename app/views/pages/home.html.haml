@@ -1,9 +1,15 @@
 - content_for :title, "Home"
+= stylesheet_link_tag    "home", media: :all
+= stylesheet_link_tag    "application", media: :all
 
 .page-header
   %h1 Sheffield Water Centre
 
-%p.lead Your new app is working!
+%p.lead#categories_title Categories
+%button#buttonOption1 Zero Failures
+%button#buttonOption2 Resource Recovery and Efficiency
+%button#buttonOption3 Buried Infrastructure Performance
+%hr.line
 
 %p This is a basic Bootstrap 3 template with minimal additional CSS, using FontAwesome for icons.
 

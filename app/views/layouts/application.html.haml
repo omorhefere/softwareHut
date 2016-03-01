@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Sheffield Water Centre - #{content_for(:title)}
+    %title SWC - #{content_for(:title)}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{ :'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
     = stylesheet_link_tag    "application", media: :all
@@ -44,10 +44,10 @@
               = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                 = fa_icon 'home'
                 Home
-              = navbar_link_to '#', title: "Add new project", identifier: :add_new_project do
+              = navbar_link_to :add_project, title: "Add new project", identifier: :add_new_project do
                 = fa_icon 'plus'
                 Add New Project
-              = navbar_link_to '#', title: "Log Out", identifier: :log_out do
+              = navbar_link_to :log_in_out, title: "Log Out", identifier: :log_out do
                 = fa_icon 'lock'
                 Log Out
 

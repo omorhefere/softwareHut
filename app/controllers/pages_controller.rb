@@ -4,4 +4,9 @@ class PagesController < ApplicationController
     @current_nav_identifier = :home
   end
 
+  def add_project
+  end
+
+  def log_in_out
+  end
 end
