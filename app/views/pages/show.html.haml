@@ -1,0 +1,119 @@
+= stylesheet_link_tag    "project_show", media: :all
+
+- content_for :title, "Project Title"
+
+.container
+  .page-header
+    %button#buttonOption1 Zero Failures
+    %button#buttonOption2 Resource Recovery and Efficiency
+    %button#buttonOption3 Buried Infrastructure Performance
+    %hr.line
+
+    .jumbotron
+      %h1 Project Title
+
+    .btn-group
+      %button#show-flash.btn.btn-default{ type: :button }
+        Edit
+      %button#show-flash.btn.btn-default{ type: :button }
+        Delete
+
+
+  .container.col-sm-4
+    %table.table.images_table.table-responsive
+      %tbody
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto1.jpg")
+
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto2.jpg")
+
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto3.jpg")
+
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto4.jpg")
+
+  .container.col-sm-8
+    %table.table.table-responsive
+      %thead
+        %tr
+          %th Project number
+          %th B169
+      %tbody
+      %tr
+        %th Priority and Duration
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Project title
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Aims
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Why is this project important?
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Who would do this project?
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th What funding mechanism?
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Time scale (years)
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Benefits to industry
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Notes on Methodology
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th Volunteers
+        %td User1, User2
+
+
+
+.container
+  .container.col-sm-2
+    %table.table.table-responsive
+      %thead
+        %tr
+          %th Users involved
+      %tbody
+      %tr
+        %td User
+
+      %tr
+        %td User
+
+      %tr
+        %td User
+
+      %tr
+        %td User
+  %hr.line
+  .container.col-sm-10
+
+    = simple_form_for :comment do |f|
+
+      = f.input :Comment, as: :string
+      %button#show-flash.btn.btn-default{ type: :button }
+        Post
+
+
+
+    %table.table.comments_table.table-responsive
+      %tbody
+      %tr
+        %th User
+      %tr
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th User
+      %tr
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
+      %tr
+        %th User
+      %tr
+        %td Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt vestibulum mauris eu aliquet. Proin tellus felis, luctus ac auctor sed, volutpat vel ligula. Cras fermentum cursus est, id fringilla ligula consectetur vel. In hac habitasse platea dictumst. In ex arcu, aliquam quis felis eget, tempor auctor dui.
