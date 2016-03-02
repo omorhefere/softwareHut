@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   match "/500", to: "errors#error_500", via: :all
   match "/add_project", to: "pages#add_project", via: :all
   match "/log_in_out", to: "pages#log_in_out", via: :all
+  match "/show", to: "pages#show", via: :all
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
