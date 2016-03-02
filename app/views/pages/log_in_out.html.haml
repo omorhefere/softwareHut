@@ -1,6 +1,17 @@
-- content_for :title, "Log in/out"
+= stylesheet_link_tag    "log_in_out", media: :all
 
 .page-header
   %h1 Sheffield Water Centre
 
 %p.lead Log in/out page
+
+.container
+  = simple_form_for :form_examples do |f|
+    = f.input :username, as: :string
+    = f.input :password, as: :string
+
+    %button#show-flash.btn.btn-default{ type: :button }
+      Log in
+
+    %button#show-flash.btn.btn-default{ type: :button }
+      Forgot password
