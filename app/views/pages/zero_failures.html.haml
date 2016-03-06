@@ -2,6 +2,75 @@
 = stylesheet_link_tag    "zero_failures", media: :all
 = stylesheet_link_tag    "application", media: :all
 
+.page-header
+  %h1 Sheffield Water Centre
+
+%div#categories_box
+  %p.lead Categories
+  %ul.nav
+    %li.active
+      = link_to 'Zero Failures', :zero_failures
+    %li
+      = link_to 'Resource Recovery and Efficiency', :rre
+    %li
+      = link_to 'Buried Infrastructure Performance', :bip
+    = link_to 'Back to main', :root, :id => "go_back"
+
 %div.container.buffered-top
-  .page-header
-    %h1 Sheffield Water Centre
+
+  %p#title Zero Failures
+  %p#subtitle Vision: A world with no failures via integrated water management that fully engages the user
+
+  %div.project_box
+    %div.knowledge
+      Knowledge
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
+
+  %div.project_box
+    %div.economic
+      Economic
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
+
+  %div.project_box
+    %div.technology
+      Technology
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
+
+  %div.project_box
+    %div.knowledge
+      Knowledge
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
+
+  %div.project_box
+    %div.economic
+      Economic
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
+
+  %div.project_box
+    %div.technology
+      Technology
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
