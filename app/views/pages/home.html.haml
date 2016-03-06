@@ -5,42 +5,67 @@
 .page-header
   %h1 Sheffield Water Centre
 
-%p.lead#categories_title Categories
-%button#buttonOption1 Zero Failures
-%button#buttonOption2 Resource Recovery and Efficiency
-%button#buttonOption3 Buried Infrastructure Performance
-%hr.line
+%div#categories_box
+  %p.lead Categories
+  %ul.nav
+    %li
+      = link_to 'Zero Failures', :zero_failures
+    %li
+      = link_to 'Resource Recovery and Efficiency', :rre
+    %li
+      = link_to 'Buried Infrastructure Performance', :bip
 
+%div.container.buffered-top
+  %div.project_box
+    %div.knowledge
+      Knowledge
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
 
+  %div.project_box
+    %div.economic
+      Economic
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
 
-%p This is a basic Bootstrap 3 template with minimal additional CSS, using FontAwesome for icons.
+  %div.project_box
+    %div.technology
+      Technology
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
 
+  %div.project_box
+    %div.economic
+      Economic
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
 
+  %div.project_box
+    %div.knowledge
+      Knowledge
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show
 
-%h2 Flash Examples
-.well
-  %button#show-flash.btn.btn-default{ type: :button }
-    Show flash message
-
-%h2 Form Examples
-
-- collection = %w(These Are Some Options)
-
-= simple_form_for :form_examples do |f|
-  = f.input :string, as: :string
-  = f.input :text, as: :text
-  = f.input :select2, as: :select, collection: collection, input_html: { class: 'select2' }, include_blank: false
-  = f.input :select, as: :select, collection: collection
-  = f.input :radio_buttons, as: :radio_buttons, collection: collection
-  = f.input :inline_radio_buttons, as: :inline_radio_buttons, collection: collection
-  = f.input :check_boxes, as: :check_boxes, collection: collection
-  = f.input :inline_check_boxes, as: :inline_check_boxes, collection: collection
-  = f.input :boolean, as: :boolean
-  = f.input :addons, wrapper: :vertical_input_group do
-    %span.input-group-addon Addon
-    = f.input_field :toilet, class: "form-control"
-
-:coffee
-  $ ->
-    $('#show-flash').on 'click', ->
-      $.flashAlert('Hello world!', 'alert-success')
+  %div.project_box
+    %div.economic
+      Economic
+    %p Project No.
+    %p Project title
+    %p Aims
+    %p What would do this project
+    = link_to 'See details', :show

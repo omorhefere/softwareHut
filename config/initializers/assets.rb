@@ -5,6 +5,9 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( home.css )
 Rails.application.config.assets.precompile += %w( log_in_out.css.sass )
 Rails.application.config.assets.precompile += %w( project_show.css.sass )
+Rails.application.config.assets.precompile += %w( zero_failures.css.sass )
+Rails.application.config.assets.precompile += %w( rre.css.sass )
+Rails.application.config.assets.precompile += %w( bip.css.sass )
 Rails.application.config.assets.precompile += %w( registration.css.sass)
 Rails.application.config.assets.precompile += %w( layout.sass)
 # Add additional assets to the asset load path

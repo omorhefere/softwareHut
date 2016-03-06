@@ -11,18 +11,25 @@
   *= require environment_notice
 @import "bootstrap-sprockets"
 @import "bootstrap"
-.navbar
-  background-color: #80bfff
-  text-color: black
-
-.container.buffered-top
-  margin-top: 50px
-
 
 html
   min-height: 100%
   position: relative
 
+.navbar
+  background-color: #80bfff
+  text-color: black
+
+.navbar.navbar-brand > li > .add_new_btn
+
+.nav.navbar-nav.navbar-right a:current
+  background-color: blue
+
+.btn.btn-primary
+  width: 370px
+
+.page-header
+  margin-top: 100px
 
 .footer
   text-align: center
@@ -35,12 +42,3 @@ html
   bottom: 0
   height: 60px
   margin-top: 40px
-
-.navbar.navbar-brand > li > .add_new_btn
-
-.nav.navbar-nav.navbar-right a:current
-  background-color: blue
-
-.btn.btn-primary
-  
-  width: 370px

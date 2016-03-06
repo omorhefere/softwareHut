@@ -37,7 +37,7 @@
               %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
                 %span.icon-bar
               = link_to '#', class: 'navbar-brand hidden-sm', identifier: :title do
-                Sheffield Water Centre
+                LOGO
 
             .collapse.navbar-collapse
               %ul.nav.navbar-nav.navbar-right
@@ -54,6 +54,7 @@
 
                 = navbar_link_to :log_in_out, title: "Log Out", identifier: :log_out do
                   = fa_icon 'lock'
+
                   Log Out
 
 
@@ -69,9 +70,7 @@
               -#             %i.fa.fa-sign-out
               -#             Log out
 
-        #main-container.container.buffered-top
-
-          = yield
+        = yield
 
 %footer.footer
   .container
