@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
+  match "/contact", to: "pages#contact", via: :all
+  match "/forgot_password", to: "pages#forgot_password", via: :all
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'

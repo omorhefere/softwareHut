@@ -10,6 +10,7 @@ class PagesController < ApplicationController
 
   def log_in_out
     @current_nav_identifier = :log_in_out
+    @disabled_nav = true
   end
 
   def zero_failures
@@ -25,5 +26,13 @@ class PagesController < ApplicationController
   end
 
   def show
+  end
+
+  def contact
+    @current_nav_identifier = :contact
+  end
+
+  def forgot_password
+    @disabled_nav = true
   end
 end
