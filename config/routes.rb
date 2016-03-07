@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
   match "/add_project", to: "pages#add_project", via: :all
+  match "/home", to: "pages#home", via: :all
   match "/log_in_out", to: "pages#log_in_out", via: :all
   match "/show", to: "pages#show", via: :all
   match "/registration", to: "pages#registration", via: :all
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
 
-  root to: "pages#home"
+  root to: "pages#log_in_out"
 
 
   resources :projects

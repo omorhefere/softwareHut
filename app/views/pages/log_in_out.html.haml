@@ -14,8 +14,9 @@
       = f.input :username, as: :string
       = f.input :password, as: :password
 
-      %button#show-flash.btn.btn-default{ type: :button }
+      %button#show-flash.btn.btn-default{ type: :button}
         Log in
+        = link_to 'Go', :home
 
       %button#show-flash.btn.btn-default{ type: :button }
         Forgot password
