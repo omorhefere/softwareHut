@@ -41,7 +41,7 @@
             - if @disabled_nav!=true
               .collapse.navbar-collapse
                 %ul.nav.navbar-nav.navbar-right#navbutton
-                  = navbar_link_to :root, title: "Go to the home page", identifier: :home do
+                  = navbar_link_to :home, title: "Go to the home page", identifier: :home do
                     = fa_icon 'home'
                     Home
                   = navbar_link_to :add_project, title: "Add new project", identifier: :add_new_project do
