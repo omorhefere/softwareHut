@@ -10,8 +10,8 @@
 
   .container#inputFields
     = simple_form_for :form_examples do |f|
-      = f.input :username, as: :string
-      = f.input :password, as: :password
+      = f.input :email, placeholder: "Email", label:false
+      = f.input :password, as: :password,  placeholder: "Password", label:false
 
       #buttonContainer
         %button#show-flash.btn.btn-default{ type: :button}

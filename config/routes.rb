@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
   match "/contact", to: "pages#contact", via: :all
+  match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
 match "/admin", to: "pages#admin", via: :all
   get :ie_warning, to: 'errors#ie_warning'

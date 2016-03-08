@@ -39,18 +39,20 @@ class PagesController < ApplicationController
     @sticky_footer=true
   end
 
-<<<<<<< HEAD
   def registration
     @current_nav_identifier = :registration
     @disabled_nav = true
     @sticky_footer = true
   end
 
-
-=======
   def admin
     @sticky_footer=true
     @current_nav_identifier = :admin
   end
->>>>>>> 244d7802204a7dd13e97eab151ce87985d64f56c
+
+  def new_password
+    @disabled_nav = true
+    @sticky_footer=true
+  end
+
 end
