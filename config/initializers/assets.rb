@@ -13,6 +13,7 @@ Rails.application.config.assets.precompile += %w( layout.sass)
 Rails.application.config.assets.precompile += %w( contact.css.sass)
 Rails.application.config.assets.precompile += %w( forgot_password.css.sass)
 Rails.application.config.assets.precompile += %w( add_project.css.sass)
+Rails.application.config.assets.precompile += %w( admin.css.sass)
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

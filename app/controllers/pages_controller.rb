@@ -38,4 +38,9 @@ class PagesController < ApplicationController
     @disabled_nav = true
     @sticky_footer=true
   end
+
+  def admin
+    @sticky_footer=true
+    @current_nav_identifier = :admin
+  end
 end

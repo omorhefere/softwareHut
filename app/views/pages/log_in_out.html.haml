@@ -6,15 +6,16 @@
   .page-header
     %h1 Sheffield Water Centre
 
-  %p.lead Log in/out page
+  %p.lead Log In
 
   .container#inputFields
     = simple_form_for :form_examples do |f|
       = f.input :username, as: :string
       = f.input :password, as: :password
 
-      %button#show-flash.btn.btn-default{ type: :button}
-        = link_to 'Login', :home
+      #buttonContainer
+        %button#show-flash.btn.btn-default{ type: :button}
+          = link_to 'Login', :home
 
-      %button#show-flash.btn.btn-default{ type: :button }
-        = link_to 'Forgot Password', :forgot_password
+        %button#show-flash.btn.btn-default{ type: :button }
+          = link_to 'Forgot Password', :forgot_password

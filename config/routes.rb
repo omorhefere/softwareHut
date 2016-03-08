@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   match "/bip", to: "pages#bip", via: :all
   match "/contact", to: "pages#contact", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
-
+match "/admin", to: "pages#admin", via: :all
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
 
