@@ -8,11 +8,13 @@
 %div#categories_box
   %p.lead Categories
   %ul.nav
-    %li
+    %li.active
+      = link_to 'All projects', :home
+    %li.active
       = link_to 'Zero Failures', :zero_failures
-    %li
+    %li.active
       = link_to 'Resource Recovery and Efficiency', :rre
-    %li
+    %li.active
       = link_to 'Buried Infrastructure Performance', :bip
 
 

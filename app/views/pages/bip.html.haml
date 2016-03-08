@@ -8,69 +8,76 @@
 %div#categories_box
   %p.lead Categories
   %ul.nav
-    %li
+    %li.active
+      = link_to 'All projects', :home
+    %li.active
       = link_to 'Zero Failures', :zero_failures
-    %li
+    %li.active
       = link_to 'Resource Recovery and Efficiency', :rre
     %li.active
       = link_to 'Buried Infrastructure Performance', :bip
-    = link_to 'Back to main', :root, :id => "go_back"
 
 %div.container.buffered-top
 
   %p#title Buried Infrastructure Performance
   %p#subtitle Vision: Reimagining the water system
 
-  %div.project_box
-    %div.knowledge
-      Knowledge
-    %p Project No.
-    %p Project title
-    %p Aims
-    %p What would do this project
-    = link_to 'See details', :show
-
-  %div.project_box
-    %div.economic
+  %div.panel.panel-success
+    %div.panel-heading
       Economic
-    %p Project No.
-    %p Project title
-    %p Aims
-    %p What would do this project
-    = link_to 'See details', :show
+    %div.panel-body
+      %p Project No.
+      %p Project title
+      %p Aims
+      %p What would do this project
+      = link_to 'See details', :show
 
-  %div.project_box
-    %div.technology
-      Technology
-    %p Project No.
-    %p Project title
-    %p Aims
-    %p What would do this project
-    = link_to 'See details', :show
-
-  %div.project_box
-    %div.knowledge
+  %div.panel.panel-info
+    %div.panel-heading
       Knowledge
-    %p Project No.
-    %p Project title
-    %p Aims
-    %p What would do this project
-    = link_to 'See details', :show
+    %div.panel-body
+      %p Project No.
+      %p Project title
+      %p Aims
+      %p What would do this project
+      = link_to 'See details', :show
 
-  %div.project_box
-    %div.economic
-      Economic
-    %p Project No.
-    %p Project title
-    %p Aims
-    %p What would do this project
-    = link_to 'See details', :show
-
-  %div.project_box
-    %div.technology
+  %div.panel.panel-danger
+    %div.panel-heading
       Technology
-    %p Project No.
-    %p Project title
-    %p Aims
-    %p What would do this project
-    = link_to 'See details', :show    
+    %div.panel-body
+      %p Project No.
+      %p Project title
+      %p Aims
+      %p What would do this project
+      = link_to 'See details', :show
+
+  %div.panel.panel-success
+    %div.panel-heading
+      Economic
+    %div.panel-body
+      %p Project No.
+      %p Project title
+      %p Aims
+      %p What would do this project
+      = link_to 'See details', :show
+
+  %div.panel.panel-info
+    %div.panel-heading
+      Knowledge
+    %div.panel-body
+      %p Project No.
+      %p Project title
+      %p Aims
+      %p What would do this project
+      = link_to 'See details', :show
+
+  %div.panel.panel-danger
+    %div.panel-heading
+      Technology
+    %div.panel-body
+      %p Project No.
+      %p Project title
+      %p Aims
+      %p What would do this project
+      = link_to 'See details', :show
