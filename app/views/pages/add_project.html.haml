@@ -43,5 +43,6 @@
       = f.input :nextstep, placeholder: "Next Step", label:false
       = f.input :volunteers, placeholder: "Volunteers", label:false
 
-      %button#add_project-flash.btn.btn-default{ type: :button }
-        = link_to 'Save', :show
+      %div#addProject
+        %button#add_project-flash.btn.btn-default{ type: :button }
+          = link_to 'Add project ', :show
