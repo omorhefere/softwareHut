@@ -1,15 +1,21 @@
-= stylesheet_link_tag    "registration", media: :all
-= stylesheet_link_tag    "application", media: :all
-
-
-
 - content_for :title, "Join Sheffield Water Centre"
-.container#header
-  %h1#header Register Today.
+= stylesheet_link_tag    "log_in_out", media: :all
 
-.container#inputFields
-  = simple_form_for :registration  do |f|
-    = f.input :name, placeholder: "Full Name", label:false
-    = f.input :email, placeholder: "Email", label:false
-    = f.input :password, placeholder: "Password", label:false
-    = f.button :submit, "Sign up", class: "btn btn-primary"
+%div.container.buffered-top
+
+  .page-header
+    %h1 Sheffield Water Centre
+
+
+  .container#header
+    %h1#header Register Today.
+
+  .container#inputFields
+    = simple_form_for :registration  do |f|
+      = f.input :name, placeholder: "Full Name", label:false
+      = f.input :email, placeholder: "Email", label:false
+      = f.input :password, placeholder: "Password", label:false
+      = f.input :password, placeholder: "Confirm Password", label:false
+
+      %button#show-flash.btn.btn-default{ type: :button}
+        = link_to 'Register', :log_in_out

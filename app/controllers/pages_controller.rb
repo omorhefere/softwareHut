@@ -38,4 +38,12 @@ class PagesController < ApplicationController
     @disabled_nav = true
     @sticky_footer=true
   end
+
+  def registration
+    @current_nav_identifier = :registration
+    @disabled_nav = true
+    @sticky_footer = true
+  end
+
+
 end
