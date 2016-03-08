@@ -4,4 +4,42 @@
   .page-header
     %h1 Sheffield Water Centre
 
-  %p.lead Add a new project to the database.
+.container#inputFields
+
+  .container.col-sm-4
+    = form_for :add_project do |w|
+      %p
+        = w.select "category", [["Zero Failures","label Zero Failures"], ["Resource Recovery and Efficiency", "label Resource Recovery and Efficiency"], ["Buried Infrastructure Performance", "label Buried Infrastructure Performance"]]
+
+
+  .container.col-sm-8
+    = form_for :add_project do |w|
+      %p
+        = w.select "category", [["Knowledge","label Knowledge"], ["Economic", "label Economic"], ["Technology", "label Technology"]]
+
+  .container
+    = simple_form_for :add_project  do |f|
+      = f.input :project_number, placeholder: "Project Number", label:false
+
+  .container
+    %button#add_project-flash.btn.btn-default{ type: :button }
+      Check If Project Exist
+
+  .container
+    = simple_form_for :add_project  do |f|
+      = f.input :duration, placeholder: "Priority and Duration", label:false
+      = f.input :project_title, placeholder: "Project Title", label:false
+      = f.input :aims, placeholder: "Aims", label:false
+      = f.input :team_member, placeholder: "Team Member", label:false
+      = f.input :target, placeholder: "Targets of Members", label:false
+      = f.input :why_important, placeholder: "Why is this project mportant?", label:false
+      = f.input :what_would_do, placeholder: "Who would do this project?", label:false
+      = f.input :what_funding_mechanism, placeholder: "What funding mechanism?", label:false
+      = f.input :time_scale, placeholder: "Time Scale(years)", label:false
+      = f.input :benefits, placeholder: "Benefits to Industry", label:false
+      = f.input :notes, placeholder: "Notes on Methodology", label:false
+      = f.input :nextstep, placeholder: "Next Step", label:false
+      = f.input :volunteers, placeholder: "Volunteers", label:false
+
+      %button#add_project-flash.btn.btn-default{ type: :button }
+        Save
