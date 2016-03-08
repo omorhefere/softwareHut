@@ -40,7 +40,14 @@
 
             - if @disabled_nav!=true
               .collapse.navbar-collapse
+
+                %form.navbar-form.navbar-right{role: "search"}
+                  .form-group
+                    %input.form-control{placeholder: "Search", type: "text"}/
+                  %button.btn.button_search.btn-default{type: "submit"} Submit
+
                 %ul.nav.navbar-nav.navbar-right#navbutton
+
                   = navbar_link_to :home, title: "Go to the home page", identifier: :home do
                     = fa_icon 'home'
                     Home
