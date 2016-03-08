@@ -46,25 +46,42 @@
                     %input.form-control{placeholder: "Search", type: "text"}/
                   %button.btn.button_search.btn-default{type: "submit"} Submit
 
-                %ul.nav.navbar-nav.navbar-right#navbutton
+                %ul.nav.navbar-nav.navbar-right
 
-                  = navbar_link_to :home, title: "Go to the home page", identifier: :home do
-                    = fa_icon 'home'
-                    Home
-                  = navbar_link_to :add_project, title: "Add new project", identifier: :add_new_project do
-                    = fa_icon 'plus'
-                    Add New Project
+                  -# Home button
+                  - if @current_nav_identifier==:home
+                    = navbar_link_to :home, title: "Go to the home page", identifier: :home, :id => "navbuttonactive" do
+                      Home
+                  - else
+                    = navbar_link_to :home, title: "Go to the home page", identifier: :home, :id => "navbutton" do
+                      Home
 
-                  = navbar_link_to :admin, title: "Invite user", identifier: :admin do
-                    = fa_icon 'plus'
-                    Invite
+                  -# Add project button
+                  - if @current_nav_identifier==:add_new_project
+                    = navbar_link_to :add_project, title: "Add new project", identifier: :add_new_project, :id => "navbuttonactive" do
+                      Add New Project
+                  - else
+                    = navbar_link_to :add_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
+                      Add New Project
 
-                  = navbar_link_to :contact, title: "Contact", identifier: :contact do
-                    = fa_icon 'lock'
-                    Contact
+                  -# Invite button
+                  - if @current_nav_identifier==:admin
+                    = navbar_link_to :admin, title: "Invite user", identifier: :admin, :id => "navbuttonactive" do
+                      Invite
+                  - else
+                    = navbar_link_to :admin, title: "Invite user", identifier: :admin, :id => "navbutton" do
+                      Invite
 
-                  = navbar_link_to :log_in_out, title: "Log Out", identifier: :log_out do
-                    = fa_icon 'lock'
+                  -# Contact button
+                  - if @current_nav_identifier==:contact
+                    = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbuttonactive" do
+                      Contact
+                  - else
+                    = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbutton" do
+                      Contact
+
+                  -# Log out button
+                  = navbar_link_to :log_in_out, title: "Log Out", identifier: :log_out, :id => "navbutton" do
                     Log Out
 
 
