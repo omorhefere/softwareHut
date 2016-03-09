@@ -2,7 +2,7 @@
 = stylesheet_link_tag    "home", media: :all
 = stylesheet_link_tag    "application", media: :all
 
-- if $user_logged_in
+- if $logged_in_message
   .alert.alert-success.alert-dismissible{:role => "alert"}
     %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
       %span{"aria-hidden" => "true"} &times;
