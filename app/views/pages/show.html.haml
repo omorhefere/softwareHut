@@ -79,6 +79,9 @@
       %tr
         %th Volunteers
         %td User1, User2
+      %tr
+        %th Stage
+        %td Planning
 
 
 
@@ -106,7 +109,7 @@
     = simple_form_for :comment do |f|
 
       = f.input :Comment, as: :string
-      %button#show-flash.btn.btn-default{ type: :button }
+      %button#show-flash.button_post.btn.btn-default{ type: :button }
         Post
 
 
