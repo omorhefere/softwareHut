@@ -5,18 +5,20 @@
 .page-header
   %h1 Sheffield Water Centre
 
-%div#categories_box
-  %p.lead Categories
-  %ul.nav
-    %li.active
-      = link_to 'All projects', :home
-    %li.active
-      = link_to 'Zero Failures', :zero_failures
-    %li
-      = link_to 'Resource Recovery and Efficiency', :rre
-    %li
-      = link_to 'Buried Infrastructure Performance', :bip
-
+%div.categories_box
+  %div.panel.panel-primary
+    %div.panel-heading
+      Categories
+    %ul.nav
+      %li.active
+        = link_to 'All projects', '#'
+      %li.active
+        = link_to 'Zero Failures', :zero_failures
+      %li.active
+        = link_to 'Resource Recovery and Efficiency', :rre
+      %li.active
+        = link_to 'Buried Infrastructure Performance', :bip
+        
 %div.container.buffered-top
 
   %p#title Zero Failures
