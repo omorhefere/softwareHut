@@ -36,7 +36,7 @@
             .navbar-header
               %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
                 %span.icon-bar
-              %img.img-responsive.hidden-xs#logo(src="/images/proto2.jpg")
+              %img.img-responsive.hidden-xs#logo(src="/images/logo.jpg")
 
             - if @disabled_nav!=true
               .collapse.navbar-collapse
@@ -100,13 +100,13 @@
         = yield
 
 - if @sticky_footer
-  %footer.navbar-fixed-bottom
+  %footer.navbar-fixed-bottom.col-sm-12
     .container#footer
       %p
         &copy; Team 06 Project - Software Hut - #{Date.today.year}
 
 - else
-  %footer.footer
+  %footer.footer.col-sm-12
     .container
       %p
         &copy; Team 06 Project - Software Hut - #{Date.today.year}
