@@ -1,5 +1,6 @@
 - content_for :title, "Join Sheffield Water Centre"
-= stylesheet_link_tag    "log_in_out", media: :all
+= stylesheet_link_tag    "registration", media: :all
+= stylesheet_link_tag    "application", media: :all
 
 %div.container.buffered-top
 
@@ -16,5 +17,6 @@
       = f.input :password, placeholder: "Password", label:false
       = f.input :password, placeholder: "Confirm Password", label:false
 
-      %button#show-flash.btn.btn-default{ type: :button}
-        = link_to 'Register', :log_in_out
+      %div#registerButton
+        %button#show-flash.btn.btn-default{ type: :button}
+          = link_to 'Register', :log_in_out
