@@ -7,24 +7,18 @@
 .container
   .page-header
     .container.button_container
-      %button#show-flash.btn.button1.btn-default{ type: :button }
-        = link_to 'All Projects', :home
-      %button#show-flash.btn.button2.btn-default{ type: :button }
-        = link_to 'Zero Failures', :zero_failures
-      %button#show-flash.btn.button3.btn-default{ type: :button }
-        = link_to 'Resource Recovery and Efficiency', :rre
-      %button#show-flash.btn.button4.btn-default{ type: :button }
-        = link_to 'Buried Infrastructure Performance', :bip
+      = link_to 'All Projects', :home, class: "show-flash btn button1  btn-default"
+      = link_to 'Zero Failures', :zero_failures, class: "show-flash btn button2  btn-default"
+      = link_to 'Resource Recovery and Efficiency', :rre, class: "show-flash btn button3  btn-default"
+      = link_to 'Buried Infrastructure Performance', :bip,  class: "show-flash btn button4  btn-default"
       %hr.line
-      
+
     .jumbotron.jtron
       %h1 Project Title
 
     .btn-group
-      %button#show-flash.btn.btn-default{ type: :button }
-        = link_to 'Edit', :add_project
-      %button#show-flash.btn.btn-default{ type: :button }
-        = link_to 'Delete', :home
+      = link_to 'Edit', :add_project, class: "show-flash btn button1  btn-default"
+      = link_to 'Delete', :home, class: "show-flash btn button1  btn-default"
 
 
   .container.col-sm-4

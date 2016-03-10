@@ -18,5 +18,4 @@
       = f.input :password, placeholder: "Confirm Password", label:false
 
       %div#registerButton
-        %button#show-flash.btn.btn-default{ type: :button}
-          = link_to 'Register', :log_in_out
+        = link_to 'Register', :log_in_out, class: "show-flash btn btn-default"
