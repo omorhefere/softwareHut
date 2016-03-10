@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'users/new'
 
+  get 'users/new'
+
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   match "/contact", to: "pages#contact", via: :all
   match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
-match "/admin", to: "pages#admin", via: :all
+  match "/admin", to: "pages#admin", via: :all
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
 
