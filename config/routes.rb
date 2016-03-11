@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :users
   get 'users/new'
 
   get 'users/new'
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   match "/home", to: "pages#home", via: :all
   match "/log_in_out", to: "pages#log_in_out", via: :all
   match "/show", to: "pages#show", via: :all
-  match "/registration", to: "pages#registration", via: :all
+  match "/registration", to: "users#index", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
 
   resources :projects
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
