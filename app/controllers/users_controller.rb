@@ -4,19 +4,31 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
+    @current_nav_identifier = :registration
+    @disabled_nav = true
+    @sticky_footer = true
   end
 
   # GET /users/1
   def show
+    @current_nav_identifier = :registration
+    @disabled_nav = true
+    @sticky_footer = true
   end
 
   # GET /users/new
   def new
     @user = User.new
+    @current_nav_identifier = :registration
+    @disabled_nav = true
+    @sticky_footer = true
   end
 
   # GET /users/1/edit
   def edit
+    @current_nav_identifier = :registration
+    @disabled_nav = true
+    @sticky_footer = true
   end
 
   # POST /users
@@ -37,6 +49,9 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+    @current_nav_identifier = :registration
+    @disabled_nav = true
+    @sticky_footer = true
   end
 
   # DELETE /users/1

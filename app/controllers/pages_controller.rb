@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
   def add_project
     @current_nav_identifier = :add_new_project
-    
+
   end
 
   def log_in_out
@@ -48,9 +48,6 @@ class PagesController < ApplicationController
   end
 
   def registration
-    @current_nav_identifier = :registration
-    @disabled_nav = true
-    @sticky_footer = true
   end
 
   def new_password

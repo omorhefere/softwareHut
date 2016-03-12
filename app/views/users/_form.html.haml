@@ -8,7 +8,7 @@
     %h1 Sheffield Water Centre
 
 
-  %p.lead Register Today
+  %p.lead Register
 
   .container#inputFields
     = simple_form_for(@user) do |f|
@@ -20,7 +20,6 @@
         = f.input :password
         = f.input :confirm_password
 
-      .form-actions
-        = f.button :submit
-
-      
+      %div#submitButton
+        .form-actions
+          = f.button :submit
