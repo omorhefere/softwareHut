@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @current_nav_identifier = :registration
-    @disabled_nav = true
-    @sticky_footer = true
   end
 
   # GET /users/1

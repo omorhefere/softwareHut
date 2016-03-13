@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users
-  get 'users/new'
-
+  devise_for :users
   get 'users/new'
 
   match "/403", to: "errors#error_403", via: :all
@@ -12,6 +10,7 @@ Rails.application.routes.draw do
   match "/add_project", to: "pages#add_project", via: :all
   match "/home", to: "pages#home", via: :all
   match "/log_in_out", to: "pages#log_in_out", via: :all
+  match "/users/sign_in", to: "devise/sessions#new", via: :all
   match "/show", to: "pages#show", via: :all
   match "/registration", to: "users#index", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all

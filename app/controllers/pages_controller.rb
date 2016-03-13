@@ -11,10 +11,6 @@ class PagesController < ApplicationController
   end
 
   def log_in_out
-    @current_nav_identifier = :log_in_out
-    @disabled_nav = true
-    @sticky_footer=true
-    $logged_in_message = true
   end
 
   def zero_failures
@@ -54,5 +50,4 @@ class PagesController < ApplicationController
     @disabled_nav = true
     @sticky_footer=true
   end
-
 end
