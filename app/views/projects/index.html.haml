@@ -1,0 +1,43 @@
+%h1 Listing projects
+
+%table
+  %thead
+    %tr
+      %th Project number
+      %th Priority duration
+      %th Project title
+      %th Aims
+      %th Why important
+      %th Would do project
+      %th Funding
+      %th Time scale
+      %th Benifits
+      %th Methodology
+      %th Stage
+      %th Volunteers
+      %th
+      %th
+      %th
+
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.project_number
+        %td= project.priority_duration
+        %td= project.project_title
+        %td= project.aims
+        %td= project.why_important
+        %td= project.would_do_project
+        %td= project.funding
+        %td= project.time_scale
+        %td= project.benifits
+        %td= project.methodology
+        %td= project.stage
+        %td= project.volunteers
+        %td= link_to 'Show', project
+        %td= link_to 'Edit', edit_project_path(project)
+        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Project', new_project_path

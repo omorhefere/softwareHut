@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313164917) do
+ActiveRecord::Schema.define(version: 20160315113349) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -28,6 +28,23 @@ ActiveRecord::Schema.define(version: 20160313164917) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "project_number"
+    t.string   "priority_duration"
+    t.string   "project_title"
+    t.string   "aims"
+    t.string   "why_important"
+    t.string   "would_do_project"
+    t.string   "funding"
+    t.string   "time_scale"
+    t.string   "benifits"
+    t.string   "methodology"
+    t.string   "stage"
+    t.string   "volunteers"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false

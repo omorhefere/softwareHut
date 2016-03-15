@@ -1,0 +1,27 @@
+-  content_for :title, "Add a new project"
+= stylesheet_link_tag    "add_project", media: :all
+= stylesheet_link_tag    "application", media: :all
+
+%div.container.buffered-top
+  .page-header
+    %h1 Sheffield Water Centre
+
+.container#inputFields
+
+  .container.col-sm-4
+    = form_for :add_project do |w|
+      %p
+        = w.select "category", [["Zero Failures","label Zero Failures"], ["Resource Recovery and Efficiency", "label Resource Recovery and Efficiency"], ["Buried Infrastructure Performance", "label Buried Infrastructure Performance"]]
+
+
+  .container.col-sm-8
+    = form_for :add_project do |w|
+      %p
+        = w.select "category", [["Knowledge","label Knowledge"], ["Economic", "label Economic"], ["Technology", "label Technology"]]
+
+  .container
+    = render 'form'
+
+    = link_to 'Show', @project
+    \|
+    = link_to 'Back', projects_path
