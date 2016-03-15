@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else
@@ -51,6 +50,10 @@ class UsersController < ApplicationController
     @disabled_nav = true
     @sticky_footer = true
   end
+
+  def sign_in
+  end
+
 
   # DELETE /users/1
   def destroy

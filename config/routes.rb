@@ -3,13 +3,17 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/new'
 
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
+
   match "/add_project", to: "pages#add_project", via: :all
-  match "/home", to: "pages#home", via: :all
-  match "/log_in_out", to: "pages#log_in_out", via: :all
+  get "/home", to: "pages#home", via: :all
   match "/users/sign_in", to: "devise/sessions#new", via: :all
   match "/show", to: "pages#show", via: :all
   match "/registration", to: "users#index", via: :all
@@ -20,11 +24,9 @@ Rails.application.routes.draw do
   match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
   match "/admin", to: "pages#admin", via: :all
+
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
-
-  root to: "pages#log_in_out"
-
 
   resources :projects
   resources :users

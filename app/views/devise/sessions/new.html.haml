@@ -28,6 +28,6 @@
             = f.input :password
           .panel-footer
             %div#buttonContainer
-              = link_to 'Login', :home,  class: "show-flash btn btn-default"
-              = link_to 'Forgot Password', :forgot_password,  class: "show-flash btn btn-default"
+              = button_to 'Login', :home,  class: "show-flash btn btn-default"
+              = button_to 'Forgot Password', :forgot_password,  class: "show-flash btn btn-default"
               .margin-top-10= render "devise/shared/links"

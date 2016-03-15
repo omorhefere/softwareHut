@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :ie_warning
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  #before_action :authenticate_user!, except: [:root]
+  before_action :authenticate_user!, except: [:root]
 
   ## The following are used by our Responder service classes so we can access
   ## the instance variable for the current resource easily via a standard method
