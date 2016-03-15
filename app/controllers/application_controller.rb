@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :update_headers_to_disable_caching
   before_action :ie_warning
 
-  before_action :authenticate_user!, except: [:root, :forgot_password]
+  before_action :authenticate_user!, except: [:root]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   ## The following are used by our Responder service classes so we can access
