@@ -1,0 +1,77 @@
+= stylesheet_link_tag    "project_show", media: :all
+= stylesheet_link_tag    "application", media: :all
+
+%div.container.buffered-top
+- content_for :title, @project.project_title
+
+.container
+  .page-header
+    .container.button_container
+      = link_to 'All Projects', :home, class: "show-flash btn button1  btn-default"
+      = link_to 'Zero Failures', :zero_failures, class: "show-flash btn button2  btn-default"
+      = link_to 'Resource Recovery and Efficiency', :rre, class: "show-flash btn button3  btn-default"
+      = link_to 'Buried Infrastructure Performance', :bip,  class: "show-flash btn button4  btn-default"
+      %hr.line
+
+    .jumbotron.jtron
+      %h1
+        %b
+        = @project.project_title
+
+    .btn-group
+      = link_to 'Edit', edit_project_path(@project), class: "show-flash btn button1  btn-default"
+      = link_to 'Delete', :home, class: "show-flash btn button1  btn-default"
+
+
+  .container.col-sm-4
+    %table.table.images_table.table-responsive
+      %tbody
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto1.jpg")
+
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto2.jpg")
+
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto3.jpg")
+
+      %tr
+        %img.img-responsive.hidden-xs(src="/images/proto4.jpg")
+
+  .container.col-sm-8
+    %p
+      %b Project number:
+      = @project.project_number
+    %p
+      %b Priority duration:
+      = @project.priority_duration
+    %p
+      %b Project title:
+      = @project.project_title
+    %p
+      %b Aims:
+      = @project.aims
+    %p
+      %b Why important:
+      = @project.why_important
+    %p
+      %b Would do project:
+      = @project.would_do_project
+    %p
+      %b Funding:
+      = @project.funding
+    %p
+      %b Time scale:
+      = @project.time_scale
+    %p
+      %b Benifits:
+      = @project.benifits
+    %p
+      %b Methodology:
+      = @project.methodology
+    %p
+      %b Stage:
+      = @project.stage
+    %p
+      %b Volunteers:
+      = @project.volunteers
