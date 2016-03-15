@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
   # GET /users
   def index
     @users = User.all
@@ -49,9 +50,6 @@ class UsersController < ApplicationController
     @current_nav_identifier = :registration
     @disabled_nav = true
     @sticky_footer = true
-  end
-
-  def sign_in
   end
 
 

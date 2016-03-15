@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :user
   get 'users/new'
 
   devise_scope :user do
-    root to: "devise/sessions#new"
+    root to: "pages#home"
   end
 
   match "/403", to: "errors#error_403", via: :all
@@ -13,8 +13,15 @@ Rails.application.routes.draw do
   match "/500", to: "errors#error_500", via: :all
 
   match "/add_project", to: "pages#add_project", via: :all
-  get "/home", to: "pages#home", via: :all
-  match "/users/sign_in", to: "devise/sessions#new", via: :all
+  match "/home", to: "pages#home", via: :all
+
+  devise_for :users, :skip => [:sessions]
+  as :user do
+    get '/user/sign_in' => 'devise/sessions#new'
+    post '/user/sign_in' => 'devise/sessions#create'
+    get '/user/sign_out' => 'devise/sessions#destroy' #the verb should be DELETE
+  end
+
   match "/show", to: "pages#show", via: :all
   match "/registration", to: "users#index", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all
