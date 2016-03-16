@@ -84,26 +84,7 @@
                   = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton" do
                     Log Out
 
-                  -# Profile
-                  - if current_user
-                    Logged in as #{current_user.email}.
-                  - else
-                    Not logged in
-
-
-
-                -# - if user_signed_in?
-                -#   %ul.nav.navbar-nav.navbar-right
-                -#     %li.dropdown
-                -#       = link_to '#', data: { toggle: :dropdown }, class: 'dropdown-toggle' do
-                -#         = fa_icon 'user', text: current_user.email
-                -#         %b.caret
-                -#       %ul.dropdown-menu
-                -#         %li
-                -#           = link_to destroy_user_session_path, method: :delete, title: "Log out of the system" do
-                -#             %i.fa.fa-sign-out
-                -#             Log out
-
+                  
         = yield
 
 - if @sticky_footer

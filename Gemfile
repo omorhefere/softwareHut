@@ -5,6 +5,7 @@ gem 'rails', '4.2.5.1'
 gem 'responders', '~> 2.1'
 gem 'activerecord-session_store'
 
+gem 'hirb'
 gem 'sqlite3', group: [:development, :test]
 gem 'puma'
 gem 'pg'
