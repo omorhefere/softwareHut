@@ -2,12 +2,10 @@ class PagesController < ApplicationController
 
   def home
     @current_nav_identifier = :home
-    $logged_out_message = true
   end
 
   def add_project
     @current_nav_identifier = :add_new_project
-
   end
 
   def log_in_out
@@ -44,6 +42,11 @@ class PagesController < ApplicationController
   end
 
   def registration
+  end
+
+  def users
+    @disabled_nav = true
+    @sticky_footer=true
   end
 
   def new_password

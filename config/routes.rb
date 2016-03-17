@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get '/user/sign_out' => 'devise/sessions#destroy' #the verb should be DELETE
   end
 
+
   match "/show", to: "pages#show", via: :all
   match "/registration", to: "users#index", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all

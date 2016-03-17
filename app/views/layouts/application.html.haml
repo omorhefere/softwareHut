@@ -5,6 +5,7 @@
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{ :'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
     = stylesheet_link_tag    "application", media: :all
+    = stylesheet_link_tag    "custom_flash", media: :all
     = javascript_include_tag "application"
     = favicon_link_tag '/favicon.ico'
     = csrf_meta_tags
@@ -49,7 +50,7 @@
                 - if user_signed_in?
                   %p#userBox Hi= @user.email
                 - else
-                  %p#userBox No signed in yet
+                  %p#userBox Not signed in yet
 
                 %ul.nav.navbar-nav.navbar-right
 
@@ -88,8 +89,6 @@
                   -# Log out button
                   = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton" do
                     Log Out
-
-
         = yield
 
 - if @sticky_footer

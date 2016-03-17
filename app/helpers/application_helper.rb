@@ -21,5 +21,5 @@ module ApplicationHelper
   def partial_exist?(partial_name, prefixes = lookup_context.prefixes)
     lookup_context.exists?(partial_name, prefixes, true)
   end
-  
+
 end
