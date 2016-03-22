@@ -10,13 +10,5 @@
 %p
   %b E-mail:
   = @user.email
-%p
-  %b Password:
-  = @user.password
-%p
-  %b Confirm password:
-  = @user.confirm_password
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+= link_to 'Back', users_path,class: "show-flash btn btn-default"

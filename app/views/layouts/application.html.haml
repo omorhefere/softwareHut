@@ -47,8 +47,9 @@
                     %input.form-control{placeholder: "Search", type: "text"}/
                   %button.btn.button_search.btn-default{type: "submit"} Submit
 
-                - if user_signed_in?
-                  %p#userBox Hi= @user.email
+                - if signed_in?
+                  %p#userBox
+                    = current_user.email
                 - else
                   %p#userBox Not signed in yet
 

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:root, :forgot_password]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   ## The following are used by our Responder service classes so we can access
   ## the instance variable for the current resource easily via a standard method
   def resource_name
