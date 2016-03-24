@@ -15,8 +15,8 @@
           %h2.panel-title Log In
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .panel-body
-            = f.input :email, autofocus: true
-            = f.input :password
+            = f.input :email, autofocus: true,  placeholder: "Email", label:false
+            = f.input :password, placeholder: "Password", label:false
           .panel-footer
             %div#buttonContainer
               %div#buttonLogin

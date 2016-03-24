@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :update_headers_to_disable_caching
   before_action :ie_warning
 
-  before_action :authenticate_user!, except: [:root, :forgot_password]
+  before_action :authenticate_user!, except: [:registration, :root ,:forgot_password]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 

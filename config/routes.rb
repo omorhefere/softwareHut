@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
   resources :projects
-  devise_for :user
-  get 'users/new'
-
+  
   devise_scope :user do
-    root to: "pages#home"
+    root to: 'pages#home'
   end
 
   match "/403", to: "errors#error_403", via: :all
@@ -16,16 +14,13 @@ Rails.application.routes.draw do
   match "/add_project", to: "pages#add_project", via: :all
   match "/home", to: "pages#home", via: :all
 
-  devise_for :users, :skip => [:sessions]
+  devise_for :users, :controller => {:registrations => 'registrations', :sessions => 'sessions'}
   as :user do
-    get '/user/sign_in' => 'devise/sessions#new'
-    post '/user/sign_in' => 'devise/sessions#create'
-    get '/user/sign_out' => 'devise/sessions#destroy' #the verb should be DELETE
+
   end
 
-
   match "/show", to: "pages#show", via: :all
-  match "/registration", to: "users#index", via: :all
+
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
@@ -33,6 +28,7 @@ Rails.application.routes.draw do
   match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
   match "/admin", to: "pages#admin", via: :all
+
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
