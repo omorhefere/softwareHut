@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321235359) do
+ActiveRecord::Schema.define(version: 20160325013643) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160321235359) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "remember_token"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
