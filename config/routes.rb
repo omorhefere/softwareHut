@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  resources :subcategories
+  resources :categories
+  resources :categories
   resources :projects
 
   devise_scope :user do

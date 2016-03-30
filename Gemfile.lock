@@ -401,8 +401,5 @@ DEPENDENCIES
   whenever
   will_paginate
 
-RUBY VERSION
-   ruby 2.1.8p440
-
 BUNDLED WITH
    1.12.0.rc

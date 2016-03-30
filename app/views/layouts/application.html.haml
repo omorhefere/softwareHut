@@ -65,10 +65,10 @@
 
                   -# Add project button
                   - if @current_nav_identifier==:add_new_project
-                    = navbar_link_to :add_project, title: "Add new project", identifier: :add_new_project, :id => "navbuttonactive" do
+                    = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbuttonactive" do
                       Add New Project
                   - else
-                    = navbar_link_to :add_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
+                    = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
                       Add New Project
 
                   -# Invite button

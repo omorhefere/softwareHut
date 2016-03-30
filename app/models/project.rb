@@ -17,7 +17,12 @@
 #  volunteers        :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  category_id       :integer
+#  subcategory_id    :integer
 #
 
 class Project < ActiveRecord::Base
+  belongs_to :category
+  belongs_to :subcategory
+
 end

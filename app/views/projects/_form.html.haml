@@ -2,13 +2,15 @@
   = f.error_notification
 
   .form-inputs
+    = f.association :category
+    = f.association :subcategory
     = f.input :project_number
 
     %button#add_project-flash.btn.btn-default{ type: :button }
       Check If Project Exist
 
-    = f.input :priority_duration , placeholder: "Priority and Duration", label:false
     = f.input :project_title, placeholder: "Project Title", label:false
+    = f.input :priority_duration , placeholder: "Priority and Duration", label:false
     = f.input :aims, placeholder: "Aims", label:false
     = f.input :why_important, placeholder: "Whis is this project important", label:false
     = f.input :would_do_project, placeholder: "Targets of Members", label:false
@@ -18,6 +20,7 @@
     = f.input :methodology, placeholder: "Methodology", label:false
     = f.input :stage, placeholder: "Stage", label:false
     = f.input :volunteers, placeholder: "Volunteers", label:false
+
 
   .form-actions
     = f.button :submit
