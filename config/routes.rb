@@ -7,8 +7,6 @@ Rails.application.routes.draw do
     root to: 'pages#home'
   end
 
-
-
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
@@ -20,13 +18,6 @@ Rails.application.routes.draw do
   devise_for :users, :controller => {:registrations => 'registrations', :sessions => 'sessions'}
   as :user do
   end
-
-  devise_for :users, :skip => [:sessions]
- as :user do
-   get '/user/sign_in' => 'devise/sessions#new'
-   post '/user/sign_in' => 'devise/sessions#create'
-   get '/user/sign_out' => 'devise/sessions#destroy' #the verb should be DELETE
- end
 
   match "/show", to: "pages#show", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all
