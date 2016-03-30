@@ -8,9 +8,6 @@ class PagesController < ApplicationController
     @current_nav_identifier = :add_new_project
   end
 
-  def log_in_out
-  end
-
   def zero_failures
     @current_nav_identifier = :home
   end

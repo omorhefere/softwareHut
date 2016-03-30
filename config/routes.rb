@@ -14,14 +14,8 @@ Rails.application.routes.draw do
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
-
   match "/add_project", to: "pages#add_project", via: :all
   match "/home", to: "pages#home", via: :all
-
-  devise_for :users, :controller => {:registrations => 'registrations', :sessions => 'sessions'}
-  as :user do
-  end
-
   match "/show", to: "pages#show", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
@@ -30,7 +24,10 @@ Rails.application.routes.draw do
   match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
   match "/admin", to: "pages#admin", via: :all
-
+  
+  devise_for :users, :controller => {:registrations => 'registrations', :sessions => 'sessions'}
+  as :user do
+  end
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
