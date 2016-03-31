@@ -24,9 +24,16 @@ Rails.application.routes.draw do
   match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
   match "/admin", to: "pages#admin", via: :all
-  
-  devise_for :users, :controller => {:registrations => 'registrations', :sessions => 'sessions'}
+
+  devise_for :users, :controller => {:registrations => 'registrations'}
   as :user do
+  end
+
+  devise_for :users, :skip => [:sessions]
+  as :user do
+    get 'users/sign_in' => 'devise/sessions#new'
+    post 'users/sign_in' => 'devise/sessions#create'
+    delete 'users/sign_in' => 'devise/sessions#destroy'
   end
 
   get :ie_warning, to: 'errors#ie_warning'
