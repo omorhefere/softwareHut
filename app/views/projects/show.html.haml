@@ -17,6 +17,12 @@
       %h1
         %b
         = @project.project_title
+      %h4
+        %b
+        = @project.category.name
+      %h5
+        %b
+        = @project.subcategory.name
 
     .btn-group
       = link_to 'Edit', edit_project_path(@project), class: "show-flash btn button1  btn-default"
@@ -46,9 +52,6 @@
       %b Priority duration:
       = @project.priority_duration
     %p
-      %b Project title:
-      = @project.project_title
-    %p
       %b Aims:
       = @project.aims
     %p
@@ -64,14 +67,14 @@
       %b Time scale:
       = @project.time_scale
     %p
-      %b Benifits:
+      %b Benefits:
       = @project.benifits
     %p
       %b Methodology:
       = @project.methodology
     %p
-      %b Stage:
-      = @project.stage
-    %p
       %b Volunteers:
       = @project.volunteers
+    %p
+      %b Stage:
+      = @project.stage

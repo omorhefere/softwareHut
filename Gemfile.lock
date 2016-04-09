@@ -371,6 +371,7 @@ DEPENDENCIES
   epi_deploy!
   epi_js
   eventmachine (>= 1.0.9.1)
+  factory_girl
   factory_girl_rails
   font-awesome-rails
   haml-rails
@@ -400,9 +401,6 @@ DEPENDENCIES
   web-console (~> 2.2.1)
   whenever
   will_paginate
-
-RUBY VERSION
-   ruby 2.1.8p440
 
 BUNDLED WITH
    1.12.0.rc

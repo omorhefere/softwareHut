@@ -47,14 +47,16 @@
                     %input.form-control{placeholder: "Search", type: "text"}/
                   %button.btn.button_search.btn-default{type: "submit"} Submit
 
-                - if user_signed_in?
-                  %p#user_box User-
-                  %p#email_box
-                    = @current_user.email
-                - else
-                  %p#user_box Not signed in yet
+
 
                 %ul.nav.navbar-nav.navbar-right
+
+                  - if user_signed_in?
+                    %p#user_box User-
+                    %p#email_box
+                      = @current_user.email
+                  - else
+                    %p#user_box Not signed in yet
 
                   -# Home button
                   - if @current_nav_identifier==:home
