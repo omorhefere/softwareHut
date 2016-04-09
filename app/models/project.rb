@@ -25,4 +25,10 @@ class Project < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory
 
+  has_many :comments
+
+  validates :project_title, :project_number, presence: true 
+
+  validates :funding, numericality: { greater_than: 0 }
+
 end
