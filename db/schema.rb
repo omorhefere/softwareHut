@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409150850) do
+ActiveRecord::Schema.define(version: 20160411104755) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 20160409150850) do
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
     t.text     "body"
-    t.integer  "article_id"
+    t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["article_id"], name: "index_comments_on_article_id"
+  add_index "comments", ["project_id"], name: "index_comments_on_project_id"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false

@@ -5,15 +5,15 @@
 #  id         :integer          not null, primary key
 #  commenter  :string
 #  body       :text
-#  article_id :integer
+#  project_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_comments_on_article_id  (article_id)
+#  index_comments_on_project_id  (project_id)
 #
 
 class Comment < ActiveRecord::Base
-  belongs_to :article
+  belongs_to :project
 end
