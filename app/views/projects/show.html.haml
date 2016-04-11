@@ -26,7 +26,7 @@
 
     .btn-group
       = link_to 'Edit', edit_project_path(@project), class: "show-flash btn button1  btn-default"
-      = link_to 'Delete', :home, class: "show-flash btn button1  btn-default"
+      = link_to 'Destroy' , @project, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "show-flash btn button1  btn-default"
 
 
   .container.col-sm-4
@@ -87,6 +87,8 @@
         %p
           %strong Comment:
           = comment.body
+        %p
+          = link_to "Delete Comment", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }
 
       %h2 Add a comment:
       = form_for([@project, @project.comments.build]) do |f|
