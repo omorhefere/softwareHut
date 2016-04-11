@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :subcategories
   resources :categories
   resources :categories
-  resources :projects
 
   devise_scope :user do
     root to: 'pages#home'
@@ -41,6 +40,10 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :users
+
+  resources :projects do
+    resources :comments
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
