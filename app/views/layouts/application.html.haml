@@ -51,13 +51,6 @@
 
                 %ul.nav.navbar-nav.navbar-right
 
-                  - if signed_in?
-                    %p#user_box User-
-                    %p#email_box
-                      = current_user.email
-                  - else
-                    %p#user_box Not signed in yet
-
                   -# Home button
                   - if @current_nav_identifier==:home
                     = navbar_link_to :home, title: "Go to the home page", identifier: :home, :id => "navbuttonactive" do
@@ -89,11 +82,24 @@
                   - else
                     = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbutton" do
                       Contact
+                  %li.dropdown
+                    %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                      Options
+                      %span.caret
 
-                  -# Log out button
-                  = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete', data: { confirm: 'Are you sure?' } do
-                    Log Out
+                    %ul.dropdown-menu.dropdown_menu
+                      %li
+                      - if signed_in?
+                        %p#user_box User-
+                        %p#email_box
+                          = current_user.email
+                      - else
+                        %p#user_box Not signed in yet
 
+                      %li.divider{:role => "separator"}
+                      %li
+                      = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
+                        Log Out
         = yield
 
 - if @sticky_footer

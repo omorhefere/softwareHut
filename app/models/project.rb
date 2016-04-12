@@ -19,6 +19,7 @@
 #  updated_at        :datetime         not null
 #  category_id       :integer
 #  subcategory_id    :integer
+#  image_remote_url  :string
 #
 
 class Project < ActiveRecord::Base
@@ -27,8 +28,14 @@ class Project < ActiveRecord::Base
 
   has_many :comments
 
-  validates :project_title, :project_number, presence: true 
+  validates :project_title, :project_number, presence: true
 
   validates :funding, numericality: { greater_than: 0 }
+
+
+  def image_remote_url=(url_value)
+    self.image = URI.parse(url_value) unless url_value.blank?
+    super
+  end
 
 end

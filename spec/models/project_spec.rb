@@ -19,6 +19,7 @@
 #  updated_at        :datetime         not null
 #  category_id       :integer
 #  subcategory_id    :integer
+#  image_remote_url  :string
 #
 
 require 'rails_helper'
