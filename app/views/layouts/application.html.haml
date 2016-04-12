@@ -91,7 +91,7 @@
                       Contact
 
                   -# Log out button
-                  = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
+                  = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete', data: { confirm: 'Are you sure?' } do
                     Log Out
 
         = yield

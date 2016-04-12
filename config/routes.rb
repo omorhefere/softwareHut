@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :categories
   resources :categories
 
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+  end
+
   devise_scope :user do
     root to: 'pages#home'
   end
