@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 ruby '2.1.7'
 
+gem 'paperclip'
+
 gem 'rails', '4.2.5.1'
 gem 'responders', '~> 2.1'
 gem 'activerecord-session_store'

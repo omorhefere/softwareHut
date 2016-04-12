@@ -16,4 +16,6 @@
 
 class Comment < ActiveRecord::Base
   belongs_to :project
+
+  validates :commenter, :body, presence: true
 end

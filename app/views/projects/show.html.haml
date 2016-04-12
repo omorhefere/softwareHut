@@ -44,7 +44,7 @@
       %tr
         %img.img-responsive.hidden-xs(src="/images/proto4.jpg")
 
-  .container.col-sm-8
+  .container.col-sm-8.panel.panel-default.panel-body
     %p
       %b Project number:
       = @project.project_number
@@ -78,27 +78,31 @@
     %p
       %b Stage:
       = @project.stage
+    %p
+      %b image:
+      = @project.image_remote_url
 
+  .panel.panel-default.panel-body.col-sm-12
+    .container.post_comments_container.col-sm-12
       %h2 Comments
-      - @project.comments.each do |comment|
+      = form_for([@project, @project.comments.build]) do |f|
+        %p
+          %br/
+          = f.text_field :commenter, placeholder: "Your name"
+        %p
+          %br/
+          = f.text_area :body, placeholder: "Enter your comment"
+        %p
+          = f.submit "Post", class: "show-flash btn button1  btn-default"
+
+    .container.comments_container.col-sm-12
+      - @project.comments.reverse.each do |comment|
+        %hr
         %p
           %strong User:
           = comment.commenter
         %p
-          %strong Comment:
+          %strong
           = comment.body
         %p
-          = link_to "Delete Comment", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }
-
-      %h2 Add a comment:
-      = form_for([@project, @project.comments.build]) do |f|
-        %p
-          = f.label :commenter
-          %br/
-          = f.text_field :commenter
-        %p
-          = f.label :body
-          %br/
-          = f.text_area :body
-        %p
-          = f.submit
+          = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash"
