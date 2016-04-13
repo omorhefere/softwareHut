@@ -67,30 +67,33 @@
                     = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
                       Add New Project
 
-                  -# Invite button
-                  - if @current_nav_identifier==:admin
-                    = navbar_link_to :admin, title: "Invite user", identifier: :admin, :id => "navbuttonactive" do
-                      Invite
-                  - else
-                    = navbar_link_to :admin, title: "Invite user", identifier: :admin, :id => "navbutton" do
-                      Invite
-
-                  -# Contact button
-                  - if @current_nav_identifier==:contact
-                    = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbuttonactive" do
-                      Contact
-                  - else
-                    = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbutton" do
-                      Contact
                   %li.dropdown
-                    %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                      Options
+                    %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :about_us}
+                      About us
                       %span.caret
 
                     %ul.dropdown-menu.dropdown_menu
+
+                      %li
+                      = navbar_link_to :introduction, title: "Introduction", identifier: :introduction, :id => "navbutton" do
+                        Introduction
+                      %li.divider{:role => "separator"}
+                      %li
+                      = navbar_link_to :aims, title: "Aims", identifier: :aims, :id => "navbutton" do
+                        Aims
+                      %li.divider{:role => "separator"}
+                      %li
+                      = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbutton" do
+                        Contact Us
+
+                  %li.dropdown
+                    %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :user}
+                      User
+                      %span.caret
+
+                    %ul.dropdown-menu
                       %li
                       - if signed_in?
-                        %p#user_box User-
                         %p#email_box
                           = current_user.email
                       - else
