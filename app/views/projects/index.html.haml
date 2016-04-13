@@ -1,43 +1,89 @@
-%h1 Listing projects
+- content_for :title, "Projects"
+= stylesheet_link_tag    "application", media: :all
+= stylesheet_link_tag    "home", media: :all
 
-%table
-  %thead
-    %tr
-      %th Project number
-      %th Priority duration
-      %th Project title
-      %th Aims
-      %th Why important
-      %th Would do project
-      %th Funding
-      %th Time scale
-      %th Benifits
-      %th Methodology
-      %th Stage
-      %th Volunteers
-      %th
-      %th
-      %th
 
-  %tbody
-    - @projects.each do |project|
+.page-header
+  %h1 Sheffield Water Centre
+  %h1 Listing projects
+
+%div.categories_box.panel.panel-primary
+  %ul.nav
+    %li
+    %li.dropdown
+      %a.hidden-md.hidden-sm.hidden-xs.glyphicon.glyphicon-filter.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
+        Categories
+      %a.hidden-lg.hidden-xl.glyphicon.glyphicon-th-list.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
+        %b.caret
+      %ul.dropdown-menu{"role" => "menu"}
+        %li
+          = link_to 'All projects', :home
+          = link_to 'Zero Failures', :zero_failures
+          = link_to 'Resource Recovery and Efficiency', :rre
+          = link_to 'Buried Infrastructure Performance', :bip
+
+%div.container.buffered-top
+  %div.panel.panel-success
+    %div.panel-heading
+      %p CATEGORY
+    %table.table.table-striped
       %tr
-        %td= project.project_number
-        %td= project.priority_duration
-        %td= project.project_title
-        %td= project.aims
-        %td= project.why_important
-        %td= project.would_do_project
-        %td= project.funding
-        %td= project.time_scale
-        %td= project.benifits
-        %td= project.methodology
-        %td= project.stage
-        %td= project.volunteers
+        %td Project number
+        %td Project title
+        %td Aims
+        %td Would do project
+        %td
+        %td
+        %td
+      %tr
+        - @projects.each do |project|
+          %td= project.project_number
+          %td= project.project_title
+          %td= project.aims
+          %td= project.would_do_project
+          %td= link_to 'Show', project
+          %td= link_to 'Edit', edit_project_path(project)
+          %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+
+%div.container.buffered-top
+  %div.panel.panel-success
+    %div.panel-heading
+      %p CATEGORY
+    %table
+      %tr
+        %td Project number
+        - @projects.each do |project|
+          %td= project.project_number
+      %tr
+        %td Project title
+        - @projects.each do |project|
+          %td= project.project_title
+      %tr
+        %td Aims
+        - @projects.each do |project|
+          %td= project.aims
+      %tr
+        %td Would do project
+        - @projects.each do |project|
+          %td= project.would_do_project
+      %tr
+        %td
+        %td
+        %td
+      - @projects.each do |project|
         %td= link_to 'Show', project
         %td= link_to 'Edit', edit_project_path(project)
         %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
 
-= link_to 'New Project', new_project_path
+
+
+
+
+
+
+
+  %br
+
+  = link_to 'New Project', new_project_path

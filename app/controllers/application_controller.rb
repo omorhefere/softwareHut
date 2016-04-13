@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   alias_method :devise_current_user, :current_user
 
-  
+
 
 
   ## The following are used by our Responder service classes so we can access
@@ -53,11 +53,6 @@ class ApplicationController < ActionController::Base
       return redirect_to(ie_warning_path) if request.user_agent.to_s =~ /MSIE [6-7]/ && request.user_agent.to_s !~ /Trident\/7.0/
     end
 
-  #  def current_user
-  #    return unless session[:user_id]
-  #    @current_user ||= User.find(session[:user_id])
-  #  end
-
     def current_user
       if params[:user_id].blank?
         devise_current_user
@@ -65,6 +60,7 @@ class ApplicationController < ActionController::Base
         User.find(params[:user_id])
       end
     end
+    
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_me) }

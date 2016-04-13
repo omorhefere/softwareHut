@@ -50,4 +50,8 @@ class PagesController < ApplicationController
     @disabled_nav = true
     @sticky_footer=true
   end
+
+  def projects
+    @current_nav_identifier = :home
+  end
 end
