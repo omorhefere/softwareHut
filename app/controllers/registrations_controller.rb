@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user.valid?
     if @user.errors.blank?
       @user.save
-      redirect_to :new_user_session
+      redirect_to :root
     else
       render :action => "new"
     end

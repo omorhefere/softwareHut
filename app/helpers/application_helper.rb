@@ -22,4 +22,6 @@ module ApplicationHelper
     lookup_context.exists?(partial_name, prefixes, true)
   end
 
+  
+
 end

@@ -36,6 +36,9 @@ gem 'devise', '>= 3.5.2'
 gem 'devise_ldap_authenticatable', '>= 0.8.5'
 gem 'devise_cas_authenticatable', '>= 1.5.0'
 gem 'cancancan'
+gem 'rails_admin'
+
+
 
 gem 'whenever'
 gem 'delayed_job'

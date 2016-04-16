@@ -67,6 +67,24 @@
                     = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
                       Add New Project
 
+                  -# admin
+                  - if current_user.admin?
+                    - if @current_nav_identifier==:admin
+                      = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbuttonactive" do
+                        Admin
+                    - else
+                      = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbutton" do
+                        Admin
+
+                  -# admin
+                  - if current_user.admin?
+                    - if @current_nav_identifier==:admin
+                      = navbar_link_to :invite, title: "Go to the invite page", identifier: :invite, :id => "navbuttonactive" do
+                        invite
+                    - else
+                      = navbar_link_to :invite, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
+                        Invite
+
                   %li.dropdown
                     %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :about_us}
                       About us
