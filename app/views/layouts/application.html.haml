@@ -112,6 +112,10 @@
                             Invite
                           %li.divider{:role => "separator"}
                           %li
+                          = navbar_link_to  :edit_user_registration, title: "Edit Account", identifier: :edit, :id => "navbutton" do
+                            Edit Account
+                          %li.divider{:role => "separator"}
+                          %li
                           = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
                             Log Out
                     - else
@@ -125,9 +129,14 @@
                           - if signed_in?
                             %p#email_box
                               = current_user.name
+
                           - else
                             %p#user_box Not signed in yet
 
+                          %li.divider{:role => "separator"}
+                          %li
+                          = navbar_link_to  :edit_user_registration, title: "Edit Account", identifier: :edit, :id => "navbutton" do
+                            Edit Account
                           %li.divider{:role => "separator"}
                           %li
                           = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
