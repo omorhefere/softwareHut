@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  authorize_resource
+
   def create
     @project = Project.find(params[:project_id])
     @comment = @project.comments.create(comment_params)
