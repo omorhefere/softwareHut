@@ -7,14 +7,11 @@ class Ability
 
 
     if user.admin?
-      can :manage, Project
-      can :manage, Category
-      can :manage, User
-      can :manage, Subcategory
-      can :manage, Comment
+      can :manage, :all
     else
       can :read, Project
       can :create, Project
+      can :create, Comment
     end
 
     can [ :edit, :update, :destroy ], Project do |project|

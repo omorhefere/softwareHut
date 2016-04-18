@@ -89,9 +89,7 @@
       = form_for([@project, @project.comments.build]) do |f|
         %p
           %br/
-          = f.text_field :commenter, placeholder: "Your name"
-        %p
-          %br/
+          = f.hidden_field :commenter , :value => current_user.email
           = f.text_area :body, placeholder: "Enter your comment"
         %p
           = f.submit "Post", class: "show-flash btn button1  btn-default"
