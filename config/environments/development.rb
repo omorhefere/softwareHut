@@ -1,5 +1,11 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.smtp_settings = {
+    address: 'mailhost.shef.ac.uk',
+    port:    25,
+    domain:  'app_url',
+    enable_starttls_auto: true
+  }
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_controller.action_on_unpermitted_parameters = :raise
   config.reload_classes_only_on_change = false

@@ -79,11 +79,11 @@
 
                   -# Invite
                   - if signed_in? && current_user.admin?
-                    - if @current_nav_identifier==:admin
-                      = navbar_link_to :invite, title: "Go to the invite page", identifier: :invite, :id => "navbuttonactive" do
+                    - if @current_nav_identifier==:new_user_invitation
+                      = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbuttonactive" do
                         invite
                     - else
-                      = navbar_link_to :invite, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
+                      = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
                         Invite
 
                   %li.dropdown

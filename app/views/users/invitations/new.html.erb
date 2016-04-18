@@ -1,11 +1,17 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<% content_for :title, "Invite New Users" %>
+<%= stylesheet_link_tag    "application", media: :all %>
+<%= stylesheet_link_tag    "admin", media: :all %>
+<div class="container buffered-top">
+  <p class="lead">Invite new user</p>
+  <div class="container" id="inputFields">
+    <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
+      <%= devise_error_messages! %>
 
-<%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
-  <%= devise_error_messages! %>
+    <% resource.class.invite_key_fields.each do |field| -%>
+      <%= f.input :email, placeholder: "Email", label:false%>
+    <% end -%>
 
-<% resource.class.invite_key_fields.each do |field| -%>
-  <%= f.input :email, placeholder: "Email", label:false%>
-<% end -%>
-
-<%= f.button :submit, t("devise.invitations.new.submit_button") %>
-<% end %>
+    <%= f.button :submit, t("devise.invitations.new.submit_button") %>
+    <% end %>
+  </div>
+</div>
