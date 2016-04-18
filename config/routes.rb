@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   as :user do
   end
 
-  devise_for :users, :skip => [:sessions]
+  devise_for :users, :skip => [:sessions,:invitation]
   as :user do
     get 'users/sign_in' => 'devise/sessions#new'
     post 'users/sign_in' => 'devise/sessions#create'
