@@ -10,14 +10,17 @@ class PagesController < ApplicationController
 
   def zero_failures
     @current_nav_identifier = :home
+    @projects = Project.all
   end
 
   def rre
     @current_nav_identifier = :home
+    @projects = Project.all
   end
 
   def bip
     @current_nav_identifier = :home
+    @projects = Project.all
   end
 
   def show
