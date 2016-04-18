@@ -2,10 +2,9 @@
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "home", media: :all
 
-
 .page-header
   %h1 Sheffield Water Centre
-  %h1 Listing projects
+  %h1 All projects
 
 %div.categories_box.panel.panel-primary
   %ul.nav
@@ -22,68 +21,80 @@
           = link_to 'Resource Recovery and Efficiency', :rre
           = link_to 'Buried Infrastructure Performance', :bip
 
-%div.container.buffered-top
-  %div.panel.panel-success
-    %div.panel-heading
-      %p CATEGORY
-    %table.table.table-striped
-      %tr
-        %td Project number
-        %td Project title
-        %td Aims
-        %td Would do project
-        %td
-        %td
-        %td
-      %tr
-        - @projects.each do |project|
-          %td= project.project_number
-          %td= project.project_title
-          %td= project.aims
-          %td= project.would_do_project
-          %td= link_to 'Show', project
-          %td= link_to 'Edit', edit_project_path(project)
-          %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
+- @projects.each do |project|
+  %div.container.buffered-top
+    - if project.subcategory.name == 'Economic'
+      %div.panel.panel-success
+        %div.panel-heading
+          %p= project.subcategory.name
+        %div.panel-body
+          %table
+            %tr
+              %td.title Project category:
+              %td= project.category.name
+            %tr
+              %td.title Project number:
+              %td= project.project_number
+            %tr
+              %td.title Project title:
+              %td= project.project_title
+            %tr
+              %td.title Aims:
+              %td= project.aims
+            %tr
+              %td.title Would do project:
+              %td= project.would_do_project
+            %tr
+              %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
 
-%div.container.buffered-top
-  %div.panel.panel-success
-    %div.panel-heading
-      %p CATEGORY
-    %table
-      %tr
-        %td Project number
-        - @projects.each do |project|
-          %td= project.project_number
-      %tr
-        %td Project title
-        - @projects.each do |project|
-          %td= project.project_title
-      %tr
-        %td Aims
-        - @projects.each do |project|
-          %td= project.aims
-      %tr
-        %td Would do project
-        - @projects.each do |project|
-          %td= project.would_do_project
-      %tr
-        %td
-        %td
-        %td
-      - @projects.each do |project|
-        %td= link_to 'Show', project
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    - if project.subcategory.name == 'Technology'
+      %div.panel.panel-danger
+        %div.panel-heading
+          %p= project.subcategory.name
+        %div.panel-body
+          %table
+            %tr
+              %td.title Project category:
+              %td= project.category.name
+            %tr
+              %td.title Project number:
+              %td= project.project_number
+            %tr
+              %td.title Project title:
+              %td= project.project_title
+            %tr
+              %td.title Aims:
+              %td= project.aims
+            %tr
+              %td.title Would do project:
+              %td= project.would_do_project
+            %tr
+              %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
 
-
-
-
-
-
-
+    - if project.subcategory.name == 'Knowledge'
+      %div.panel.panel-info
+        %div.panel-heading
+          %p= project.subcategory.name
+        %div.panel-body
+          %table
+            %tr
+              %td.title Project category:
+              %td= project.category.name
+            %tr
+              %td.title Project number:
+              %td= project.project_number
+            %tr
+              %td.title Project title:
+              %td= project.project_title
+            %tr
+              %td.title Aims:
+              %td= project.aims
+            %tr
+              %td.title Would do project:
+              %td= project.would_do_project
+            %tr
+              %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
 
 
   %br
-
-  = link_to 'New Project', new_project_path

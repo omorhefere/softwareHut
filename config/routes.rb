@@ -11,16 +11,14 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do
-    root to: 'pages#home'
+    root to: 'projects#index'
   end
 
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
-  match "/add_project", to: "pages#add_project", via: :all
-  match "/home", to: "pages#home", via: :all
-  match "/show", to: "pages#show", via: :all
+  match "/home", to: "projects#index", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all

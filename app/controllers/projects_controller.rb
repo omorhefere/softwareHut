@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   authorize_resource
 
+
   # GET /projects
   def index
     @projects = Project.all
@@ -55,6 +56,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:project_number, :priority_duration, :project_title, :aims, :why_important, :would_do_project, :funding, :time_scale, :benifits, :methodology, :stage, :volunteers, :category_id, :subcategory_id, :image_remote_url)
+      params.require(:project).permit(:project_number, :priority_duration, :project_title, :aims, :why_important, :would_do_project, :funding, :time_scale, :benifits, :methodology, :stage, :volunteers, :category_id, :subcategory_id, :image_remote_url, :user_id)
     end
 end

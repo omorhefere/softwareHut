@@ -19,6 +19,7 @@
           .container
             - if name == 'notice'
               = fa_icon('check', class: 'flash-success')
+              = msg
             - else
               = fa_icon('warning', class: 'flash-error')
               = msg
