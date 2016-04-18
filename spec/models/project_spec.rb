@@ -20,6 +20,7 @@
 #  category_id       :integer
 #  subcategory_id    :integer
 #  image_remote_url  :string
+#  user_id           :integer
 #
 
 require 'rails_helper'

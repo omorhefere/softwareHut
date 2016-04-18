@@ -20,6 +20,7 @@
 #  category_id       :integer
 #  subcategory_id    :integer
 #  image_remote_url  :string
+#  user_id           :integer
 #
 
 class Project < ActiveRecord::Base
@@ -27,6 +28,7 @@ class Project < ActiveRecord::Base
   belongs_to :subcategory
 
   has_many :comments
+  belongs_to :user
 
   validates :project_title, :project_number, :priority_duration, :aims, :why_important, :would_do_project, :time_scale, :benifits, :methodology, :stage, :volunteers,  presence: true
 
