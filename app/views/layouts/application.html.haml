@@ -68,24 +68,6 @@
                     = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
                       Add New Project
 
-                  -# admin
-                  - if signed_in? && current_user.admin?
-                    - if @current_nav_identifier==:admin
-                      = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbuttonactive" do
-                        Admin
-                    - else
-                      = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbutton" do
-                        Admin
-
-                  -# Invite
-                  - if signed_in? && current_user.admin?
-                    - if @current_nav_identifier==:new_user_invitation
-                      = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbuttonactive" do
-                        invite
-                    - else
-                      = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
-                        Invite
-
                   %li.dropdown
                     %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :about_us}
                       About us
@@ -105,23 +87,51 @@
                       = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbutton" do
                         Contact Us
 
-                  %li.dropdown
-                    %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :user}
-                      User
-                      %span.caret
+                  - if signed_in?
+                    - if current_user.admin?
+                      %li.dropdown
+                        %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :admin}
+                          Admin
+                          %span.caret
 
-                    %ul.dropdown-menu
-                      %li
-                      - if signed_in?
-                        %p#email_box
-                          = current_user.name
-                      - else
-                        %p#user_box Not signed in yet
+                        %ul.dropdown-menu
+                          %li
+                          - if signed_in?
+                            %p#email_box
+                              = current_user.name
+                          - else
+                            %p#user_box Not signed in yet
 
-                      %li.divider{:role => "separator"}
-                      %li
-                      = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
-                        Log Out
+                          %li.divider{:role => "separator"}
+                          %li
+                          = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbutton" do
+                            Admin
+                          %li.divider{:role => "separator"}
+                          %li
+                          = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
+                            Invite
+                          %li.divider{:role => "separator"}
+                          %li
+                          = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
+                            Log Out
+                    - else
+                      %li.dropdown
+                        %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :user}
+                          User
+                          %span.caret
+
+                        %ul.dropdown-menu
+                          %li
+                          - if signed_in?
+                            %p#email_box
+                              = current_user.name
+                          - else
+                            %p#user_box Not signed in yet
+
+                          %li.divider{:role => "separator"}
+                          %li
+                          = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
+                            Log Out
         = yield
 
 - if @sticky_footer
