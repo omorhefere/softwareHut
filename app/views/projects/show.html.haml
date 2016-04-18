@@ -105,4 +105,5 @@
           %strong
           = comment.body
         %p
+        - if can?(:manage, Comment)
           = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash"

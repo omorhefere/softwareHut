@@ -28,7 +28,7 @@ class Project < ActiveRecord::Base
 
   has_many :comments
 
-  validates :project_title, :project_number, presence: true
+  validates :project_title, :project_number, :priority_duration, :aims, :why_important, :would_do_project, :time_scale, :benifits, :methodology, :stage, :volunteers,  presence: true
 
   validates :funding, numericality: { greater_than: 0 }
 
