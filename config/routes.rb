@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
   match "/500", to: "errors#error_500", via: :all
-  match "/add_project", to: "pages#add_project", via: :all
   match "/home", to: "projects#index", via: :all
-  match "/show", to: "pages#show", via: :all
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
