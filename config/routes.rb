@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   match "/admin", to: "pages#admin", via: :all
   match "/introduction", to: "pages#introduction", via: :all
   match "/aims", to: "pages#aims", via: :all
-  
+
 
   devise_for :users, :controller => {:registrations => 'registrations'}
   as :user do

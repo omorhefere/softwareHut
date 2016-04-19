@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   alias_method :devise_current_user, :current_user
 
-
-
-
   ## The following are used by our Responder service classes so we can access
   ## the instance variable for the current resource easily via a standard method
   def resource_name
@@ -66,7 +63,6 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_me) }
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation) }
-      devise_parameter_sanitizer.for(:accept_invitation).concat([:name]) 
+      devise_parameter_sanitizer.for(:accept_invitation).concat([:name])
     end
-
 end

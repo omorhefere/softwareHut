@@ -1,8 +1,9 @@
+= stylesheet_link_tag    "application.css.sass", media: :all
+- @sticky_footer = true
 - content_for :title, 'Browser Not Compatible'
 
 .page-header
-  %h1 Browser Not Compatible
-
-%p.lead It appears that you are using a web browser without JavaScript which prevents us offering you a rich online experience.
-
-%p.lead.margin-bottom-40 Please enable JavaScript in your web browser settings, use a different web browser, or alternatively contact the CiCS Helpdesk for assistance.
+  .errorContainer
+    %h1 Browser Not Compatible
+    %p It appears that you are using a web browser without JavaScript which prevents us offering you a rich online experience.
+    %p.margin-bottom-40 Please enable JavaScript in your web browser settings, use a different web browser, or alternatively contact the CiCS Helpdesk for assistance.

@@ -1,12 +1,14 @@
+= stylesheet_link_tag    "application.css.sass", media: :all
+- @sticky_footer = true
 - content_for :title, "Server Error"
 
 .page-header
-  %h1 
-    Server Error
-    %sup#error-code 500
-  
-%p Sorry, there was a problem, please try again.
+  .errorContainer
+    %h1
+      Server Error
+      %sup#error-code 500
+    %p Sorry, there was a problem, please try again.
 
-%p 
-  If you continue to experience this problem please contact
-  = mail_to "support@epigenesys.co.uk"
+    %p
+      If you continue to see this message please send a description of the problem to:
+      = mail_to "support@epigenesys.org.uk"
