@@ -23,6 +23,10 @@
       %h5
         %b
         = @project.subcategory.name
+      %h6
+        %b Stage:
+        = @project.stage
+
 
     .btn-group
     - if (user_signed_in? && (current_user.id == @project.user_id)) || current_user.admin?
@@ -76,9 +80,6 @@
     %p
       %b Volunteers:
       = @project.volunteers
-    %p
-      %b Stage:
-      = @project.stage
     %p
       %b image:
       = @project.image_remote_url

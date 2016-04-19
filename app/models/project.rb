@@ -32,12 +32,9 @@ class Project < ActiveRecord::Base
 
   validates :project_title, :project_number, :priority_duration, :aims, :why_important, :would_do_project, :time_scale, :benifits, :methodology, :stage, :volunteers,  presence: true
 
-  validates :funding, numericality: { greater_than: 0 }
+  validates :time_scale, numericality: { greater_than: 0 }
 
   validates :project_title, :project_number, uniqueness:true
-  def image_remote_url=(url_value)
-    self.image = URI.parse(url_value) unless url_value.blank?
-    super
-  end
+
 
 end
