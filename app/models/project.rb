@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
 
   validates :funding, numericality: { greater_than: 0 }
 
-
+  validates :project_title, :project_number, uniqueness:true
   def image_remote_url=(url_value)
     self.image = URI.parse(url_value) unless url_value.blank?
     super
