@@ -2,7 +2,8 @@
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "bip", media: :all
 
-
+- if @projects.joins(:category).where("name = 'Buried Infrastructure Performance'").count==1
+  - @sticky_footer = true
 
 .page-header
   %h1 Buried Infrastructure Performance
