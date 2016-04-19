@@ -5,7 +5,6 @@ class Ability
 
     user ||= User.new
 
-
     if user.admin?
       can :manage, :all
     else
@@ -17,6 +16,12 @@ class Ability
     can [ :edit, :update, :destroy ], Project do |project|
       project.user_id == user.id
     end
+
+    can [ :destroy ], Comment do |comment|
+      @project.comment.commenter == user.email
+    end
+
+
 
     # Define abilities for the passed in user here. For example:
     #

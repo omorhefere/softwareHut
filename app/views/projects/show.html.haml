@@ -50,28 +50,28 @@
       %b Project number:
       = @project.project_number
     %p
-      %b Priority duration:
+      %b Priority & duration?
       = @project.priority_duration
     %p
       %b Aims:
       = @project.aims
     %p
-      %b Why important:
+      %b Why is this project important?
       = @project.why_important
     %p
-      %b Would do project:
+      %b Who would do this project?
       = @project.would_do_project
     %p
       %b Funding:
       = @project.funding
     %p
-      %b Time scale:
+      %b Time scale (Years):
       = @project.time_scale
     %p
-      %b Benefits:
+      %b Benefits to industry:
       = @project.benifits
     %p
-      %b Methodology:
+      %b Notes on Methodology:
       = @project.methodology
     %p
       %b Volunteers:
@@ -85,7 +85,10 @@
 
   .panel.panel-default.panel-body.col-sm-12
     .container.post_comments_container.col-sm-12
-      %h2 Comments
+      %h2 Join the discussion
+      %p.text-muted
+        = @project.comments.size
+        Comments
       = form_for([@project, @project.comments.build]) do |f|
         %p
           %br/
@@ -95,14 +98,14 @@
           = f.submit "Post", class: "show-flash btn button1  btn-default"
 
     .container.comments_container.col-sm-12
-      - @project.comments.reverse.each do |comment|
+      - @project.comments.reject(&:new_record?).reverse.each do |comment|
         %hr
-        %p
-          %strong User:
+        %p.user
+          %strong
           = comment.commenter
         %p
           %strong
           = comment.body
         %p
-        - if can?(:manage, Comment)
+        - if can?(:manage, Comment) || comment.commenter == current_user.email
           = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash"
