@@ -26,15 +26,15 @@
 class Project < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory
-
   has_many :comments
   belongs_to :user
 
   validates :project_title, :project_number, :priority_duration, :aims, :why_important, :would_do_project, :time_scale, :benifits, :methodology, :stage, :volunteers,  presence: true
-
   validates :time_scale, numericality: { greater_than: 0 }
-
   validates :project_title, :project_number, uniqueness:true
 
+  def self.search(search)
+    where("project_title LIKE ?", "%#{search}%")
+  end
 
 end

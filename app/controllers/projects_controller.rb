@@ -7,6 +7,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = Project.all
+    if params[:search]
+      @projectsSearch = Project.search(params[:search]).order("created_at DESC")
+    else
+      @projectsSearch = Project.all.order('created_at DESC')
+    end
   end
 
   # GET /projects/1
