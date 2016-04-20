@@ -1,21 +1,26 @@
-%h1 Listing subcategories
+= stylesheet_link_tag    "application", media: :all
+- @sticky_footer = true
+- content_for :title, "Subcategories"
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
+.categoryContainer
+  %h1 Listing subcategories
 
-  %tbody
-    - @subcategories.each do |subcategory|
+  %table
+    %thead
       %tr
-        %td= subcategory.name
-        %td= link_to 'Show', subcategory
-        %td= link_to 'Edit', edit_subcategory_path(subcategory)
-        %td= link_to 'Destroy', subcategory, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Name
+        %th
+        %th
+        %th
 
-%br
+    %tbody
+      - @subcategories.each do |subcategory|
+        %tr
+          %td= subcategory.name
+          %td= link_to 'Show', subcategory
+          %td= link_to 'Edit', edit_subcategory_path(subcategory)
+          %td= link_to 'Destroy', subcategory, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New Subcategory', new_subcategory_path
+  %br
+
+  = link_to 'New Subcategory', new_subcategory_path

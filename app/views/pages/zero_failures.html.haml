@@ -2,7 +2,7 @@
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "zero_failures", media: :all
 
-- if @projects.joins(:category).where("name = 'Zero Failures'").count==1
+- if @projects.joins(:category).where("name = 'Zero Failures'").count<=1
   - @sticky_footer = true
 
 .page-header

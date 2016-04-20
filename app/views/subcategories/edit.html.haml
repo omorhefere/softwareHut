@@ -1,7 +1,12 @@
-%h1 Editing subcategory
+= stylesheet_link_tag    "application", media: :all
+- @sticky_footer = true
+- content_for :title, "Subcategories-Edit"
 
-= render 'form'
+.categoryContainer
+  %h1 Editing subcategory
 
-= link_to 'Show', @subcategory
-\|
-= link_to 'Back', subcategories_path
+  = render 'form'
+
+  = link_to 'Show', @subcategory
+  \|
+  = link_to 'Back', subcategories_path

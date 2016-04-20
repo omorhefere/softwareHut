@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
   validates :project_title, :project_number, uniqueness:true
 
   def self.search(search)
-    where("project_title LIKE ?", "%#{search}%")
+    where("project_number LIKE ?", "%#{search}%")
   end
 
 end

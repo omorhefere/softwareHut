@@ -2,7 +2,7 @@
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "rre", media: :all
 
-- if @projects.joins(:category).where("name = 'Resource Recovery and Efficiency'").count==1
+- if @projects.joins(:category).where("name = 'Resource Recovery and Efficiency'").count<=1
   - @sticky_footer = true
 
 .page-header
