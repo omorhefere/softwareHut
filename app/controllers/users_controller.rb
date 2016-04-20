@@ -20,22 +20,13 @@ class UsersController < ApplicationController
     @sticky_footer = true
   end
 
-  # GET /users/new
-  def new
-    @user = User.new
-    @current_nav_identifier = :registration
-    @disabled_nav = true
-    @sticky_footer = true
-  end
+  controller "invitation/new"
 
   # GET /users/1/edit
   def edit
     @current_nav_identifier = :registration
     @disabled_nav = true
     @sticky_footer = true
-  end
-
-  def sign_in
   end
 
   # POST /users

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   match "/introduction", to: "pages#introduction", via: :all
   match "/aims", to: "pages#aims", via: :all
   match "/profile", to: "users#profile", via: :all
+  match "/projects/search", to: "projects#search", via: :all
 
 
 

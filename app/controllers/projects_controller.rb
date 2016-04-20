@@ -7,18 +7,30 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = Project.all
-    if params[:search]
-      @projectsSearch = Project.search(params[:search]).order("created_at DESC")
+    if @projects.joins(:category).count<3
+       @sticky_footer = true
     end
+    @current_nav_identifier = :home
   end
 
   # GET /projects/1
   def show
   end
 
+  def search
+    @projects = Project.all
+    if params[:search]
+      @projectsSearch = Project.search(params[:search]).order("created_at DESC")
+    end
+    if @projects.joins(:category).count<3
+       @sticky_footer = true
+    end
+  end
+
   # GET /projects/new
   def new
     @project = Project.new
+    @current_nav_identifier = :add_new_project
   end
 
   # GET /projects/1/edit
