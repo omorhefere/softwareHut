@@ -49,6 +49,7 @@
                   %button.btn.button_search.btn-default{type: "submit"} Submit
 
 
+
                 %ul.nav.navbar-nav.navbar-right
 
                   -# Home button
@@ -97,6 +98,7 @@
                           %li
                           - if signed_in?
                             %p#email_box
+                            = navbar_link_to :profile, title: "Go to the profile page", identifier: :profile, :id => "navbutton" do
                               = current_user.name
                           - else
                             %p#user_box Not signed in yet
@@ -104,16 +106,13 @@
                           %li.divider{:role => "separator"}
                           %li
                           = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbutton" do
-                            Admin Area
+                            Admin
                           %li.divider{:role => "separator"}
                           %li
                           = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
                             Invite
                           %li.divider{:role => "separator"}
-                          %li
-                          = navbar_link_to  :edit_user_registration, title: "Edit Account", identifier: :edit, :id => "navbutton" do
-                            Edit Account
-                          %li.divider{:role => "separator"}
+
                           %li
                           = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
                             Log Out
@@ -132,10 +131,6 @@
                           - else
                             %p#user_box Not signed in yet
 
-                          %li.divider{:role => "separator"}
-                          %li
-                          = navbar_link_to  :edit_user_registration, title: "Edit Account", identifier: :edit, :id => "navbutton" do
-                            Edit Account
                           %li.divider{:role => "separator"}
                           %li
                           = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do

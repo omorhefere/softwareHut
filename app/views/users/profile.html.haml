@@ -1,0 +1,24 @@
+- content_for :title, "Join Sheffield Water Centre"
+- @sticky_footer = true
+= stylesheet_link_tag    "contact", media: :all
+= stylesheet_link_tag    "application", media: :all
+
+- @disabled_nav = false
+- @sticky_footer= true
+
+%div.container.buffered-top
+
+  %p.lead Profile
+
+  .contact
+    %table.table.table-responsive
+      %thead
+        %tr
+
+      %tbody
+      %tr
+        %td= current_user.name
+      %tr
+        %td= current_user.email
+      %tr
+        %td= link_to "Edit" , :edit_user_registration, class: "show-flash btn btn-default"

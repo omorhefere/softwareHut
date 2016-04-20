@@ -5,7 +5,11 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    if params[:approved] == "false"
+      @users = User.where(id: false)
+    else
+      @users = User.all
+    end
     @current_nav_identifier = :registration
   end
 
