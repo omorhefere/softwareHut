@@ -4,7 +4,7 @@
 
 
 .page-header
-  %h1 Buried Infrastructure Performance
+  %h1.top Buried Infrastructure Performance
   %p#subtitle Vision: Reimagining the water system
   %img.img-responsive.hidden-xs#categoryImage(src="/images/pipes.jpg")
 
@@ -23,6 +23,7 @@
             = link_to 'Zero Failures', :zero_failures
             = link_to 'Resource Recovery and Efficiency', :rre
             = link_to 'Buried Infrastructure Performance', :bip
+
 
 - @projects.each do |project|
   - if project.category.name == 'Buried Infrastructure Performance'

@@ -43,8 +43,15 @@
             - if @disabled_nav!=true
               .collapse.navbar-collapse
 
-                %ul.nav.navbar-nav.navbar-right
+                %ul.nav.navbar-nav.navbar-left.search-bar
+                  %form.navbar-form.navbar-left{role: "search"}
+                    .form-group
+                  = form_tag("projects/search", :method => "get", id: "search-form") do
+                    = text_field_tag :search, params[:search], placeholder: "Search Projects"
+                    = submit_tag "Search", class: "show-flash btn btn-secondary btn-xs"
 
+
+                %ul.nav.navbar-nav.navbar-right
                   -# Home button
                   - if @current_nav_identifier==:home
                     = navbar_link_to :home, title: "Go to the home page", identifier: :home, :id => "navbuttonactive" do
@@ -99,7 +106,7 @@
                           %li.divider{:role => "separator"}
                           %li
                           = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbutton" do
-                            Admin
+                            Admin Area
                           %li.divider{:role => "separator"}
                           %li
                           = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
