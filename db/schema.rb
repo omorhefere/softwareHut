@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420154015) do
+ActiveRecord::Schema.define(version: 20160420172326) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20160420154015) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.boolean  "approved",               default: false
+    t.string   "work"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
