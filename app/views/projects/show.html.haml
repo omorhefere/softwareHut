@@ -7,7 +7,7 @@
 
 .container
   .page-header
-    .container.button_container
+    .container.button_container.top
       = link_to 'All Projects', :home, class: "show-flash btn button1  btn-default"
       = link_to 'Zero Failures', :zero_failures, class: "show-flash btn button2  btn-default"
       = link_to 'Resource Recovery and Efficiency', :rre, class: "show-flash btn button3  btn-default"
@@ -81,9 +81,6 @@
     %p
       %b Volunteers:
       = @project.volunteers
-    %p
-      %b image:
-      = @project.image_remote_url
 
   .panel.panel-default.panel-body.col-sm-12
     .container.post_comments_container.col-sm-12
@@ -110,4 +107,4 @@
           = comment.body
         %p
         - if can?(:manage, Comment) || comment.commenter == current_user.email
-          = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "glyphicon glyphicon-trash"
+          = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "show-flash btn btn-default btn-xs glyphicon glyphicon-trash"

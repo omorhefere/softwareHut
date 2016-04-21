@@ -4,7 +4,7 @@
 
 
 .page-header
-  %h1 Zero Failures
+  %h1.top Zero Failures
   %p#subtitle Vision: A world with no failures via integrated water management that fully engages the user
   %img.img-responsive.hidden-xs#categoryImage(src="/images/glass.jpg")
 
@@ -22,6 +22,7 @@
           = link_to 'Zero Failures', :zero_failures
           = link_to 'Resource Recovery and Efficiency', :rre
           = link_to 'Buried Infrastructure Performance', :bip
+
 
 - @projects.each do |project|
   - if project.category.name == 'Zero Failures'
