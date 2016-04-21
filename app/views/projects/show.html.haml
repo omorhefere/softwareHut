@@ -1,6 +1,6 @@
 = stylesheet_link_tag    "project_show", media: :all
 = stylesheet_link_tag    "application", media: :all
-- content_for :title, "Projects-Show"
+- content_for :title, @project.project_title
 
 %div.container.buffered-top
 - content_for :title, @project.project_title
@@ -38,17 +38,41 @@
   .container.col-sm-4
     %table.table.images_table.table-responsive
       %tbody
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto1.jpg")
 
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto2.jpg")
+        %tr
+          - if @project.image1.present? == true && @project.image2.present? == false && @project.image3.present? == false && @project.image4.present? == false
+            = image_tag @project.image1.url(:large) , class: "img img-responsive hidden-xs"
+            = link_to 'Delete image 1', edit_project_path(@project), :method => :delete_img
 
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto3.jpg")
+          - elsif @project.image1.present? == true
+            = image_tag @project.image1.url(:medium) , class: "img img-responsive hidden-xs"
+            = link_to 'Delete image 1', edit_project_path(@project), :method => :delete_img
 
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto4.jpg")
+          - elsif (user_signed_in? && (current_user.id == @project.user_id)) || current_user.admin?
+            To upload an image
+            = link_to 'click here', edit_project_path(@project)
+
+          -else
+            No Image Uploaded
+
+        %tr
+          - if @project.image2.present? == true
+            = image_tag @project.image2.url(:medium) , class: "img img-responsive hidden-xs"
+            = link_to 'Delete image 2', edit_project_path(@project), :method => :delete_img
+          - else
+
+        %tr
+          - if @project.image3.present? == true
+            = image_tag @project.image3.url(:medium) , class: "img img-responsive hidden-xs"
+            = link_to 'Delete image 3', edit_project_path(@project), :method => :delete_img
+          - else
+
+        %tr
+          - if @project.image4.present? == true
+            = image_tag @project.image4.url(:medium) , class: "img img-responsive hidden-xs"
+            = link_to 'Delete image 4', edit_project_path(@project), :method => :delete_img
+          -else
+
 
   .container.col-sm-8.panel.panel-default.panel-body
     %p
