@@ -14,6 +14,7 @@ gem 'puma'
 gem 'pg'
 
 gem 'airbrake'
+gem 'gmap4rails'
 
 gem 'haml-rails'
 gem 'sass-rails'
@@ -39,7 +40,6 @@ gem 'cancancan'
 gem 'rails_admin'
 gem 'devise_invitable'
 gem 'email_spec'
-
 
 
 gem 'whenever'

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @sticky_footer = true
   end
 
-  controller "invitation/new"
+
 
   # GET /users/1/edit
   def edit
