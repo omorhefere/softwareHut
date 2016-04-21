@@ -1,33 +1,44 @@
 class PagesController < ApplicationController
 
-  def home
-    @current_nav_identifier = :home
-  end
-
-  def add_project
-    @current_nav_identifier = :add_new_project
-  end
-
   def zero_failures
     @current_nav_identifier = :home
     @projects = Project.all
+    if @projects.joins(:category).count<3
+       @sticky_footer = true
+    end
+    @current_nav_identifier = :home
   end
 
   def rre
     @current_nav_identifier = :home
     @projects = Project.all
+    if @projects.joins(:category).count<3
+       @sticky_footer = true
+    end
+    @current_nav_identifier = :home
   end
 
   def bip
     @current_nav_identifier = :home
     @projects = Project.all
-  end
-
-  def show
+    if @projects.joins(:category).count<3
+       @sticky_footer = true
+    end
+    @current_nav_identifier = :home
   end
 
   def contact
     @current_nav_identifier = :contact
+    @sticky_footer=true
+  end
+
+  def introduction
+    @current_nav_identifier = :introduction
+    @sticky_footer=true
+  end
+
+  def aims
+    @current_nav_identifier = :aims
     @sticky_footer=true
   end
 

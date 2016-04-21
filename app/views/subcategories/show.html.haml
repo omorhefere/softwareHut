@@ -1,9 +1,14 @@
-%p#notice= notice
+= stylesheet_link_tag    "application", media: :all
+- @sticky_footer = true
+- content_for :title, "Subcategories-Show"
 
-%p
-  %b Name:
-  = @subcategory.name
+.categoryContainer
+  %p#notice= notice
 
-= link_to 'Edit', edit_subcategory_path(@subcategory)
-\|
-= link_to 'Back', subcategories_path
+  %p
+    %b Name:
+    = @subcategory.name
+
+  = link_to 'Edit', edit_subcategory_path(@subcategory)
+  \|
+  = link_to 'Back', subcategories_path

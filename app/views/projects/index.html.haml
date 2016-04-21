@@ -2,9 +2,6 @@
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "home", media: :all
 
-- if @projects.joins(:category).count==1
-  - @sticky_footer = true
-
 .page-header
   %h1 Sheffield Water Centre
   %h1 All projects
@@ -24,15 +21,10 @@
           = link_to 'Resource Recovery and Efficiency', :rre
           = link_to 'Buried Infrastructure Performance', :bip
 
-= form_tag(projects_path, :method => "get", id: "search-form") do
-  = text_field_tag :search, params[:search], placeholder: "Search Posts"
+= form_tag("projects/search", :method => "get", id: "search-form") do
+  = text_field_tag :search, params[:search], placeholder: "Search Projects"
   = submit_tag "Search"
 
-- if @projectsSearch.present?
-  = render @projectsSearch
-- else
-  %p
-    There are no projects containing the term(s) #{params[:search]}.
 
 - @projects.each do |project|
   %div.container.buffered-top
@@ -107,6 +99,3 @@
               %td= project.would_do_project
             %tr
               %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
-
-
-  %br

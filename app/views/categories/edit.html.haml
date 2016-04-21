@@ -1,7 +1,12 @@
-%h1 Editing category
+= stylesheet_link_tag    "application", media: :all
+- @sticky_footer = true
+- content_for :title, "Categories-Edit"
 
-= render 'form'
+.categoryContainer
+  %h1 Editing category
 
-= link_to 'Show', @category
-\|
-= link_to 'Back', categories_path
+  = render 'form'
+
+  = link_to 'Show', @category
+  \|
+  = link_to 'Back', categories_path
