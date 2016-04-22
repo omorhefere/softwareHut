@@ -14,6 +14,18 @@ Rails.application.routes.draw do
     root to: 'projects#index'
   end
 
+
+
+  resources :projects do
+    collection do
+      get 'search'
+    end
+  end
+
+  resources :projects do
+    get 'search', on: :collection
+  end
+
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
@@ -30,7 +42,7 @@ Rails.application.routes.draw do
   match "/aims", to: "pages#aims", via: :all
   match "/profile", to: "users#profile", via: :all
   match "/projects/search", to: "projects#search", via: :all
-
+  match "/search", to: "projects#search", via: :all
 
 
   devise_for :users, :controller => {:registrations => 'registrations'}

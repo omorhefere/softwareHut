@@ -41,11 +41,11 @@
 
         %tr
           - if @project.image1.present? == true && @project.image2.present? == false && @project.image3.present? == false && @project.image4.present? == false
-            = image_tag @project.image1.url(:large) , class: "img img-responsive hidden-xs"
+            = image_tag @project.image1.url(:large) , class: "img img-responsive hidden-xs pimage"
             = link_to 'Delete image 1', edit_project_path(@project), :method => :delete_img
 
           - elsif @project.image1.present? == true
-            = image_tag @project.image1.url(:medium) , class: "img img-responsive hidden-xs"
+            = image_tag @project.image1.url(:medium) , class: "img img-responsive hidden-xs pimage"
             = link_to 'Delete image 1', edit_project_path(@project), :method => :delete_img
 
           - elsif (user_signed_in? && (current_user.id == @project.user_id)) || current_user.admin?
@@ -57,19 +57,19 @@
 
         %tr
           - if @project.image2.present? == true
-            = image_tag @project.image2.url(:medium) , class: "img img-responsive hidden-xs"
+            = image_tag @project.image2.url(:medium) , class: "img img-responsive hidden-xs pimage"
             = link_to 'Delete image 2', edit_project_path(@project), :method => :delete_img
           - else
 
         %tr
           - if @project.image3.present? == true
-            = image_tag @project.image3.url(:medium) , class: "img img-responsive hidden-xs"
+            = image_tag @project.image3.url(:medium) , class: "img img-responsive hidden-xs pimage"
             = link_to 'Delete image 3', edit_project_path(@project), :method => :delete_img
           - else
 
         %tr
           - if @project.image4.present? == true
-            = image_tag @project.image4.url(:medium) , class: "img img-responsive hidden-xs"
+            = image_tag @project.image4.url(:medium) , class: "img img-responsive hidden-xs pimage"
             = link_to 'Delete image 4', edit_project_path(@project), :method => :delete_img
           -else
 
