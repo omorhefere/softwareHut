@@ -1,15 +1,20 @@
 -  content_for :title, "Contact Us"
+
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "contact", media: :all
 
 
 %div.container.buffered-top
 
-  .image
-    %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
-    %h1
-      Contact Sheffield Water Centre
+.image
+  %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
+  %h1
+    Contact Sheffield Water Centre
+
   .contact
+
+  
+
     %table.table-responsive
       %thead
         %tr
@@ -25,15 +30,3 @@
         %td v.speight@sheffield.ac.uk
       %tr
         %td Mappin Building, Mappin Street, Sheffield S1 3JD
-      %tr
-        %td
-        #map
-        :javascript
-        function initMap() {
-          var mapDiv = document.getElementById('map');
-          var map = new google.maps.Map(mapDiv, {
-            center: {lat: 44.540, lng: -78.546},
-            zoom: 8
-          });
-        }
-        %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?callback=initMap"}

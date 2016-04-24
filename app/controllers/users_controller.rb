@@ -20,8 +20,6 @@ class UsersController < ApplicationController
     @sticky_footer = true
   end
 
-
-
   # GET /users/1/edit
   def edit
     @current_nav_identifier = :registration

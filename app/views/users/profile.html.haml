@@ -1,20 +1,23 @@
-- content_for :title, "Join Sheffield Water Centre"
+- content_for :title, "Profile"
 - @sticky_footer = true
-= stylesheet_link_tag    "contact", media: :all
 = stylesheet_link_tag    "application", media: :all
+= stylesheet_link_tag    "contact", media: :all
+
 
 - @disabled_nav = false
 - @sticky_footer= true
 
 %div.container.buffered-top
 
-  %p.lead Profile
+.image
+  %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
+  %h2
+    Your Profile
 
   .contact
-    %table.table.table-responsive
+    %table.table-responsive
       %thead
         %tr
-
       %tbody
       %tr
         %td= current_user.name

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :subcategories
   resources :categories
   resources :categories
+  resources "contacts", only: [:new, :create]
+
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
-  match "/contact", to: "pages#contact", via: :all
+  match "/contact", to: "contacts#new", via: :all
   match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
   match "/admin", to: "pages#admin", via: :all

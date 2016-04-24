@@ -14,7 +14,7 @@ gem 'puma'
 gem 'pg'
 
 gem 'airbrake'
-gem 'gmap4rails'
+gem 'gmaps4rails'
 
 gem 'haml-rails'
 gem 'sass-rails'
@@ -28,6 +28,7 @@ gem 'select2-rails'
 gem 'epi_js'
 
 gem 'simple_form'
+gem 'mail_form'
 gem 'draper'
 gem 'ransack'
 gem 'will_paginate'
