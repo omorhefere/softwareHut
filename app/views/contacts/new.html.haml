@@ -1,7 +1,7 @@
--  content_for :title, "Contact Us"
-- @sticky_footer=true
+-  content_for :title, "Contact"
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "contact", media: :all
+
 
 %div.container.buffered-top
 
@@ -9,25 +9,25 @@
   %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
   %h1
     Contact Sheffield Water Centre
-
+.contact
   %iframe.google{  :allowfullscreen => "", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2379.837839425568!2d-1.481115784391262!3d53.38195087974513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879788020127157%3A0x31e00ebdb379d999!2sMappin+Building!5e0!3m2!1sen!2suk!4v1461515847313"}
-  .contact
-    %table.table-responsive
-      %tbody
-      %tr
-        %td Dr. Vanessa Speight
-      %tr
-        %td Research Fellow In Integrated Water Systems.
-      %tr
-        %td 0114 222 5750
-      %tr
-        %td v.speight@sheffield.ac.uk
-      %tr
-        %td Mappin Building, Mappin Street, Sheffield S1 3JD.
 
+  %table.table-responsive
+    %tbody
+    %tr
+      %td Dr. Vanessa Speight
+    %tr
+      %td Research Fellow In Integrated Water Systems.
+    %tr
+      %td 0114 222 5750
+    %tr
+      %td v.speight@sheffield.ac.uk
+    %tr
+      %td Mappin Building, Mappin Street, Sheffield S1 3JD.
+    .form
       = simple_form_for @contact do |f|
         .form-inputs
-          = f.input :message, :as => :text, :required => true, placeholder: "Write Your Message Here", label:false
+          = f.input :message, :as => :text, :required => true, placeholder: "Write Your Message Here", label:false,:class => "message"
           .hidden
             = current_user.name
             = current_user.email
