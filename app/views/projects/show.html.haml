@@ -1,6 +1,6 @@
 = stylesheet_link_tag    "project_show", media: :all
 = stylesheet_link_tag    "application", media: :all
-- content_for :title, "Projects-Show"
+- content_for :title, @project.project_title
 
 %div.container.buffered-top
 - content_for :title, @project.project_title
@@ -34,53 +34,54 @@
       = link_to 'Edit', edit_project_path(@project), class: "show-flash btn button1  btn-default"
       = link_to 'Destroy' , @project, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "show-flash btn button1  btn-default"
 
+  - if @project.image1.present? == true && @project.image2.present? == false && @project.image3.present? == false && @project.image4.present? == false
+    .container.col-sm-5
+      %table.table.images_table.table-responsive
+        %tbody
+          %tr
+          = image_tag @project.image1.url(:large) , class: "img img-responsive hidden-xs pimage"
+          = link_to 'Delete image 1', edit_project_path(@project), :method => :delete_img
+  - else
+    .container.col-sm-4
+      %table.table.images_table.table-responsive
+        %tbody
+          %tr
+            - if @project.image1.present? == true
+              = image_tag @project.image1.url(:medium) , class: "img img-responsive hidden-xs pimage"
+              = link_to 'Delete image 1', edit_project_path(@project), :method => :delete_img
 
-  .container.col-sm-4
-    %table.table.images_table.table-responsive
-      %tbody
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto1.jpg")
+            - elsif (user_signed_in? && (current_user.id == @project.user_id)) || current_user.admin?
+              To upload an image
+              = link_to 'click here', edit_project_path(@project)
 
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto2.jpg")
+            -else
+              No Image Uploaded
 
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto3.jpg")
+          %tr
+            - if @project.image2.present? == true
+              = image_tag @project.image2.url(:medium) , class: "img img-responsive hidden-xs pimage"
+              = link_to 'Delete image 2', edit_project_path(@project), :method => :delete_img
+            - else
 
-      %tr
-        %img.img-responsive.hidden-xs(src="/images/proto4.jpg")
+          %tr
+            - if @project.image3.present? == true
+              = image_tag @project.image3.url(:medium) , class: "img img-responsive hidden-xs pimage"
+              = link_to 'Delete image 3', edit_project_path(@project), :method => :delete_img
+            - else
 
-  .container.col-sm-8.panel.panel-default.panel-body
-    %p
-      %b Project number:
-      = @project.project_number
-    %p
-      %b Priority & duration?
-      = @project.priority_duration
-    %p
-      %b Aims:
-      = @project.aims
-    %p
-      %b Why is this project important?
-      = @project.why_important
-    %p
-      %b Who would do this project?
-      = @project.would_do_project
-    %p
-      %b Funding:
-      = @project.funding
-    %p
-      %b Time scale (Years):
-      = @project.time_scale
-    %p
-      %b Benefits to industry:
-      = @project.benifits
-    %p
-      %b Notes on Methodology:
-      = @project.methodology
-    %p
-      %b Volunteers:
-      = @project.volunteers
+          %tr
+            - if @project.image4.present? == true
+              = image_tag @project.image4.url(:medium) , class: "img img-responsive hidden-xs pimage"
+              = link_to 'Delete image 4', edit_project_path(@project), :method => :delete_img
+            -else
+
+  - if @project.image1.present? == true && @project.image2.present? == false && @project.image3.present? == false && @project.image4.present? == false
+    .container.col-sm-7.panel.panel-default.panel-body
+      = render 'info'
+
+  -else
+    .container.col-sm-8.panel.panel-default.panel-body
+      = render 'info'
 
   .panel.panel-default.panel-body.col-sm-12
     .container.post_comments_container.col-sm-12
@@ -99,12 +100,12 @@
     .container.comments_container.col-sm-12
       - @project.comments.reject(&:new_record?).reverse.each do |comment|
         %hr
-        %p.user
-          %strong
-          = comment.commenter
-        %p
-          %strong
-          = comment.body
-        %p
-        - if can?(:manage, Comment) || comment.commenter == current_user.email
-          = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "show-flash btn btn-default btn-xs glyphicon glyphicon-trash"
+          %p.user
+            %strong
+            = comment.commenter
+          %p
+            %strong
+            = comment.body
+          %p
+          - if can?(:manage, Comment) || comment.commenter == current_user.email
+            = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "show-flash btn btn-default btn-xs glyphicon glyphicon-trash"

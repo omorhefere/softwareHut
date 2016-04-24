@@ -1,4 +1,4 @@
-= simple_form_for(@project) do |f|
+= simple_form_for @project, html: {multipart: true} do |f|
   = f.error_notification
 
   .form-inputs
@@ -18,6 +18,21 @@
     = f.input :volunteers, placeholder: "Volunteers", label:false
     = f.input :image_remote_url, placeholder: "Enter a URL", label:false
     = f.hidden_field :user_id , :value => current_user.id
+  .ul
+    .li2
+      = label_tag :images, 'Select up to 4 images'
+    .li
+      = label_tag :image1, 'Select main image'
+      = f.file_field :image1
+    .li
+      = label_tag :image2, 'Select image 2'
+      = f.file_field :image2
+    .li
+      = label_tag :image3, 'Select image 3'
+      = f.file_field :image3
+    .li
+      = label_tag :image4, 'Select image 4'
+      = f.file_field :image4
 
 
   .form-actions
