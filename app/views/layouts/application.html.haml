@@ -44,11 +44,14 @@
               .collapse.navbar-collapse
 
                 %ul.nav.navbar-nav.navbar-left.search-bar
-                  %form.navbar-form.navbar-left{role: "search"}
-                    .form-group
-                  = form_tag("/search", :method => "get", id: "search-form") do
-                    = text_field_tag :search, params[:search], placeholder: "Search Projects"
-                    = submit_tag "Search", class: "show-flash btn btn-secondary btn-xs"
+                  %form.navbar-form.navbar-left{role: "search", :action => "/search", :method => "get", :id => "search-form", :name => "search-form"}
+                    .custom-search-input
+                      .input-group.col-md-12
+                        %input.form-control{:placeholder => "Search Projects", :type => "text", :name => "search"}/
+                        %span.input-group-btn
+                          %button.btn.btn-info{:type => "submit"}
+                            %span.glyphicon.glyphicon-search
+
 
 
                 %ul.nav.navbar-nav.navbar-right
