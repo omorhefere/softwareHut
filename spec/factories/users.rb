@@ -38,13 +38,3 @@
 #  index_users_on_invited_by_id         (invited_by_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-
-FactoryGirl.define do
-  factory :user do
-    name "MyString"
-e-mail ""
-password ""
-confirm_password ""
-  end
-
-end

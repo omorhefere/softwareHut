@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
     if params[:search]
       @projectsSearch = Project.search(params[:search]).order("created_at DESC")
     end
-    if @projects.joins(:category).count<3
+    if @projectsSearch.count<3
        @sticky_footer = true
     end
   end
