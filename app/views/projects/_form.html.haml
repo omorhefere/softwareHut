@@ -19,20 +19,34 @@
     = f.input :image_remote_url, placeholder: "Enter a URL", label:false
     = f.hidden_field :user_id , :value => current_user.id
   .ul
-    .li2
-      = label_tag :images, 'Select up to 4 images'
     .li
-      = label_tag :image1, 'Select main image'
+      = label_tag :image1, 'Select primary image image'
       = f.file_field :image1
+      - if @project.image1.present? == true
+        = link_to 'Delete primary image', remove_project_image1_path, :data => { :confirm => 'Are you sure?' }
+        = image_tag @project.image1.url(:small) , class: "img img-responsive hidden-xs pimage"
     .li
-      = label_tag :image2, 'Select image 2'
+      = label_tag :image1, 'Select up to 3 other images: Image 2'
+    .li
       = f.file_field :image2
+      - if @project.image2.present? == true
+        = link_to 'Delete image 2', remove_project_image2_path, :data => { :confirm => 'Are you sure?' }
+        = image_tag @project.image2.url(:small) , class: "img img-responsive hidden-xs pimage"
+
     .li
-      = label_tag :image3, 'Select image 3'
+      = label_tag :image3, 'Image 3'
       = f.file_field :image3
+      - if @project.image3.present? == true
+        = link_to 'Delete image 3', remove_project_image3_path, :data => { :confirm => 'Are you sure?' }
+        = image_tag @project.image3.url(:small) , class: "img img-responsive hidden-xs pimage"
+
     .li
-      = label_tag :image4, 'Select image 4'
+      = label_tag :image4, 'Image 4'
       = f.file_field :image4
+      - if @project.image4.present? == true
+        = link_to 'Delete image 4', remove_project_image4_path, :data => { :confirm => 'Are you sure?' }
+        = image_tag @project.image4.url(:small) , class: "img img-responsive hidden-xs pimage"
+
 
 
   .form-actions
