@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
     if params[:search]
       @projectsSearch = Project.search(params[:search]).order("created_at DESC")
     end
-    if @projects.joins(:category).count<3
+    if @projectsSearch.count<3
        @sticky_footer = true
     end
   end
@@ -60,6 +60,34 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
+  end
+
+  def remove_image1
+    @project = Project.find(params[:id])
+    @project.image1 = nil
+    @project.save
+    redirect_to @project, flash: { success: 'Image has been removed.' }
+  end
+
+  def remove_image2
+    @project = Project.find(params[:id])
+    @project.image2 = nil
+    @project.save
+    redirect_to @project, flash: { success: 'Image has been removed.' }
+  end
+
+  def remove_image3
+    @project = Project.find(params[:id])
+    @project.image3 = nil
+    @project.save
+    redirect_to @project, flash: { success: 'Image has been removed.' }
+  end
+
+  def remove_image4
+    @project = Project.find(params[:id])
+    @project.image4 = nil
+    @project.save
+    redirect_to @project, flash: { success: 'Image has been removed.' }
   end
 
   private

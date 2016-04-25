@@ -45,6 +45,10 @@ Rails.application.routes.draw do
   match "/profile", to: "users#profile", via: :all
   match "/projects/search", to: "projects#search", via: :all
   match "/search", to: "projects#search", via: :all
+  get 'project/:id/remove_image1', to: 'projects#remove_image1', as: 'remove_project_image1'
+  get 'project/:id/remove_image2', to: 'projects#remove_image2', as: 'remove_project_image2'
+  get 'project/:id/remove_image3', to: 'projects#remove_image3', as: 'remove_project_image3'
+  get 'project/:id/remove_image4', to: 'projects#remove_image4', as: 'remove_project_image4'
 
 
   devise_for :users, :controller => {:registrations => 'registrations'}
