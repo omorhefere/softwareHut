@@ -3,10 +3,10 @@ require 'rails_helper'
 describe 'Log in' do
   specify 'I can login' do
     visit '/users/sign_in'
-    fill_in 'Email', with: 'new@sheffield.ac.uk'
+    fill_in 'Email', with: 'andreea@gmail.com'
     fill_in 'Password', with: '12341234'
     click_button 'Login'
-    expect(page).to have_content('All projects')
+    expect(page).to have_content('Signed in successfully.')
   end
 end
 
