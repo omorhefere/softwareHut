@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421165037) do
+ActiveRecord::Schema.define(version: 20160425104057) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -125,6 +125,10 @@ ActiveRecord::Schema.define(version: 20160421165037) do
     t.integer  "invitations_count",      default: 0
     t.boolean  "approved",               default: false
     t.string   "work"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

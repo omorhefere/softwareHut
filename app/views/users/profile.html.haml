@@ -15,6 +15,10 @@
     Your Profile
 
   .contact
+    = simple_form_for @user,url: users_path, html: {multipart: true} do |f|
+      = f.error_notification
+      = f.file_field :avatar, as: :file
+
     %table.table-responsive
       %thead
         %tr
