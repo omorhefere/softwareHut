@@ -42,3 +42,13 @@
 #  index_users_on_invited_by_id         (invited_by_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+
+
+FactoryGirl.define do
+  factory :user do
+    name                   "Admin"
+    email                  "new@sheffield.ac.uk"
+    password               "12341234"
+    approved               true
+  end
+end
