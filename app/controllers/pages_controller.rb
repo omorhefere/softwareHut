@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def zero_failures
     @current_nav_identifier = :home
     @projects = Project.all
-    if @projects.joins(:category).count<3
+    if @projects.joins(:category).where("name LIKE ?", "Zero Failures").count<3
        @sticky_footer = true
     end
     @current_nav_identifier = :home
@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   def rre
     @current_nav_identifier = :home
     @projects = Project.all
-    if @projects.joins(:category).count<3
+    if @projects.joins(:category).where("name LIKE ?", "Resource,Recovery and Efficiency").count<3
        @sticky_footer = true
     end
     @current_nav_identifier = :home
@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   def bip
     @current_nav_identifier = :home
     @projects = Project.all
-    if @projects.joins(:category).count<3
+    if @projects.joins(:category).where("name LIKE ?", "Buried Infrastructure Performance").count<3
        @sticky_footer = true
     end
     @current_nav_identifier = :home

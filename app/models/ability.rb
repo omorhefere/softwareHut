@@ -13,7 +13,7 @@ class Ability
       can :create, Comment
     end
 
-    can [ :edit, :update, :destroy ], Project do |project|
+    can [ :edit, :update, :destroy, :search ], Project do |project|
       project.user_id == user.id
     end
 

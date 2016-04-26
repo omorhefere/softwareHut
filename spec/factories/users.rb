@@ -46,8 +46,8 @@
 
 FactoryGirl.define do
   factory :user do
-    name                   "Admin"
-    email                  "new@sheffield.ac.uk"
+    name                   "User"
+    email                  "user@sheffield.ac.uk"
     password               "12341234"
     approved               true
   end

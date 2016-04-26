@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20160425104057) do
     t.string   "would_do_project"
     t.string   "funding"
     t.string   "time_scale"
-    t.string   "benifits"
+    t.string   "benefits"
     t.string   "methodology"
     t.string   "stage"
     t.string   "volunteers"

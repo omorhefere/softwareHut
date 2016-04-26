@@ -11,7 +11,7 @@
 #  would_do_project    :string
 #  funding             :string
 #  time_scale          :string
-#  benifits            :string
+#  benefits            :string
 #  methodology         :string
 #  stage               :string
 #  volunteers          :string
@@ -49,7 +49,7 @@ FactoryGirl.define do
     would_do_project     "would do"
     funding              "123"
     time_scale           "12"
-    benifits             "benefits"
+    benefits             "benefits"
     methodology          "methodology"
     stage                "stage"
     volunteers           "volunteers"

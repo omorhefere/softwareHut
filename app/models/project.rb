@@ -11,7 +11,7 @@
 #  would_do_project    :string
 #  funding             :string
 #  time_scale          :string
-#  benifits            :string
+#  benefits            :string
 #  methodology         :string
 #  stage               :string
 #  volunteers          :string
@@ -54,12 +54,28 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image3, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :image4, content_type: /\Aimage\/.*\Z/
 
-  validates :category, :subcategory, :project_title, :project_number, :priority_duration, :aims, :why_important, :would_do_project, :time_scale, :benifits, :methodology, :stage, :volunteers,  presence: true
+  validates :category, :subcategory, :project_title, :project_number, :priority_duration, :aims, :why_important, :would_do_project, :time_scale, :benefits, :methodology, :stage, :volunteers,  presence: true
   validates :time_scale, numericality: { greater_than: 0 }
   validates :project_title, :project_number, uniqueness:true
 
   def self.search(search)
-    Project.where("project_title LIKE ?", "%#{search}%")
+    Project.where("project_title LIKE ? OR
+                   project_number LIKE ? OR
+                   aims LIKE ? OR
+                   would_do_project LIKE ? OR
+                   priority_duration LIKE ? OR
+                   why_important LIKE ? OR
+                   benefits LIKE ? OR
+                   methodology LIKE ? OR
+                   volunteers LIKE ?",
+                   "%#{search}%",
+                   "%#{search}%",
+                   "%#{search}%",
+                   "%#{search}%",
+                   "%#{search}%",
+                   "%#{search}%",
+                   "%#{search}%",
+                   "%#{search}%", "%#{search}%")
   end
 
 end

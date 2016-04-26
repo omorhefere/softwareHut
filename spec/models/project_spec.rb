@@ -11,7 +11,7 @@
 #  would_do_project    :string
 #  funding             :string
 #  time_scale          :string
-#  benifits            :string
+#  benefits            :string
 #  methodology         :string
 #  stage               :string
 #  volunteers          :string
