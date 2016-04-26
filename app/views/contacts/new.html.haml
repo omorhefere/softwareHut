@@ -4,6 +4,13 @@
 
 
 %div.container.buffered-top
+  .container
+  - flash.each do |name, msg|
+    - if msg.is_a?(String)
+      %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+        %a.close{"data-dismiss" => "alert"}
+          &times;
+        = content_tag :div, msg, :id => "flash_#{name}"
 
 .image
   %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
@@ -27,9 +34,11 @@
       .form
         = simple_form_for @contact do |f|
           .form-inputs
-            = f.input :message, :as => :text, :required => true, placeholder: "Write Your Message Here", label:false,input_html:{class: 'message'}
             .hidden
               = current_user.name
               = current_user.email
+            = f.input :message, :as => :text, :required => true, placeholder: "Write Your Message Here", label:false,:input_html => {:rows => 5}
+            .hidden
+              = f.input :nickname, :hint => 'Leave this field blank!'
           %div
             = f.button :submit, 'Send message', :class=> "btn btn-primary"

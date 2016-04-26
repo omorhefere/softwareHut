@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   match "/forgot_password", to: "pages#forgot_password", via: :all
   match "/admin", to: "pages#admin", via: :all
   match "/introduction", to: "pages#introduction", via: :all
-  match "/aims", to: "pages#aims", via: :all
   match "/profile", to: "users#index", via: :all
   match "/projects/search", to: "projects#search", via: :all
   match "/search", to: "projects#search", via: :all
