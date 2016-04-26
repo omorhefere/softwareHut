@@ -42,5 +42,27 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "Has - Project Number " do
+    category = FactoryGirl.create(:category)
+    subcategory = FactoryGirl.create(:subcategory)
+    project = FactoryGirl.create(:project)
+    expect(project.project_number).to eq "1"
+  end
+
+  it "Has - Priority Duration " do
+    category = FactoryGirl.create(:category)
+    subcategory = FactoryGirl.create(:subcategory)
+    project = FactoryGirl.create(:project)
+    expect(project.priority_duration).to eq "12"
+  end
+
+  it "Has - Project title " do
+    category = FactoryGirl.create(:category)
+    subcategory = FactoryGirl.create(:subcategory)
+    project = FactoryGirl.create(:project)
+    expect(project.project_title).to eq "Project 1"
+  end
+
+
 end
