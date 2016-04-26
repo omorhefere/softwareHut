@@ -20,9 +20,12 @@ end
 describe 'Search' do
   specify 'Search a project' do
     user = FactoryGirl.create(:user)
+    category = FactoryGirl.create(:category)
+    subcategory = FactoryGirl.create(:subcategory)
+    project = FactoryGirl.create(:project)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
-    fill_in 'Search Projects', with: 'some project title'
+    fill_in 'Search Projects', with: 'Project 1'
     click_button 'SearchButton'
     expect(page).to have_content('Search results')
   end
