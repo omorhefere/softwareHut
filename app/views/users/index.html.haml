@@ -1,0 +1,95 @@
+- content_for :title, "Profile"
+= stylesheet_link_tag    "application", media: :all
+= stylesheet_link_tag    "profile", media: :all
+
+- @disabled_nav = false
+
+%div.container.buffered-top
+
+.image
+  %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
+  %h2
+    Your Profile
+  .imagebox.col-sm-6
+    = image_tag current_user.avatar.url(:medium), :class => "style_image"
+
+  .info.col-sm-6
+    = render "info"
+  .edit.col-sm-12
+    = link_to "Edit Profile" , :edit_user_registration, class: "show-flash btn btn-default"
+
+  .project.col-sm-12
+    %h3 Your projects
+    - @projects.each do |project|
+      %div.container.buffered-top
+        - if project.subcategory.name == 'Economic' && project.user_id == current_user.id
+          %div.panel.panel-success
+            %div.panel-heading
+              %p= project.subcategory.name
+            %div.panel-body
+              %table
+                %tr
+                  %td.title Project category:
+                  %td= project.category.name
+                %tr
+                  %td.title Project number:
+                  %td= project.project_number
+                %tr
+                  %td.title Project title:
+                  %td= project.project_title
+                %tr
+                  %td.title Aims:
+                  %td= project.aims
+                %tr
+                  %td.title Would do project:
+                  %td= project.would_do_project
+                %tr
+                  %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
+
+        - if project.subcategory.name == 'Technology' && project.user_id == current_user.id
+          %div.panel.panel-danger
+            %div.panel-heading
+              %p= project.subcategory.name
+            %div.panel-body
+              %table
+                %tr
+                  %td.title Project category:
+                  %td= project.category.name
+                %tr
+                  %td.title Project number:
+                  %td= project.project_number
+                %tr
+                  %td.title Project title:
+                  %td= project.project_title
+                %tr
+                  %td.title Aims:
+                  %td= project.aims
+                %tr
+                  %td.title Would do project:
+                  %td= project.would_do_project
+                %tr
+                  %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
+
+        - if project.subcategory.name == 'Knowledge' && project.user_id == current_user.id
+          %div.panel.panel-info
+            %div.panel-heading
+              %p= project.subcategory.name
+            %div.panel-body
+              %table
+                %tr
+                  %td.title Project category:
+                  %td= project.category.name
+                %tr
+                  %td.title Project number:
+                  %td= project.project_number
+                %tr
+                  %td.title Project title:
+                  %td= project.project_title
+                %tr
+                  %td.title Aims:
+                  %td= project.aims
+                %tr
+                  %td.title Would do project:
+                  %td= project.would_do_project
+                %tr
+                  %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"

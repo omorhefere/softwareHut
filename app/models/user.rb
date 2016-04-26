@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable
 
   has_many :projects
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/avatar.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   def active_for_authentication?

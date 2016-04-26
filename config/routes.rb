@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   match "/admin", to: "pages#admin", via: :all
   match "/introduction", to: "pages#introduction", via: :all
   match "/aims", to: "pages#aims", via: :all
-  match "/profile", to: "users#profile", via: :all
+  match "/profile", to: "users#index", via: :all
   match "/projects/search", to: "projects#search", via: :all
   match "/search", to: "projects#search", via: :all
   get 'project/:id/remove_image1', to: 'projects#remove_image1', as: 'remove_project_image1'

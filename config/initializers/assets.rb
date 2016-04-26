@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w( new_password.css.sass)
 Rails.application.config.assets.precompile += %w( custom_flash.sass)
 Rails.application.config.assets.precompile += %w( introduction.css.sass)
 Rails.application.config.assets.precompile += %w( custom.css.scss)
+Rails.application.config.assets.precompile += %w( profile.css.sass)
 
 
 # Add additional assets to the asset load path

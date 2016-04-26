@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
+    @projects = Project.all
+  
     if params[:approved] == "false"
       @users = User.where(id: false)
     else
@@ -40,7 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to :profile, notice: 'User was successfully updated.'
     else
       render :edit
     end
@@ -55,6 +57,7 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

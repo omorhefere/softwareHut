@@ -9,6 +9,9 @@
   *= require warning_page
   *= require custom_flash
   *= require environment_notice
+  += require custom
+html,body
+  overflow-x: hidden
 
 categories_title
   float: right
@@ -24,41 +27,38 @@ buttonOption1 buttonOption2 buttonOption3
 
 .contact
   margin-top: 3%
-  width: 100%
+  height: 30%
   .form
-    width: 28%
-    height: 30%
+    width: 29%
+    height: 50%
     float: left
-    margin-left: 25%
+    margin-left: 23%
     margin-top: 0.5%
 
-  table-responsive
-    width: 40%
-    margin-top: 27.5%
-    height: 33%
-
+  .table-responsive
     float: left
+    margin-right: 20%
   tr
     margin-top: 5%
     height: 8%
     text-align: center
-
   tr,td
-    padding-left:  5%
     padding-top: 1%
     padding-bottom: 1%
-
   iframe
     margin-top: 2%
     margin-left: 23%
     height: 280px
     width: 780px
-
   .form-inputs
     width: 100%
-
+.message
+  height: 20%
+  border-radius: 5px
 #image
   position: relative
+  width: 100%
+  overflow-x: hidden
 
 img.water
   margin-top: 3%
@@ -69,14 +69,5 @@ h1
   position: absolute
   top: 10%
   left: 30%
-  width: 100%
-  color: white
-  font-size: 300%
-
-h2
-  position: absolute
-  top: 35%
-  left: 42%
-  width: 100%
   color: white
   font-size: 300%
