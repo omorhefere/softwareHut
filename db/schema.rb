@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425104057) do
+ActiveRecord::Schema.define(version: 20160427081634) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20160425104057) do
     t.datetime "updated_at",          null: false
     t.integer  "category_id"
     t.integer  "subcategory_id"
-    t.string   "image_remote_url"
     t.integer  "user_id"
     t.string   "image1_file_name"
     t.string   "image1_content_type"
@@ -80,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160425104057) do
     t.string   "image4_content_type"
     t.integer  "image4_file_size"
     t.datetime "image4_updated_at"
+    t.string   "project_description"
   end
 
   create_table "sessions", force: :cascade do |t|

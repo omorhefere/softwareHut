@@ -19,7 +19,6 @@
 #  updated_at          :datetime         not null
 #  category_id         :integer
 #  subcategory_id      :integer
-#  image_remote_url    :string
 #  user_id             :integer
 #  image1_file_name    :string
 #  image1_content_type :string
@@ -37,6 +36,7 @@
 #  image4_content_type :string
 #  image4_file_size    :integer
 #  image4_updated_at   :datetime
+#  project_description :string
 #
 
 require 'rails_helper'
