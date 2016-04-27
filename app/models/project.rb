@@ -55,7 +55,7 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image4, content_type: /\Aimage\/.*\Z/
 
   validates :category, :subcategory, :project_title, :project_number,  presence: true
-  validates :time_scale, numericality: { greater_than: 0 }
+  validates :time_scale, :numericality => {:allow_blank => true}
   validates :project_title, :project_number, uniqueness:true
 
   def self.search(search)
