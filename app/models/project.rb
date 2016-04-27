@@ -54,7 +54,7 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image3, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :image4, content_type: /\Aimage\/.*\Z/
 
-  validates :category, :subcategory, :project_title, :project_number, :priority_duration, :aims, :why_important, :would_do_project, :time_scale, :benefits, :methodology, :stage, :volunteers,  presence: true
+  validates :category, :subcategory, :project_title, :project_number,  presence: true
   validates :time_scale, numericality: { greater_than: 0 }
   validates :project_title, :project_number, uniqueness:true
 

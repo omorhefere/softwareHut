@@ -38,7 +38,7 @@ RSpec.describe Category, type: :model do
   it "has a Zero Failures Category & Economic subcategory " do
     user= FactoryGirl.create(:user)
     category = FactoryGirl.create(:category)
-    subcategory = FactoryGirl.create(:subcategory)
+    subcategory = FactoryGirl.create(:subcategory, name: "Economic")
     project = FactoryGirl.create(:project)
     expect(project.category.name).to eq "Zero Failures"
     expect(project.subcategory.name).to eq "Economic"
@@ -65,7 +65,7 @@ RSpec.describe Category, type: :model do
   it "has a Buried Infrastructure Performance Category & Economic subcategory " do
     user= FactoryGirl.create(:user)
     category = FactoryGirl.create(:category, name: "Buried Infrastructure Performance")
-    subcategory = FactoryGirl.create(:subcategory)
+    subcategory = FactoryGirl.create(:subcategory, name: "Economic")
     project = FactoryGirl.create(:project)
     expect(project.category.name).to eq "Buried Infrastructure Performance"
     expect(project.subcategory.name).to eq "Economic"
@@ -86,6 +86,33 @@ RSpec.describe Category, type: :model do
     subcategory = FactoryGirl.create(:subcategory, name: "Knowledge")
     project = FactoryGirl.create(:project)
     expect(project.category.name).to eq "Buried Infrastructure Performance"
+    expect(project.subcategory.name).to eq "Knowledge"
+  end
+
+  it "has a Resource, Recovery and Efficiencys Category & Economic subcategory " do
+    user= FactoryGirl.create(:user)
+    category = FactoryGirl.create(:category, name: "Resource, Recovery and Efficiencys")
+    subcategory = FactoryGirl.create(:subcategory, name: "Economic")
+    project = FactoryGirl.create(:project)
+    expect(project.category.name).to eq "Resource, Recovery and Efficiencys"
+    expect(project.subcategory.name).to eq "Economic"
+  end
+
+  it "has a Resource, Recovery and Efficiencys Category & Technology subcategory " do
+    user= FactoryGirl.create(:user)
+    category = FactoryGirl.create(:category, name: "Resource, Recovery and Efficiencys")
+    subcategory = FactoryGirl.create(:subcategory, name: "Technology")
+    project = FactoryGirl.create(:project)
+    expect(project.category.name).to eq "Resource, Recovery and Efficiencys"
+    expect(project.subcategory.name).to eq "Technology"
+  end
+
+  it "has a Resource, Recovery and Efficiencys Category & Knowledge subcategory " do
+    user= FactoryGirl.create(:user)
+    category = FactoryGirl.create(:category, name: "Resource, Recovery and Efficiencys")
+    subcategory = FactoryGirl.create(:subcategory, name: "Knowledge")
+    project = FactoryGirl.create(:project)
+    expect(project.category.name).to eq "Resource, Recovery and Efficiencys"
     expect(project.subcategory.name).to eq "Knowledge"
   end
 end
