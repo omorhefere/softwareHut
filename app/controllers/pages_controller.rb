@@ -27,11 +27,6 @@ class PagesController < ApplicationController
     @current_nav_identifier = :home
   end
 
-  def contact
-    @current_nav_identifier = :contact
-    @sticky_footer=true
-  end
-
   def introduction
     @current_nav_identifier = :introduction
     @sticky_footer=true

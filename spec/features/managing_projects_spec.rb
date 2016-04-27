@@ -1,7 +1,8 @@
 require 'rails_helper'
 
+###USER###
 # Home page tests
-describe 'Log in' do
+describe 'Log in as user' do
   specify 'I can login' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -177,5 +178,18 @@ describe 'Create Project button' do
     fill_in 'Volunteers', with: 'Volunteers'
     click_button 'Create Project'
     expect(page).to have_content('Project was successfully created')
+  end
+end
+
+###ADMIN###
+#Home page tests
+describe 'Admin profile' do
+  specify 'I can view my profile' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/home'
+    click_link 'Admin'
+    click_link 'User'
+    expect(page).to have_content('Your Profile')
   end
 end
