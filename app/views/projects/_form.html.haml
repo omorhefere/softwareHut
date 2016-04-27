@@ -22,7 +22,7 @@
     .li
       = label_tag :image1, 'Select primary image image'
       = f.file_field :image1
-      - if @project.image1.present? == true
+      - if @project.new_record? == false && @project.image1.present? == true
         = link_to 'Delete primary image', remove_project_image1_path, :data => { :confirm => 'Are you sure?' }
         = image_tag @project.image1.url(:small) , class: "img img-responsive hidden-xs pimage"
     .li

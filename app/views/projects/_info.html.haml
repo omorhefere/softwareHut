@@ -6,28 +6,55 @@
   = @project.project_description
 %p
   %b Priority & duration?
-  = @project.priority_duration
+  - if @project.priority_duration.present? == true
+    = @project.priority_duration
+  -else
+    .empty-field Unspecified
 %p
   %b Aims:
-  = @project.aims
+  - if @project.aims.present? == true
+    = @project.aims
+  -else
+    .empty-field Unspecified
 %p
   %b Why is this project important?
-  = @project.why_important
+  - if @project.why_important.present? == true
+    = @project.why_important
+  -else
+    .empty-field Unspecified
 %p
   %b Who would do this project?
-  = @project.would_do_project
+  - if @project.would_do_project.present? == true
+    = @project.would_do_project
+  -else
+    .empty-field Unspecified
 %p
   %b Funding:
-  = @project.funding
+  - if @project.funding.present? == true
+    = @project.funding
+  -else
+    .empty-field Funding required
 %p
   %b Time scale (Years):
-  = @project.time_scale
+  - if @project.time_scale.present? == true
+    = @project.time_scale
+  -else
+    .empty-field Unspecified
 %p
   %b Benefits to industry:
-  = @project.benefits
+  - if @project.benefits.present? == true
+    = @project.benefits
+  -else
+    .empty-field Unspecified
 %p
   %b Notes on Methodology:
-  = @project.methodology
+  - if @project.methodology.present? == true
+    = @project.methodology
+  -else
+    .empty-field Unspecified
 %p
   %b Volunteers:
-  = @project.volunteers
+  - if @project.volunteers.present? == true
+    = @project.volunteers
+  -else
+    .empty-field Needs Volunteers!
