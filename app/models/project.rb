@@ -75,7 +75,8 @@ class Project < ActiveRecord::Base
                    "%#{search}%",
                    "%#{search}%",
                    "%#{search}%",
-                   "%#{search}%", "%#{search}%")
+                   "%#{search}%",
+                   "%#{search}%")
   end
 
 end
