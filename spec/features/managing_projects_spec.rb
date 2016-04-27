@@ -1,13 +1,23 @@
 require 'rails_helper'
 
-###USER###
-# Home page tests
+# Log in page tests
 describe 'Log in as user' do
   specify 'I can login' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     expect(page).to have_content('All projects')
+  end
+end
+
+describe 'Log in as admin' do
+  specify 'I can view my profile' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/home'
+    click_link 'Admin'
+    click_link 'User'
+    expect(page).to have_content('Your Profile')
   end
 end
 
@@ -19,8 +29,23 @@ describe 'Forgot password' do
   end
 end
 
+#Forgot password page
+describe 'Reset password' do
+  specify 'I can reset my password' do
+    visit '/forgot_password'
+    fill_in 'Email', with: 'user@sheffield.ac.uk'
+    #click_button 'Request reset'
+    expect(page).to have_content('Reset Password')
+    fill_in 'Email', with: 'user'
+    #click_button 'Request reset'
+    expect(page).to have_content('Reset Password')
+  end
+end
+
+
+#Home page tests
 describe 'Search button' do
-  specify 'Search a project successfully' do
+  specify 'I can search a project in the database' do
     user = FactoryGirl.create(:user)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -30,17 +55,6 @@ describe 'Search button' do
     fill_in 'Search Projects', with: 'Project 1'
     click_button 'SearchButton'
     expect(page).to have_content('Project 1')
-  end
-end
-
-describe 'Search button' do
-  specify 'Search a project unsuccessfully' do
-    user = FactoryGirl.create(:user)
-    category = FactoryGirl.create(:category)
-    subcategory = FactoryGirl.create(:subcategory)
-    project = FactoryGirl.create(:project)
-    login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/home'
     fill_in 'Search Projects', with: 'Project 2'
     click_button 'SearchButton'
     expect(page).to have_content('There are no projects')
@@ -48,7 +62,7 @@ describe 'Search button' do
 end
 
 describe 'Categories' do
-  specify 'Pick category - All projects' do
+  specify 'I can pick category - All projects' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -59,7 +73,7 @@ describe 'Categories' do
 end
 
 describe 'Categories' do
-  specify 'Pick category - Zero Failures' do
+  specify 'I can pick category - Zero Failures' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -70,7 +84,7 @@ describe 'Categories' do
 end
 
 describe 'Categories' do
-  specify 'Pick category - Resource, Recovery and Efficiency' do
+  specify 'I can pick category - Resource, Recovery and Efficiency' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -81,7 +95,7 @@ describe 'Categories' do
 end
 
 describe 'Categories' do
-  specify 'Pick category - Buried Infrastructure Performance' do
+  specify 'I can pick category - Buried Infrastructure Performance' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -92,7 +106,7 @@ describe 'Categories' do
 end
 
 describe 'Navbar Links' do
-  specify 'Click Home' do
+  specify 'I can click Home button' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -102,7 +116,7 @@ describe 'Navbar Links' do
 end
 
 describe 'Navbar Links' do
-  specify 'Click Add Project' do
+  specify 'I can click Add Project button' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -112,7 +126,7 @@ describe 'Navbar Links' do
 end
 
 describe 'Navbar Links' do
-  specify 'Click About us-> Introduction' do
+  specify 'I can click About us-> Introduction button' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -123,7 +137,7 @@ describe 'Navbar Links' do
 end
 
 describe 'Navbar Links' do
-  specify 'Click About us-> Contact' do
+  specify 'I can click About us-> Contact button' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -134,7 +148,7 @@ describe 'Navbar Links' do
 end
 
 describe 'Navbar Links' do
-  specify 'Click User-> Log out' do
+  specify 'I can click User-> Log out' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -144,23 +158,27 @@ describe 'Navbar Links' do
   end
 end
 
-# Add new project page tests
-describe 'Create project button' do
-  specify 'Fail to create project' do
-    user = FactoryGirl.create(:user)
+describe 'Invitation' do
+  specify 'I can invite a new user' do
+    user = FactoryGirl.create(:user, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/projects/new'
-    click_button 'Create Project'
-    expect(page).to have_content('Please review the problems below:')
+    visit '/home'
+    click_link 'Admin'
+    click_link 'Invite'
+    expect(page).to have_content('Invite new user')
   end
 end
 
-describe 'Create Project button' do
-  specify 'Project successfully created' do
-    user = FactoryGirl.create(:user)
-    category = FactoryGirl.create(:category)
-    subcategory = FactoryGirl.create(:subcategory)
+# Add new project page tests
+describe 'Create project button' do
+  specify 'I can create a new project' do
+    user =FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    visit '/projects/new'
+    click_button 'Create Project'
+    expect(page).to have_content('Please review the problems below:')
     visit '/projects/new'
     select 'Zero Failures', :from => "Category"
     select 'Knowledge', :from => "Subcategory"
@@ -170,8 +188,8 @@ describe 'Create Project button' do
     fill_in 'Aims', with: 'Aims'
     fill_in 'Why is this project important', with: 'Importance'
     fill_in 'Targets of Members', with: 'Targets'
-    fill_in 'Funding', with: '12000'
-    fill_in 'Time Scale', with: '12'
+    fill_in 'Funding (eg. Venture Capital)', with: '12000'
+    fill_in 'Time Scale (Years, eg. 2)', with: '12'
     fill_in 'Benefits', with: 'Benefits'
     fill_in 'Methodology', with: 'Methodology'
     fill_in 'Stage', with: 'Stage'
@@ -181,15 +199,29 @@ describe 'Create Project button' do
   end
 end
 
-###ADMIN###
-#Home page tests
-describe 'Admin profile' do
-  specify 'I can view my profile' do
+#Invitation page tests
+describe 'Invitation' do
+  specify 'I should complete the right information in the field' do
     user = FactoryGirl.create(:user, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/home'
-    click_link 'Admin'
-    click_link 'User'
-    expect(page).to have_content('Your Profile')
+    visit '/users/invitation/new'
+    fill_in 'Email', with: "new_user"
+    click_button 'Send an invitation'
+    expect(page).to have_content('Email is invalid')
+    fill_in 'Email', with: "new_user@sheffield.ac.uk"
+    click_button 'Send an invitation'
+    expect(page).to have_content('An invitation email has been sent')
+  end
+end
+
+#Contact page tests
+describe 'Contact' do
+  specify 'I can send a message' do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/contact'
+    fill_in 'Write Your Message Here', with: 'Message'
+    click_button 'Send message'
+    expect(page).to have_content('Cannot send message')
   end
 end
