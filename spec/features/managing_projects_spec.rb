@@ -29,15 +29,17 @@ describe 'Forgot password' do
   end
 end
 
-#Forgot password page
+#Forgot password page tests
 describe 'Reset password' do
   specify 'I can reset my password' do
     visit '/forgot_password'
     fill_in 'Email', with: 'user@sheffield.ac.uk'
-    #click_button 'Request reset'
+    click_button 'Request reset'
+    visit '/forgot_password'
     expect(page).to have_content('Reset Password')
     fill_in 'Email', with: 'user'
-    #click_button 'Request reset'
+    click_button 'Request reset'
+    visit '/forgot_password'
     expect(page).to have_content('Reset Password')
   end
 end
@@ -168,6 +170,74 @@ describe 'Invitation' do
     expect(page).to have_content('Invite new user')
   end
 end
+
+describe 'Show a project' do
+  specify 'I can click on SHOW button to view a project' do
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    FactoryGirl.create(:project)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/home'
+    click_link 'Show'
+    expect(page).to have_content('Join the discussion')
+  end
+end
+
+# Project show page tests
+describe 'Edit project' do
+  specify 'I can edit a project' do
+    user = FactoryGirl.create(:user, admin: true)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    FactoryGirl.create(:project)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/projects/1'
+    click_link('Edit')
+    expect(page).to have_current_path('/projects/1/edit')
+  end
+end
+
+describe 'Delete project' do
+  specify 'I can delete a project' do
+    user = FactoryGirl.create(:user, admin: true)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    FactoryGirl.create(:project)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/projects/1'
+    click_link('Delete')
+    expect(page).to have_content('Project was successfully destroyed')
+  end
+end
+
+describe 'Upload images' do
+  specify 'I can upload images' do
+    user = FactoryGirl.create(:user, admin: true)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    FactoryGirl.create(:project)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/projects/1'
+    click_link('click here')
+    expect(page).to have_current_path('/projects/1/edit')
+  end
+end
+
+describe 'Comment on project' do
+  specify 'I can leave a commment' do
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    FactoryGirl.create(:project)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/projects/1'
+    fill_in 'Enter your comment', with:'A comment'
+    click_button('Post')
+    expect(page).to have_content('A comment')
+  end
+end
+
 
 # Add new project page tests
 describe 'Create project button' do

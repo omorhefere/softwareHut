@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     root to: 'projects#index'
   end
 
-
-
   resources :projects do
     collection do
       get 'search'
@@ -39,7 +37,6 @@ Rails.application.routes.draw do
   match "/contact", to: "contacts#new", via: :all
   match "/new_password", to: "pages#new_password", via: :all
   match "/forgot_password", to: "pages#forgot_password", via: :all
-  match "/admin", to: "pages#admin", via: :all
   match "/introduction", to: "pages#introduction", via: :all
   match "/profile", to: "users#index", via: :all
   match "/projects/search", to: "projects#search", via: :all
