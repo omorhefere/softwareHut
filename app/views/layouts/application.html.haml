@@ -11,12 +11,11 @@
     = csrf_meta_tags
 
   %body{ class: environment_notice_body_class }
-    = render 'layouts/environment_notice'
     .page-top
-      - flash.each do |name, msg|
-        - next unless name == 'alert' || name == 'notice'
-        .alert.fade.in
-          .container
+      .flash-messages
+        - flash.each do |name, msg|
+          - next unless name == 'alert' || name == 'notice'
+          .alert.fade.in
             - if name == 'notice'
               = fa_icon('check', class: 'flash-success')
               = msg
@@ -104,7 +103,7 @@
                         %ul.dropdown-menu
                           %li
                           - if signed_in?
-                            %p#email_box
+
                             = navbar_link_to :profile, title: "Go to the profile page", identifier: :profile, :id => "navbutton" do
                               = current_user.name
                           - else
@@ -114,6 +113,7 @@
                           %li
                           = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbutton" do
                             Admin Area
+
                           %li.divider{:role => "separator"}
                           %li
                           = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
