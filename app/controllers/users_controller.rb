@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @projects = Project.all
-  
+    if @projects.joins(:category).count<1
+       @sticky_footer = true
+    end
+
     if params[:approved] == "false"
       @users = User.where(id: false)
     else

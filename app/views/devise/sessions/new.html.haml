@@ -24,5 +24,5 @@
               %div#buttonLogin
                 = button_to 'Login', :home,  class: "show-flash btn btn-default"
               %div#buttonForgotPassword
-                = button_to 'Forgot Password', :forgot_password,  class: "show-flash btn btn-default"
+                = button_to 'Forgot Password', new_password_path(resource_name),  class: "show-flash btn btn-default"
                 .margin-top-10= render "devise/shared/links"

@@ -6,10 +6,10 @@
 
 %div.container.buffered-top
 
-.image
-  %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
-  %h2
-    Your Profile
+  .image
+    %img.water{:alt => "Water", :src => " /images/proto2.jpg"}/
+    %h2
+      Your Profile
   .imagebox.col-sm-6
     = image_tag current_user.avatar.url(:medium), :class => "style_image"
 

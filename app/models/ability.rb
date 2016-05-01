@@ -9,6 +9,7 @@ class Ability
       can :manage, :all
     else
       can :read, Project
+      can :read, Article
       can :create, Project
       can :create, Comment
     end

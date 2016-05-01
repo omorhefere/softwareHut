@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :subcategories
   resources :categories
   resources :categories
+  resources :articles
   resources "contacts", only: [:new, :create]
 
 
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: 'projects#index'
   end
+
+  devise_for :users, path_names: {
+    password: 'secret'
+  }
 
   resources :projects do
     collection do
@@ -36,7 +41,6 @@ Rails.application.routes.draw do
   match "/bip", to: "pages#bip", via: :all
   match "/contact", to: "contacts#new", via: :all
   match "/new_password", to: "pages#new_password", via: :all
-  match "/forgot_password", to: "pages#forgot_password", via: :all
   match "/introduction", to: "pages#introduction", via: :all
   match "/profile", to: "users#index", via: :all
   match "/projects/search", to: "projects#search", via: :all
@@ -47,16 +51,6 @@ Rails.application.routes.draw do
   get 'project/:id/remove_image4', to: 'projects#remove_image4', as: 'remove_project_image4'
 
 
-  devise_for :users, :controller => {:registrations => 'registrations'}
-  as :user do
-  end
-
-  devise_for :users, :skip => [:sessions,:invitation]
-  as :user do
-    get 'users/sign_in' => 'devise/sessions#new'
-    post 'users/sign_in' => 'devise/sessions#create'
-    delete 'users/sign_in' => 'devise/sessions#destroy'
-  end
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'

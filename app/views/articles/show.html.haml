@@ -1,0 +1,13 @@
+
+
+%h1
+  %strong Title:
+  = @article.title
+= image_tag @article.avatar.url(:thumb)
+%p
+  %strong Text:
+  = @article.text
+
+= button_to 'Edit', edit_article_path(@article),:class=> "btn btn-default btn-sm"
+|
+\#{button_to 'Back', articles_path}

@@ -1,0 +1,13 @@
+%h1 Listing articles
+= link_to 'New article', new_article_path
+%table
+  %tr
+    %th Title
+    %th Text
+    %th{:colspan => "2"}
+  - @articles.each do |article|
+    %tr
+      %td= article.title
+      %td= article.text
+      %td= button_to 'Show', article_path(article),:class=> "btn btn-default btn-sm"
+      %td= button_to 'Edit', edit_article_path(article),:class=> "btn btn-default btn-sm"
