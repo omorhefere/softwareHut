@@ -28,7 +28,6 @@
         %b Stage:
         = @project.stage
 
-
     .btn-group
     - if (user_signed_in? && (current_user.id == @project.user_id)) || current_user.admin?
       = link_to 'Edit', edit_project_path(@project), class: "show-flash btn button1  btn-default"

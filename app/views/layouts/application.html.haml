@@ -63,13 +63,21 @@
                     = navbar_link_to :home, title: "Go to the home page", identifier: :home, :id => "navbutton" do
                       Home
 
-                  -# Add project button
+
                   - if @current_nav_identifier==:add_new_project
                     = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbuttonactive" do
                       Add New Project
                   - else
                     = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
                       Add New Project
+                  -# Blog button
+                  - if @current_nav_identifier==:articles
+                    = navbar_link_to :articles, title: "Blog", identifier: :articles, :id => "navbuttonactive" do
+                      Blog
+                  - else
+                    = navbar_link_to :articles, title: "Blog", identifier: :articles, :id => "navbutton" do
+                      Blog
+
 
                   %li.dropdown
                     %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton", identifier: :about_us}

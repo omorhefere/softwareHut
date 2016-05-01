@@ -1,13 +1,20 @@
--  content_for :title, "News Story"
+-  content_for :title, @article.title
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "story", media: :all
 
+%div.container.buffered-top
 
-.page-header
-  %h1= @article.title
-= image_tag @article.avatar.url(:medium)
-%p= @article.text
+  .container
+    .page-header
+      .jumbotron.jtron
+        %h1
+          %b.title
+          = @article.title
+          %p.text.time=@article.created_at
 
-= link_to 'Edit', edit_article_path(@article),:class=> "btn btn-default btn-sm"
-
-\#{link_to 'Back', articles_path,:class=> "btn btn-default btn-sm"}
+      .col-xs-12.col-sm-6.col-md-8.move
+        .image.col-sm-12
+          =image_tag @article.avatar.url(:medium),:class => "style_image img-rounded img-responsive"
+          .caption
+            %br
+            %p.text=@article.text

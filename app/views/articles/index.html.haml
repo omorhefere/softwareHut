@@ -1,13 +1,20 @@
 -  content_for :title, "Recent News"
 = stylesheet_link_tag    "application", media: :all
-= stylesheet_link_tag    "News", media: :all
-%h1 Recent News
+= stylesheet_link_tag    "news", media: :all
 
-- @articles.each do |article|
-    .col-xs-12.col-sm-6.col-md-8
-        %h3= article.title
-        %p= article.created_at
-        .thumbnail
-            =image_tag article.avatar.url(:medium)
-            .caption
-                %p= article.text
+
+%div.container.buffered-top
+    %h1
+        Recent News
+
+    - @articles.reverse.each do |article|
+        .col-xs-12.col-sm-6.col-md-8.move
+            %h3= article.title
+            %p.text.time=article.created_at
+            .image.col-sm-12
+                =image_tag article.avatar.url(:medium),:class => "style_image img-rounded img-responsive"
+                .caption
+                    %br
+                    %p.text=truncate( article.text, length:350)
+                    %div.button
+                        = link_to 'Read More', article_path(article),:class=> "btn btn-default btn-sm active"
