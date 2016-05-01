@@ -22,6 +22,12 @@ class Ability
       @project.comment.commenter == user.email
     end
 
+    can [ :read,:edit, :update, :destroy, :search ], User do |user|
+      current_user.email == user.email
+    end
+
+  
+
 
 
     # Define abilities for the passed in user here. For example:

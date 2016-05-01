@@ -132,7 +132,8 @@
                         %ul.dropdown-menu
                           %li
                           - if signed_in?
-                            %p#email_box
+
+                            = navbar_link_to :profile, title: "Go to the profile page", identifier: :profile, :id => "navbutton" do
                               = current_user.name
 
                           - else
