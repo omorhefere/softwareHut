@@ -12,7 +12,7 @@
 
   %body{ class: environment_notice_body_class }
     = render 'layouts/environment_notice'
-    .flash-messages
+    .page-top
       - flash.each do |name, msg|
         - next unless name == 'alert' || name == 'notice'
         .alert.fade.in
