@@ -11,20 +11,18 @@
     = csrf_meta_tags
 
   %body{ class: environment_notice_body_class }
-    = render 'layouts/environment_notice'
     .page-top
       .flash-messages
         - flash.each do |name, msg|
           - next unless name == 'alert' || name == 'notice'
           .alert.fade.in
-            .container
-              - if name == 'notice'
-                = fa_icon('check', class: 'flash-success')
-                = msg
-              - else
-                = fa_icon('warning', class: 'flash-error')
-                = msg
-                %a{ href: '#', title: 'Hide this message', data: { dismiss: :alert } } Dismiss
+            - if name == 'notice'
+              = fa_icon('check', class: 'flash-success')
+              = msg
+            - else
+              = fa_icon('warning', class: 'flash-error')
+              = msg
+              %a{ href: '#', title: 'Hide this message', data: { dismiss: :alert } } Dismiss
 
 
       %noscript
