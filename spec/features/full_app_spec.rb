@@ -198,7 +198,7 @@ describe 'Show an article' do
     visit '/home'
     click_link 'News'
     click_link 'Read More'
-    page.should have_no_content('Read More')
+    expect(page).to have_no_content('Read More')
   end
 end
 
@@ -239,6 +239,59 @@ describe 'Upload images' do
     visit '/projects/1'
     click_link('click here')
     expect(page).to have_current_path('/projects/1/edit')
+  end
+end
+
+describe 'Update project' do
+  specify 'I can update a project' do
+    user = FactoryGirl.create(:user, approved: true, admin: true)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    FactoryGirl.create(:project)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/projects/1/edit'
+    fill_in 'Project Title', with: 'Project 2'
+    click_button ('Update Project')
+    expect(page).to have_content('Project was successfully updated.')
+  end
+end
+
+describe 'Upload images' do
+  specify 'I can add images to project' do
+    user = FactoryGirl.create(:user, admin: true, approved: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    category = FactoryGirl.create(:category)
+    subcategory = FactoryGirl.create(:subcategory)
+    project = FactoryGirl.create(:project)
+    visit '/projects/1/edit'
+    attach_file('project_image1', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    attach_file('project_image2', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    attach_file('project_image3', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    attach_file('project_image4', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    click_button 'Update Project'
+    expect(page).to have_content('Project was successfully updated')
+  end
+end
+
+describe 'Remove images' do
+  specify 'I can remove images from project' do
+    user = FactoryGirl.create(:user, admin: true, approved: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    category = FactoryGirl.create(:category)
+    subcategory = FactoryGirl.create(:subcategory)
+    project = FactoryGirl.create(:project)
+    visit '/projects/1/edit'
+    attach_file('project_image1', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    attach_file('project_image2', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    attach_file('project_image3', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    attach_file('project_image4', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
+    click_button 'Update Project'
+    click_link 'Edit'
+    click_link 'Delete primary image'
+    click_link 'Delete primary image'
+    click_link 'Delete primary image'
+    click_link 'Delete primary image'
+    expect(page).to have_content('Project 1')
   end
 end
 
@@ -466,5 +519,42 @@ describe 'Delete user' do
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/user/1/delete'
     expect(page).to have_content('Delete')
+  end
+end
+
+#Errors handling
+describe 'Error 403' do
+  specify 'I get 403 error' do
+    user = FactoryGirl.create(:user, approved: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/403'
+    expect(page).to have_content('Access Denied')
+  end
+end
+
+describe 'Error 404' do
+  specify 'I get 404 error' do
+    user = FactoryGirl.create(:user, approved: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/404'
+    expect(page).to have_content('Not Found')
+  end
+end
+
+describe 'Error 422' do
+  specify 'I get 422 error' do
+    user = FactoryGirl.create(:user, approved: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/422'
+    expect(page).to have_content('Change Rejected')
+  end
+end
+
+describe 'Error 500' do
+  specify 'I get 500 error' do
+    user = FactoryGirl.create(:user, approved: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/500'
+    expect(page).to have_content('Server Error')
   end
 end
