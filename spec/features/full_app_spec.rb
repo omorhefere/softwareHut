@@ -380,13 +380,32 @@ describe 'Filtering users' do
   end
 end
 
-describe 'Add New' do
-  specify 'I can add a new user' do
+describe 'List link' do
+  specify 'I can click link List' do
     user = FactoryGirl.create(:user, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/user'
-    save_and_open_page
+    click_link 'List'
+    expect(page).to have_content('List of Users')
+  end
+end
+
+describe 'Add New Link' do
+  specify 'I can click link a new user' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user'
     click_link 'Add new'
     expect(page).to have_content('New User')
+  end
+end
+
+describe 'Export Link' do
+  specify 'I can click link Export' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user'
+    click_link 'Export'
+    expect(page).to have_content('Export Users')
   end
 end
