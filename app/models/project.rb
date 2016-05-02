@@ -42,7 +42,7 @@
 class Project < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory
-  has_many :comments
+  has_many :comments,  dependent: :destroy 
   belongs_to :user
 
   has_attached_file :image1, styles: { small: "100x100#" , medium: "500x500<" , large: "800x800<"}

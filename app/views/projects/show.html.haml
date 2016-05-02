@@ -102,4 +102,5 @@
             = comment.body
           %p
           - if can?(:manage, Comment) || comment.commenter == current_user.email
-            = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "show-flash btn btn-default btn-xs glyphicon glyphicon-trash"
+            .delete-comment-symbol
+              = link_to "", [comment.project, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "show-flash btn btn-default btn-xs glyphicon glyphicon-trash", :name => "delete-comment-symbol"
