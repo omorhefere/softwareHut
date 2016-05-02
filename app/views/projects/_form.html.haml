@@ -20,7 +20,7 @@
     = f.hidden_field :user_id , :value => current_user.id
   .ul
     .li
-      = label_tag :image1, 'Select primary image image'
+      = label_tag :image1, 'Select primary image'
       = f.file_field :image1
       - if @project.new_record? == false && @project.image1.present? == true
         = link_to 'Delete primary image', remove_project_image1_path, :data => { :confirm => 'Are you sure?' }
