@@ -22,30 +22,6 @@ describe 'Log in as admin' do
   end
 end
 
-#describe 'Forgot password' do
-#  specify 'I can retrieve password' do
-#    visit '/users/sign_in'
-#    click_button 'Forgot Password'
-#    expect(page).to have_content('Reset Password')
-#  end
-#end
-
-#Forgot password page tests
-#describe 'Reset password' do
-#  specify 'I can reset my password' do
-#    visit '/forgot_password'
-#    fill_in 'Email', with: 'user@sheffield.ac.uk'
-#    click_button 'Request reset'
-#    visit '/forgot_password'
-#    expect(page).to have_content('Reset Password')
-#    fill_in 'Email', with: 'user'
-#    click_button 'Request reset'
-#    visit '/forgot_password'
-#    expect(page).to have_content('Reset Password')
-#  end
-#end
-
-
 #Home page tests
 describe 'Search button' do
   specify 'I can search a project in the database' do
