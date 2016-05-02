@@ -172,6 +172,18 @@ describe 'Show a project' do
   end
 end
 
+describe 'Show a article' do
+  specify 'I can click on READ MORE button to view an article' do
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:article)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/home'
+    click_link 'News'
+    click_link 'Read More'
+    page.should have_no_content('Read More')
+  end
+end
+
 # Project show page tests
 describe 'Edit project' do
   specify 'I can edit a project' do
@@ -223,6 +235,21 @@ describe 'Comment on project' do
     fill_in 'Enter your comment', with:'A comment'
     click_button('Post')
     expect(page).to have_content('A comment')
+  end
+end
+
+describe 'Delete comment on project' do
+  specify 'I can delete my own comments' do
+    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:category)
+    FactoryGirl.create(:subcategory)
+    FactoryGirl.create(:project)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/projects/1'
+    fill_in 'Enter your comment', with:'A comment'
+    click_button('Post')
+    click_link('')
+    page.should have_no_content('A comment')
   end
 end
 
@@ -377,16 +404,6 @@ describe 'List link' do
   end
 end
 
-describe 'Add New Link' do
-  specify 'I can click link a new user' do
-    user = FactoryGirl.create(:user, admin: true)
-    login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/admin/user'
-    click_link 'Add new'
-    expect(page).to have_content('New User')
-  end
-end
-
 describe 'Export Link' do
   specify 'I can click link Export' do
     user = FactoryGirl.create(:user, admin: true)
@@ -394,5 +411,15 @@ describe 'Export Link' do
     visit '/admin/user'
     click_link 'Export'
     expect(page).to have_content('Export Users')
+  end
+end
+
+describe 'New Article' do
+  specify 'I can create a new article' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/article'
+    click_link 'Add new'
+    expect(page).to have_content('Save')
   end
 end
