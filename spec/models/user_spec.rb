@@ -46,14 +46,4 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it "Can add project " do
-    user = FactoryGirl.create(:user)
-    category = FactoryGirl.create(:category)
-    subcategory = FactoryGirl.create(:subcategory)
-    project = FactoryGirl.create(:project)
-    login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/home'
-    click_link 'Show'
-    expect(page).to have_content('Join the discussion')
-  end
 end
