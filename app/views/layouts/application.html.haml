@@ -69,13 +69,13 @@
                   - else
                     = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbutton" do
                       Add New Project
-                  -# Blog button
+                  -# News button
                   - if @current_nav_identifier==:articles
-                    = navbar_link_to :articles, title: "Blog", identifier: :articles, :id => "navbuttonactive" do
-                      Blog
+                    = navbar_link_to :articles, title: "News", identifier: :articles, :id => "navbuttonactive" do
+                      News
                   - else
-                    = navbar_link_to :articles, title: "Blog", identifier: :articles, :id => "navbutton" do
-                      Blog
+                    = navbar_link_to :articles, title: "News", identifier: :articles, :id => "navbutton" do
+                      News
 
 
                   %li.dropdown

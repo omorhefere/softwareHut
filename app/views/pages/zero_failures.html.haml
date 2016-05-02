@@ -24,7 +24,7 @@
           = link_to 'Buried Infrastructure Performance', :bip
 
 
-- @projects.each do |project|
+- @projects.reverse.each do |project|
   - if project.category.name == 'Zero Failures'
     %div.container.buffered-top
       - if project.subcategory.name == 'Economic'

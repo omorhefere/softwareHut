@@ -151,6 +151,17 @@ describe 'Navbar Links' do
 end
 
 describe 'Navbar Links' do
+  specify 'I can click News' do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/home'
+    click_link 'News'
+    click_link 'Log Out'
+    expect(page).to have_content('Log In')
+  end
+end
+
+describe 'Navbar Links' do
   specify 'I can click User-> Log out' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
