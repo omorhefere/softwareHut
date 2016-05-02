@@ -22,17 +22,6 @@ class UsersController < ApplicationController
 
   end
 
-  # GET /users/1
-  def show
-  end
-
-  # GET /users/1/edit
-  def edit
-    @current_nav_identifier = :registration
-    @disabled_nav = true
-    @sticky_footer = true
-  end
-
   # POST /users
   def create
     @user = User.new(user_params)

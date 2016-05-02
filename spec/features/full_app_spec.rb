@@ -4,16 +4,35 @@ require 'rails_helper'
 # Log in page tests
 describe 'Log in as user' do
   specify 'I can login' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     expect(page).to have_content('All projects')
   end
 end
 
+describe 'Fail to login' do
+  specify 'I do not have an approved account' do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/users/sign_in'
+    expect(page).to have_content('Your account has not been approved')
+  end
+end
+
+#describe 'Fail to login' do
+#  specify 'I tipped in an invalid password' do
+#    user1 = FactoryGirl.build(:user, :password => '00000000', approved: true)
+#    user1.password
+#    login_as(user1, :scope => :user, :run_callbacks => false)
+#    visit '/home'
+#    expect(page).to have_content('Invalid email or password')
+#  end
+#end
+
 describe 'Log in as admin' do
   specify 'I can view my profile' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user, admin: true, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Admin'
@@ -25,7 +44,7 @@ end
 #Home page tests
 describe 'Search button' do
   specify 'I can search a project in the database' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project)
@@ -42,7 +61,7 @@ end
 
 describe 'Categories' do
   specify 'I can pick category - All projects' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Categories'
@@ -53,7 +72,7 @@ end
 
 describe 'Categories' do
   specify 'I can pick category - Zero Failures' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Categories'
@@ -64,7 +83,7 @@ end
 
 describe 'Categories' do
   specify 'I can pick category - Resource Recovery and Efficiency' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Categories'
@@ -75,7 +94,7 @@ end
 
 describe 'Categories' do
   specify 'I can pick category - Buried Infrastructure Performance' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Categories'
@@ -86,7 +105,7 @@ end
 
 describe 'Navbar Links' do
   specify 'I can click Home button' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Home'
@@ -96,7 +115,7 @@ end
 
 describe 'Navbar Links' do
   specify 'I can click Add Project button' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Add New Project'
@@ -106,7 +125,7 @@ end
 
 describe 'Navbar Links' do
   specify 'I can click About us-> Introduction button' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'About us'
@@ -117,7 +136,7 @@ end
 
 describe 'Navbar Links' do
   specify 'I can click About us-> Contact button' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'About us'
@@ -128,7 +147,7 @@ end
 
 describe 'Navbar Links' do
   specify 'I can click News' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'News'
@@ -139,7 +158,7 @@ end
 
 describe 'Navbar Links' do
   specify 'I can click User-> Log out' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'User'
@@ -150,7 +169,7 @@ end
 
 describe 'Invitation' do
   specify 'I can invite a new user' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user, approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Admin'
@@ -161,7 +180,7 @@ end
 
 describe 'Show a project' do
   specify 'I can click on SHOW button to view a project' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
     FactoryGirl.create(:project)
@@ -174,7 +193,7 @@ end
 
 describe 'Show a article' do
   specify 'I can click on READ MORE button to view an article' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     FactoryGirl.create(:article)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -187,7 +206,7 @@ end
 # Project show page tests
 describe 'Edit project' do
   specify 'I can edit a project' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
     FactoryGirl.create(:project)
@@ -200,7 +219,7 @@ end
 
 describe 'Delete project' do
   specify 'I can delete a project' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
     FactoryGirl.create(:project)
@@ -213,7 +232,7 @@ end
 
 describe 'Upload images' do
   specify 'I can upload images' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user, approved: true, admin: true)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
     FactoryGirl.create(:project)
@@ -226,7 +245,7 @@ end
 
 describe 'Comment on project' do
   specify 'I can leave a commment' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
     FactoryGirl.create(:project)
@@ -240,7 +259,7 @@ end
 
 describe 'Delete comment on project' do
   specify 'I can delete my own comments' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
     FactoryGirl.create(:project)
@@ -249,7 +268,7 @@ describe 'Delete comment on project' do
     fill_in 'Enter your comment', with:'A comment'
     click_button('Post')
     click_link('')
-    page.should have_no_content('A comment')
+    expect(page).to have_no_content('A comment')
   end
 end
 
@@ -257,7 +276,7 @@ end
 # Add new project page tests
 describe 'Create project button' do
   specify 'I can create a new project' do
-    user =FactoryGirl.create(:user)
+    user =FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
@@ -287,7 +306,7 @@ end
 #Invitation page tests
 describe 'Invitation' do
   specify 'I should complete the right information in the field' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/users/invitation/new'
     fill_in 'Email', with: "new_user"
@@ -302,7 +321,7 @@ end
 #Contact page tests
 describe 'Contact' do
   specify 'I can send a message' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/contact'
     fill_in 'Write Your Message Here', with: 'Message'
@@ -315,7 +334,7 @@ end
 # Admin area tests
 describe 'Navigation - Articles' do
   specify 'I can see all the articles' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin'
     click_link 'Articles'
@@ -325,7 +344,7 @@ end
 
 describe 'Navigation - categories' do
   specify 'I can see all the categories' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin'
     click_link 'Categories'
@@ -335,7 +354,7 @@ end
 
 describe 'Navigation - Comments' do
   specify 'I can see all the comments' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin'
     click_link 'Comments'
@@ -345,7 +364,7 @@ end
 
 describe 'Navigation - Projects' do
   specify 'I can see all the projects' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin'
     click_link 'Projects'
@@ -355,7 +374,7 @@ end
 
 describe 'Navigation - Subcategories' do
   specify 'I can see all the subcategories' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin'
     click_link 'Subcategories'
@@ -365,7 +384,7 @@ end
 
 describe 'Navigation - Users' do
   specify 'I can see all the users' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin'
     click_link 'Users'
@@ -375,7 +394,7 @@ end
 
 describe 'Navigation - Users' do
   specify 'I can see all the users' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin'
     click_link 'Users'
@@ -385,7 +404,7 @@ end
 
 describe 'Filtering users' do
   specify 'I can filter the users' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/user'
     fill_in 'Filter', with: "user@sheffield.ac.uk"
@@ -396,7 +415,7 @@ end
 
 describe 'List link' do
   specify 'I can click link List' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/user'
     click_link 'List'
@@ -406,7 +425,7 @@ end
 
 describe 'Export Link' do
   specify 'I can click link Export' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/user'
     click_link 'Export'
@@ -416,7 +435,7 @@ end
 
 describe 'New Article' do
   specify 'I can create a new article' do
-    user = FactoryGirl.create(:user, admin: true)
+    user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/article'
     click_link 'Add new'
