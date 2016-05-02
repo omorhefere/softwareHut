@@ -49,6 +49,5 @@ FactoryGirl.define do
     name                   "User"
     email                  "user@sheffield.ac.uk"
     password               "12341234"
-    approved               true
   end
 end
