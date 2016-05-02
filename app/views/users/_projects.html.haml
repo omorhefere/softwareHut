@@ -27,7 +27,7 @@
                 %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
 
       - if project.subcategory.name == 'Technology' && project.user_id == current_user.id
-        %div.panel.panel-success
+        %div.panel.panel-danger
           %div.panel-heading
             %p= project.subcategory.name
           %div.panel-body
@@ -51,7 +51,7 @@
                 %td.showButton= link_to 'Show', project, class: "show-flash btn btn-default"
 
       - if project.subcategory.name == 'Knowledge' && project.user_id == current_user.id
-        %div.panel.panel-success
+        %div.panel.panel-info
           %div.panel-heading
             %p= project.subcategory.name
           %div.panel-body
