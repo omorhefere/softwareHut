@@ -8,3 +8,13 @@
 //= require modal
 //= require select2
 //= require select2_init
+
+$('#myTabs a:first').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+
+$('#myTabs a:last').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
