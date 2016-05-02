@@ -1,0 +1,26 @@
+- content_for :title, "Profile"
+= stylesheet_link_tag    "application", media: :all
+= stylesheet_link_tag    "profile", media: :all
+= javascript_include_tag "application"
+
+- @disabled_nav = false
+
+%div.container.buffered-top
+
+  .image
+    %h2
+      Your Profile
+  .imagebox.col-sm-6
+    = image_tag current_user.avatar.url(:medium), :class => "style_image img-responsive"
+
+  .info.col-sm-6
+    = render "info"
+  .edit.col-sm-12
+    = link_to "Edit Profile" , :edit_user_registration, class: "show-flash btn btn-default"
+
+
+  .tab-content
+    #home.tab-pane.active{:role => "tabpanel"} Created Projects
+    =render 'projects'
+    #profile.tab-pane{:role => "tabpanel"} Commented Projects
+    =render 'comments'

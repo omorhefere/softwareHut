@@ -24,9 +24,6 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @current_nav_identifier = :registration
-    @disabled_nav = true
-    @sticky_footer = true
   end
 
   # GET /users/1/edit

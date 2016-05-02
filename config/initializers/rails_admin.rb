@@ -4,6 +4,8 @@ RailsAdmin.config do |config|
     redirect_to main_app.root_path unless warden.user.try(:admin)
   end
 
+    config.main_app_name = Proc.new { |controller| [ "Sheffield Water Centre", "Admin Area - #{controller.params[:action].try(:titleize)}" ] }
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -26,13 +28,17 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except ['User']
+    end
     export
     bulk_delete
     show
     edit
     delete
-    show_in_app
+    show_in_app do
+      except ['User','Categories','Subcategories']
+    end
 
     ## With an audit adapter, you can add:
     # history_index
