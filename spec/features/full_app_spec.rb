@@ -442,3 +442,30 @@ describe 'New Article' do
     expect(page).to have_content('Save')
   end
 end
+
+describe 'Show user' do
+  specify 'I can view profile of a user' do
+    user = FactoryGirl.create(:user,approved: true, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user/1'
+    expect(page).to have_content('Details for')
+  end
+end
+
+describe 'Edit user' do
+  specify 'I can edit a user' do
+    user = FactoryGirl.create(:user,approved: true, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user/1/edit'
+    expect(page).to have_content('Edit')
+  end
+end
+
+describe 'Delete user' do
+  specify 'I can delete a user' do
+    user = FactoryGirl.create(:user,approved: true, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user/1/delete'
+    expect(page).to have_content('Delete')
+  end
+end
