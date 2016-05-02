@@ -4,6 +4,9 @@ class ArticlesController < ApplicationController
   authorize_resource
   def index
      @articles = Article.all
+     if @articles.joins(:category).count<1
+        @sticky_footer = true
+     end
   end
 
   def show
