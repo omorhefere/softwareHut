@@ -32,33 +32,6 @@ class PagesController < ApplicationController
     @sticky_footer=true
   end
 
-  def aims
-    @current_nav_identifier = :aims
-    @sticky_footer=true
-  end
-
-  def forgot_password
-    @disabled_nav = true
-    @sticky_footer=true
-  end
-
-  def admin
-    @sticky_footer=true
-    @current_nav_identifier = :admin
-  end
-
-  def registration
-  end
-
-  def users
-    @disabled_nav = true
-    @sticky_footer=true
-  end
-
-  def new_password
-    @disabled_nav = true
-    @sticky_footer=true
-  end
 
   def projects
     @current_nav_identifier = :home

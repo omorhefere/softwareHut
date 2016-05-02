@@ -151,8 +151,7 @@ describe 'Navbar Links' do
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'News'
-    click_link 'Log Out'
-    expect(page).to have_content('Log In')
+    expect(page).to have_content('Recent News')
   end
 end
 
@@ -191,7 +190,7 @@ describe 'Show a project' do
   end
 end
 
-describe 'Show a article' do
+describe 'Show an article' do
   specify 'I can click on READ MORE button to view an article' do
     user = FactoryGirl.create(:user, approved: true)
     FactoryGirl.create(:article)
