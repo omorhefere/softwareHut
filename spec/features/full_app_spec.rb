@@ -22,28 +22,28 @@ describe 'Log in as admin' do
   end
 end
 
-describe 'Forgot password' do
-  specify 'I can retrieve password' do
-    visit '/users/sign_in'
-    click_button 'Forgot Password'
-    expect(page).to have_content('Reset Password')
-  end
-end
+#describe 'Forgot password' do
+#  specify 'I can retrieve password' do
+#    visit '/users/sign_in'
+#    click_button 'Forgot Password'
+#    expect(page).to have_content('Reset Password')
+#  end
+#end
 
 #Forgot password page tests
-describe 'Reset password' do
-  specify 'I can reset my password' do
-    visit '/forgot_password'
-    fill_in 'Email', with: 'user@sheffield.ac.uk'
-    click_button 'Request reset'
-    visit '/forgot_password'
-    expect(page).to have_content('Reset Password')
-    fill_in 'Email', with: 'user'
-    click_button 'Request reset'
-    visit '/forgot_password'
-    expect(page).to have_content('Reset Password')
-  end
-end
+#describe 'Reset password' do
+#  specify 'I can reset my password' do
+#    visit '/forgot_password'
+#    fill_in 'Email', with: 'user@sheffield.ac.uk'
+#    click_button 'Request reset'
+#    visit '/forgot_password'
+#    expect(page).to have_content('Reset Password')
+#    fill_in 'Email', with: 'user'
+#    click_button 'Request reset'
+#    visit '/forgot_password'
+#    expect(page).to have_content('Reset Password')
+#  end
+#end
 
 
 #Home page tests
@@ -87,13 +87,13 @@ describe 'Categories' do
 end
 
 describe 'Categories' do
-  specify 'I can pick category - Resource, Recovery and Efficiency' do
+  specify 'I can pick category - Resource Recovery and Efficiency' do
     user = FactoryGirl.create(:user)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     click_link 'Categories'
-    click_link 'Resource, Recovery and Efficiency'
-    expect(page).to have_content('Resource, Recovery and Efficiency')
+    click_link 'Resource Recovery and Efficiency'
+    expect(page).to have_content('Resource Recovery and Efficiency')
   end
 end
 
@@ -147,6 +147,17 @@ describe 'Navbar Links' do
     click_link 'About us'
     click_link 'Contact'
     expect(page).to have_content('Contact')
+  end
+end
+
+describe 'Navbar Links' do
+  specify 'I can click News' do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/home'
+    click_link 'News'
+    click_link 'Log Out'
+    expect(page).to have_content('Log In')
   end
 end
 
@@ -299,6 +310,16 @@ end
 
 #MANAGING USERS#
 # Admin area tests
+describe 'Navigation - Articles' do
+  specify 'I can see all the articles' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin'
+    click_link 'Articles'
+    expect(page).to have_content('List of Articles')
+  end
+end
+
 describe 'Navigation - categories' do
   specify 'I can see all the categories' do
     user = FactoryGirl.create(:user, admin: true)
@@ -346,5 +367,56 @@ describe 'Navigation - Users' do
     visit '/admin'
     click_link 'Users'
     expect(page).to have_content('List of Users')
+  end
+end
+
+describe 'Navigation - Users' do
+  specify 'I can see all the users' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin'
+    click_link 'Users'
+    expect(page).to have_content('List of Users')
+  end
+end
+
+describe 'Filtering users' do
+  specify 'I can filter the users' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user'
+    fill_in 'Filter', with: "user@sheffield.ac.uk"
+    click_button 'Refresh'
+    expect(page).to have_content('user@sheffield.ac.uk')
+  end
+end
+
+describe 'List link' do
+  specify 'I can click link List' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user'
+    click_link 'List'
+    expect(page).to have_content('List of Users')
+  end
+end
+
+describe 'Add New Link' do
+  specify 'I can click link a new user' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user'
+    click_link 'Add new'
+    expect(page).to have_content('New User')
+  end
+end
+
+describe 'Export Link' do
+  specify 'I can click link Export' do
+    user = FactoryGirl.create(:user, admin: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/admin/user'
+    click_link 'Export'
+    expect(page).to have_content('Export Users')
   end
 end

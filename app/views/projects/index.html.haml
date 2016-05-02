@@ -21,7 +21,7 @@
           = link_to 'Resource Recovery and Efficiency', :rre
           = link_to 'Buried Infrastructure Performance', :bip
 
-- @projects.each do |project|
+- @projects.reverse.each do |project|
   %div.container.buffered-top
     - if project.subcategory.name == 'Economic'
       %div.panel.panel-success
