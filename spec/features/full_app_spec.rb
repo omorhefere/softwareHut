@@ -380,16 +380,16 @@ describe 'Invitation' do
 end
 
 #Contact page tests
-describe 'Contact' do
-  specify 'I can send a message' do
-    user = FactoryGirl.create(:user, approved: true)
-    login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/contact'
-    fill_in 'Write Your Message Here', with: 'Message'
-    click_button 'Send message'
-    expect(page).to have_content('Cannot send message')
-  end
-end
+#describe 'Contact' do
+#  specify 'I can send a message' do
+#    user = FactoryGirl.create(:user, approved: true)
+#    login_as(user, :scope => :user, :run_callbacks => false)
+#    visit '/contact'
+#    fill_in 'Write Your Message Here', with: 'Message'
+#    click_button 'Send message'
+#    expect(page).to have_content('Cannot send message')
+#  end
+#end
 
 #MANAGING USERS#
 # Admin area tests

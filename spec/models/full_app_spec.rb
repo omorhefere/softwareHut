@@ -11,7 +11,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "Has Resource, Recovery and Efficiencys category " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Resource, Recovery and Efficiency")
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project)
@@ -19,7 +19,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "Has Buried Infrastructure Performance category " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Buried Infrastructure Performance")
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project)
@@ -27,7 +27,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Zero Failures Category & Economic subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory, name: "Economic")
     project = FactoryGirl.create(:project)
@@ -36,7 +36,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Zero Failures Category & Technology subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory, name: "Technology")
     project = FactoryGirl.create(:project)
@@ -45,7 +45,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Zero Failures Category & Knowledge subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory, name: "Knowledge")
     project = FactoryGirl.create(:project)
@@ -54,7 +54,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Buried Infrastructure Performance Category & Economic subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Buried Infrastructure Performance")
     subcategory = FactoryGirl.create(:subcategory, name: "Economic")
     project = FactoryGirl.create(:project)
@@ -63,7 +63,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Buried Infrastructure Performance Category & Technology subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Buried Infrastructure Performance")
     subcategory = FactoryGirl.create(:subcategory, name: "Technology")
     project = FactoryGirl.create(:project)
@@ -72,7 +72,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Buried Infrastructure Performance Category & Knowledge subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Buried Infrastructure Performance")
     subcategory = FactoryGirl.create(:subcategory, name: "Knowledge")
     project = FactoryGirl.create(:project)
@@ -81,7 +81,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Resource, Recovery and Efficiencys Category & Economic subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Resource, Recovery and Efficiencys")
     subcategory = FactoryGirl.create(:subcategory, name: "Economic")
     project = FactoryGirl.create(:project)
@@ -90,7 +90,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Resource, Recovery and Efficiencys Category & Technology subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Resource, Recovery and Efficiencys")
     subcategory = FactoryGirl.create(:subcategory, name: "Technology")
     project = FactoryGirl.create(:project)
@@ -99,7 +99,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "has a Resource, Recovery and Efficiencys Category & Knowledge subcategory " do
-    user= FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category, name: "Resource, Recovery and Efficiencys")
     subcategory = FactoryGirl.create(:subcategory, name: "Knowledge")
     project = FactoryGirl.create(:project)
@@ -141,7 +141,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Project title " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project)
@@ -154,7 +154,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Project number " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -167,7 +167,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Project number & has Description " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -180,7 +180,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Project aims " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -193,7 +193,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Would do " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -206,7 +206,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Priority duration " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -219,7 +219,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Why important " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -232,7 +232,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Benefits " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -245,7 +245,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Methodology " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -258,7 +258,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Search by - Volunteers " do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -271,7 +271,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Update project " do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -286,8 +286,24 @@ RSpec.describe Project, type: :model do
     expect(page).to have_content('Project was successfully updated')
   end
 
+  it "Failed to update project if field is fileld incorrectly" do
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
+    login_as(user, :scope => :user, :run_callbacks => false)
+    category = FactoryGirl.create(:category)
+    subcategory = FactoryGirl.create(:subcategory)
+    project = FactoryGirl.create(:project, project_number: '1')
+    visit '/home'
+    fill_in 'Search Projects', with: 'Project 1'
+    click_button 'SearchButton'
+    click_link 'Show'
+    click_link 'Edit'
+    fill_in 'Time Scale (Years, eg. 2)', with: 'Description'
+    click_button 'Update Project'
+    expect(page).to have_button('Update Project')
+  end
+
   it "Fail to update project " do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -303,7 +319,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Create new project " do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -317,7 +333,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Fail to create new project " do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -331,7 +347,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Delete project " do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -345,7 +361,7 @@ RSpec.describe Project, type: :model do
   end
 
   it " Add 4 images to project" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -364,7 +380,7 @@ RSpec.describe Project, type: :model do
   end
 
   it " Add 1 image to project" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -380,7 +396,7 @@ RSpec.describe Project, type: :model do
   end
 
   it " Delete 1 image from project" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -398,7 +414,7 @@ RSpec.describe Project, type: :model do
   end
 
   it "Delete image 2 from project" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -417,7 +433,7 @@ RSpec.describe Project, type: :model do
   end
 
   it " Delete image 3 from project" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -437,7 +453,7 @@ RSpec.describe Project, type: :model do
   end
 
   it " Delete image 4 from project" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -464,7 +480,7 @@ end
 RSpec.describe Comment, type: :model do
 
   it "Add a comment to a project" do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -479,7 +495,7 @@ RSpec.describe Comment, type: :model do
   end
 
   it "Has a count for comments posted" do
-    user = FactoryGirl.create(:user)
+    user= FactoryGirl.create(:user, approved: "true")
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
@@ -496,7 +512,7 @@ RSpec.describe Comment, type: :model do
   end
 
   it " Add comment and delete comment" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -511,7 +527,7 @@ RSpec.describe Comment, type: :model do
   end
 
   it " Admin adds comment and user can not delete comment" do
-    user = FactoryGirl.create(:user, admin: true)
+    user= FactoryGirl.create(:user, admin: true, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -522,7 +538,7 @@ RSpec.describe Comment, type: :model do
     click_link 'Show'
     fill_in 'Enter your comment', with: 'comment 1'
     click_button 'Post'
-    user = FactoryGirl.create(:user, email: 'aaa@gmail.com')
+    user = FactoryGirl.create(:user, email: 'aaa@gmail.com', approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     fill_in 'Search Projects', with: 'Project 1'
