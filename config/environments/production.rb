@@ -1,11 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { :host => 'https://team06.demo1.software-hut.org.uk/users/sign_in' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.asset_host          = "https://team06.demo1.software-hut.org.uk/users/sign_in"
+  config.action_mailer.asset_host          = "https://team06.demo1.software-hut.org.uk"
 
   config.action_mailer.smtp_settings = {
     address: 'mailhost.shef.ac.uk',
