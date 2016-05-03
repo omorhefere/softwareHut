@@ -65,10 +65,22 @@ class User < ActiveRecord::Base
    end
  end
 
- after_create :send_admin_mail
+ def accept_invitation!
+     send_admin_mail
+     welcome_message
+     super
+   end
+
+ private
   def send_admin_mail
-    AdminMailer.new_user_waiting_for_approval(self).deliver_now
+    AdminMailer.new_user_waiting_for_approval(self).deliver
   end
+
+  def welcome_message
+   UserMailer.welcome_email(self).deliver
+ end
+
+
 
 
 end
