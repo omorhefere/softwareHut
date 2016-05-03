@@ -283,18 +283,22 @@ describe 'Remove images' do
     visit '/projects/1/edit'
     attach_file('project_image1', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
     click_button 'Update Project'
+    click_link 'Edit'
     click_link 'Delete primary image'
     visit '/projects/1/edit'
     attach_file('project_image2', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
     click_button 'Update Project'
+    click_link 'Edit'
     click_link 'Delete image 2'
     visit '/projects/1/edit'
     attach_file('project_image3', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
     click_button 'Update Project'
+    click_link 'Edit'
     click_link 'Delete image 3'
     visit '/projects/1/edit'
     attach_file('project_image4', File.absolute_path('./images-of-flowers-and-butterflies-5.jpg'), visible: false)
     click_button 'Update Project'
+    click_link 'Edit'
     click_link 'Delete image 4'
     expect(page).to have_content('To upload an image click here')
   end
