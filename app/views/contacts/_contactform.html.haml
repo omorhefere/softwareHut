@@ -1,12 +1,8 @@
-.form.col-sm-12
-  = simple_form_for @contact do |f|
-    .form-inputs
-      .hidden
-        = current_user.name
-        = current_user.email
-      = f.input :subject, :as => :text, placeholder: "Write Your Subject Here", label:false,:input_html => {:rows => 1}
-      = f.input :message, :as => :text, :required => true, placeholder: "Write Your Message Here", label:false,:input_html => {:rows => 7}
-      .hidden
-        = f.input :nickname, :hint => 'Leave this field blank!'
-    %div.button
-      = f.button :submit, 'Send message', :class=> "btn btn-primary"
+= simple_form_for @contact do |f|
+  .form-inputs
+    = f.input :subject, :as => :text, placeholder: "Write Your Subject Here", label:false,:input_html => {:rows => 1}
+    = f.input :message, :as => :text, :required => true, placeholder: "Write Your Message Here", label:false,:input_html => {:rows => 7}
+    .hidden
+      = f.input :nickname, :hint => 'Leave this field blank!'
+  %div.button
+    = f.button :submit, 'Send message', :class=> "btn btn-primary"
