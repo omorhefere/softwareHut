@@ -11,6 +11,8 @@
 
 $(document).ready(function () {
 
+  $('.dropdown-toggle').dropdown();
+
   $('#project').hide();
   $('#comments').hide();
 
