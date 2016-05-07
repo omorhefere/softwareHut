@@ -9,12 +9,23 @@
 //= require select2
 //= require select2_init
 
-$('#myTabs a:first').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-})
+$(document).ready(function () {
 
-$('#myTabs a:last').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-})
+  $('#project').hide();
+  $('#comments').hide();
+
+  $('#one').click(function (e) {
+    e.preventDefault();
+    $('#project').tab('show');
+    $('#comments').hide();
+    $('#project').show();
+  });
+
+  $('#two').click(function (e) {
+    e.preventDefault();
+    $('#comment').tab('show');
+    $('#project').hide();
+    $('#comments').show();
+  });
+
+});

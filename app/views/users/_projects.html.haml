@@ -1,5 +1,4 @@
 .project.col-sm-12
-  %h3 Projects
   - @projects.each do |project|
     %div.container.buffered-top
       - if project.subcategory.name == 'Economic' && project.user_id == current_user.id
