@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :categories
   resources :articles
-  resources "contacts", only: [:new, :create]
 
 
   namespace :admin do
@@ -39,7 +38,7 @@ Rails.application.routes.draw do
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
-  match "/contact", to: "contacts#new", via: :all
+  match "/contact", to: "pages#new", via: :all
   match "/new_password", to: "pages#new_password", via: :all
   match "/introduction", to: "pages#introduction", via: :all
   match "/profile", to: "users#index", via: :all

@@ -1102,9 +1102,7 @@ RSpec.describe Comment, type: :model do
     click_button 'SearchButton'
     click_link 'Show'
     expect(page).not_to have_content('aaa@gmail.com')
-    save_and_open_page
   end
-
 end
 
 #subcategory

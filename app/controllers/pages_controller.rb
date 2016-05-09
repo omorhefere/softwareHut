@@ -34,6 +34,5 @@ class PagesController < ApplicationController
 
 
   def projects
-    @current_nav_identifier = :home
   end
 end
