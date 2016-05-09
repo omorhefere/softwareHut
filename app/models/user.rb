@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable,:confirmable
+  devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable
 
   has_many :projects
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/avatar.png"
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :invitation_token, :case_sensitive => false
 
   def active_for_authentication?
-   super && approved?
+   super && self.approved?
  end
 
  def inactive_message
