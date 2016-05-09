@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable
+  devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable,:confirmable
 
   has_many :projects
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/avatar.png"

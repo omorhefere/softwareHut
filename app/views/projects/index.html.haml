@@ -40,7 +40,7 @@
               %td= project.project_title
             %tr
               %td.title Aims:
-              %td= project.aims
+              %td=truncate( project.aims, length:250)
             %tr
               %td.title Target members:
               %td= project.would_do_project
@@ -64,7 +64,7 @@
               %td= project.project_title
             %tr
               %td.title Aims:
-              %td= project.aims
+              %td=truncate( project.aims, length:250)
             %tr
               %td.title Would do project:
               %td= project.would_do_project
@@ -88,7 +88,7 @@
               %td= project.project_title
             %tr
               %td.title Aims:
-              %td= project.aims
+              %td=truncate( project.aims, length:250)
             %tr
               %td.title Would do project:
               %td= project.would_do_project
