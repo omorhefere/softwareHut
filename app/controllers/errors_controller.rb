@@ -13,11 +13,6 @@ class ErrorsController < ApplicationController
   end
 
   def error_500
-    begin
-      render
-    rescue
-      render layout: 'plain_error'
-    end
   end
 
   def ie_warning
