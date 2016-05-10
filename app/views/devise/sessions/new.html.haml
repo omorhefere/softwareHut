@@ -21,6 +21,6 @@
             = f.input :password, placeholder: "Password", label:false
           .panel-footer
             %div#buttonContainer
-              %div#buttonLogin
-                = button_to 'Login', :home,  class: "show-flash btn btn-default"
+              %div
+                = button_to 'Login', :home,  class: "show-flash btn btn-default buttonLogin"
                 .margin-top-10= render "devise/shared/links"
