@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :invitation_token, :case_sensitive => false
 
   def active_for_authentication?
-   super && self.approved?
+   super && approved?
  end
 
  def inactive_message
