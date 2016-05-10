@@ -1,14 +1,24 @@
-# team6
----
+# team6 Research Project Management System
 
 ### Description
-Describe your app here...
+This is a web based research project management system.
 
-### Significant Features/Technology
-The system has the following:
+### Initial set up
+The database must be seeded in order for it to have an initial admin account, as well as the default categories and subcategories.
 
-* Some significant thing...
-* Another one...
+The seed file is located in project/db/ and is named ‘seeds.rb.’
+To run the seed file:
+Open up command line or terminal
+Run the command
+
+'bundle exec rake db:seed'
+
+Your database should now contain required default values.
+
+## First login
+Default account details are:
+Username: admin@sheffield.ac.uk
+Password: 12341234
 
 ### Special Development Pre-requisites
 None.
