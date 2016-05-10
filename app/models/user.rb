@@ -50,7 +50,6 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable, :recoverable, :invite_for => 2.weeks
 
   has_many :projects
-  has_many :invitations, :class_name => 'User', :as => :invited_by
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/avatar.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_uniqueness_of :invitation_token, :case_sensitive => false
