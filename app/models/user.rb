@@ -47,9 +47,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable
+  devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable, :recoverable, :invite_for => 2.weeks
 
   has_many :projects
+  has_many :invitations, :class_name => 'User', :as => :invited_by
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/avatar.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_uniqueness_of :invitation_token, :case_sensitive => false
@@ -72,6 +73,17 @@ class User < ActiveRecord::Base
      super
    end
 
+ def self.send_reset_password_instructions(attributes={})
+    super if invitation_token.nil?
+    recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
+    if !recoverable.approved?
+      recoverable.errors[:base] << I18n.t("devise.failure.not_approved")
+    elsif recoverable.persisted?
+      recoverable.send_reset_password_instructions
+    end
+    recoverable
+  end
+
  private
   def send_admin_mail
     AdminMailer.new_user_waiting_for_approval(self).deliver
@@ -79,7 +91,7 @@ class User < ActiveRecord::Base
 
   def welcome_message
    UserMailer.welcome_email(self).deliver
- end
+  end
 
 
 

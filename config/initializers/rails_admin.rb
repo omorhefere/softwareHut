@@ -39,9 +39,15 @@ RailsAdmin.config do |config|
     show_in_app do
       except ['User','Categories','Subcategories']
     end
+  end
+
+    config.model 'User' do
+      edit do
+        exclude_fields :password, :password_confirmation
+      end
+    end
 
     ## With an audit adapter, you can add:
     # history_index
     # history_show
-  end
 end

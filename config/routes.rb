@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
   match "/contact", to: "pages#new", via: :all
-  match "/new_password", to: "pages#new_password", via: :all
   match "/introduction", to: "pages#introduction", via: :all
   match "/profile", to: "users#index", via: :all
   match "/projects/search", to: "projects#search", via: :all

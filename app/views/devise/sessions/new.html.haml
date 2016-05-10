@@ -23,6 +23,4 @@
             %div#buttonContainer
               %div#buttonLogin
                 = button_to 'Login', :home,  class: "show-flash btn btn-default"
-              %div#buttonForgotPassword
-                = button_to 'Forgot Password', :new_user_session, :data => { :confirm => 'Contact your admin to reset your password' },  class: "show-flash btn btn-default"
                 .margin-top-10= render "devise/shared/links"
