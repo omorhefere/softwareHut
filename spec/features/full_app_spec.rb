@@ -1084,24 +1084,18 @@ RSpec.describe Comment, type: :model do
   end
 
   it " Admin adds comment and user can not delete comment" do
-    user= FactoryGirl.create(:user, admin: true, approved: "true")
+    user = FactoryGirl.create(:user, approved: "true")
     login_as(user, :scope => :user, :run_callbacks => false)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
     project = FactoryGirl.create(:project, project_number: '1')
+    comment = FactoryGirl.create(:comment)
     visit '/home'
     fill_in 'Search Projects', with: 'Project 1'
     click_button 'SearchButton'
     click_link 'Show'
-    fill_in 'Enter your comment', with: 'comment 1'
-    click_button 'Post'
-    user = FactoryGirl.create(:user, email: 'aaa@gmail.com', approved: "true")
-    login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/home'
-    fill_in 'Search Projects', with: 'Project 1'
-    click_button 'SearchButton'
-    click_link 'Show'
-    expect(page).not_to have_content('aaa@gmail.com')
+    click_link ''
+    expect(page).not_to have_content('Delete')
   end
 end
 
