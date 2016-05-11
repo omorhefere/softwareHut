@@ -1,0 +1,21 @@
+- content_for :title, "Invite New Users"
+= stylesheet_link_tag    "application", media: :all
+= stylesheet_link_tag    "admin", media: :all
+
+
+- @disabled_nav = false
+- @sticky_footer= true
+
+%div.container.buffered-top
+
+
+  %h2
+    Edit #{resource_name.to_s.humanize}
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, required: true, autofocus: true, placeholder: "Email", label:false
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %p
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false,placeholder: "New Password", label:false

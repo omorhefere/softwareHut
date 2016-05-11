@@ -26,7 +26,7 @@ class Ability
       current_user.email == user.email
     end
 
-  
+
 
 
 

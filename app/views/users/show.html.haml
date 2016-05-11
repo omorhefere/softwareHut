@@ -1,0 +1,27 @@
+- content_for :title, "Profile"
+= javascript_include_tag "application"
+= stylesheet_link_tag    "application", media: :all
+= stylesheet_link_tag    "profile", media: :all
+
+
+%div.container.buffered-top
+  .image
+    %h2
+      Your Profile
+  .imagebox.col-sm-6
+    = image_tag current_user.avatar.url(:medium), :class => "style_image img-responsive"
+
+  .info.col-sm-6
+    = render "info"
+  .edit.col-sm-12
+    = link_to "Edit Profile" , :edit_user_registration, class: "show-flash btn btn-default"
+
+  %ul.nav.nav-pills.nav-justified.col-md-6.pill
+    %li#one.pill
+      %a{"data-toggle" => "tab", :href => "#"} Projects
+    %li#two.pill{"data-toggle" => "tab"}
+      %a{:href => "#"} Comments
+  #project.tab-pane
+    =render 'projects'
+  #comments.tab-pane
+    =render 'comments'

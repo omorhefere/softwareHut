@@ -6,34 +6,29 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
+    if params[:approved] == "false"
+      @users = User.where(id: false)
+    else
+      @users = User.all
+    end
+  end
+
+  # GET /users/1
+  def show
     @projects = Project.all
     @comments = Comment.all
 
     if @projects.joins(:category).count<1
        @sticky_footer = true
     end
-
-    if params[:approved] == "false"
-      @users = User.where(id: false)
-    else
-      @users = User.all
-    end
     @current_nav_identifier = :profile
-
-  end
-
-  # GET /users/1
-  def show
-    @current_nav_identifier = :registration
     @disabled_nav = true
     @sticky_footer = true
   end
 
   # GET /users/1/edit
   def edit
-    @current_nav_identifier = :registration
-    @disabled_nav = true
-    @sticky_footer = true
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -58,11 +53,17 @@ class UsersController < ApplicationController
     @sticky_footer = true
   end
 
-
   # DELETE /users/1
   def destroy
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
+  end
+
+  def approve
+    @user = User.find(params[:id])
+    @user.approve = true
+    @project.save
+    redirect_to :home, flash: { success: 'Image has been removed.' }
   end
 
   private
