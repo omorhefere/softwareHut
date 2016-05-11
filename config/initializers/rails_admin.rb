@@ -43,7 +43,10 @@ RailsAdmin.config do |config|
 
     config.model 'User' do
       edit do
-        exclude_fields :password, :password_confirmation
+        exclude_fields :password, :password_confirmation, :avatar, :work, :invitations_count, :invitation_limit, :current_sign_in_at, :invitation_accepted_at, :invitation_sent_at, :invitation_created_at, :remember_created_at, :sign_in_count, :last_sign_in_at, :last_sign_in_ip , :current_sign_in_ip
+        fields do
+          help false
+        end
       end
     end
 
