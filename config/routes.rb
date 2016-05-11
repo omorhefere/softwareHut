@@ -38,10 +38,9 @@ Rails.application.routes.draw do
   match "/bip", to: "pages#bip", via: :all
   match "/contact", to: "pages#new", via: :all
   match "/introduction", to: "pages#introduction", via: :all
-  match "/profile", to: "users#show", via: :all
+  match "/profile", to: "users#index", via: :all
   match "/projects/search", to: "projects#search", via: :all
   match "/search", to: "projects#search", via: :all
-  match '/approved', to: "users#index", via: :all
   get 'project/:id/remove_image1', to: 'projects#remove_image1', as: 'remove_project_image1'
   get 'project/:id/remove_image2', to: 'projects#remove_image2', as: 'remove_project_image2'
   get 'project/:id/remove_image3', to: 'projects#remove_image3', as: 'remove_project_image3'

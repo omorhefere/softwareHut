@@ -6,8 +6,14 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
+    @projects = Project.all
+    @comments = Comment.all
+
+    if @projects.joins(:category).count < 1
+       @sticky_footer = true
+    end
     if params[:approved] == "false"
-      @users = User.where(id: false)
+      @users = User.find_by_approved(false)
     else
       @users = User.all
     end
@@ -15,20 +21,16 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @projects = Project.all
-    @comments = Comment.all
-
-    if @projects.joins(:category).count<1
-       @sticky_footer = true
-    end
-    @current_nav_identifier = :profile
+    @current_nav_identifier = :registration
     @disabled_nav = true
     @sticky_footer = true
   end
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @current_nav_identifier = :registration
+    @disabled_nav = true
+    @sticky_footer = true
   end
 
   # POST /users
@@ -59,12 +61,6 @@ class UsersController < ApplicationController
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end
 
-  def approve
-    @user = User.find(params[:id])
-    @user.approve = true
-    @project.save
-    redirect_to :home, flash: { success: 'Image has been removed.' }
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -27,12 +27,12 @@
 #  invited_by_id          :integer
 #  invited_by_type        :string
 #  invitations_count      :integer          default(0)
-#  approved               :boolean          default(FALSE)
 #  work                   :string
 #  avatar_file_name       :string
 #  avatar_content_type    :string
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
+#  approved               :boolean
 #
 # Indexes
 #
@@ -42,7 +42,6 @@
 #  index_users_on_invited_by_id         (invited_by_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-
 
 FactoryGirl.define do
   factory :user do

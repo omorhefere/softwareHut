@@ -27,12 +27,12 @@
 #  invited_by_id          :integer
 #  invited_by_type        :string
 #  invitations_count      :integer          default(0)
-#  approved               :boolean          default(FALSE)
 #  work                   :string
 #  avatar_file_name       :string
 #  avatar_content_type    :string
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
+#  approved               :boolean
 #
 # Indexes
 #
@@ -54,19 +54,24 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_uniqueness_of :invitation_token, :case_sensitive => false
 
+
+  def block_from_invitation?
+   false
+  end
+
   def active_for_authentication?
-   super && approved?
- end
+    super && approved?
+  end
 
- def inactive_message
-   if !approved?
-     :not_approved
-   else
-     super # Use whatever other message
-   end
- end
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super # Use whatever other message
+    end
+  end
 
- def accept_invitation!
+  def accept_invitation!
      send_admin_mail
      welcome_message
      super
@@ -82,7 +87,7 @@ class User < ActiveRecord::Base
     recoverable
   end
 
- private
+  private
   def send_admin_mail
     AdminMailer.new_user_waiting_for_approval(self).deliver
   end
@@ -90,8 +95,4 @@ class User < ActiveRecord::Base
   def welcome_message
    UserMailer.welcome_email(self).deliver
   end
-
-
-
-
 end
