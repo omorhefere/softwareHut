@@ -9,56 +9,48 @@
   *= require warning_page
   *= require custom_flash
   *= require environment_notice
+
+// Essential imports
 @import "bootstrap-sprockets"
 @import "bootstrap"
 
+// Main html file
 html
   min-height: 100%
   position: relative
 
-
+// Logo image
 img.img-responsive.hidden-xs#logo
   height: 60px
 
+// Navigation bar
 .navbar
   background-color: #46AAD9
 
-#navbutton
-  color: white
-  padding-top: 20px
-
-#navbutton:hover
-  color: black
-  transition: 1s
-
-#navbuttonactive
-  color: black
-  background-color: #e6f2ff
-  height: 60px
-  padding-top: 20px
-
+// Navigation bar
 .navbar-default .navbar-nav .open .dropdown-menu
   background-color: #46AAD9
   color: black
 
+// Title
 .top
   margin-top: 75px
 
-.button_search
-  background: #afdaef
-  border: none
-
+// Categories box
 .categoryContainer
   width: 50%
   margin: 50px auto 0px auto
 
+// Searh form
 form.navbar-form.navbar-right
   margin-top: 15px
   float: right
 
+// Search field
 .search-bar
   margin-top: 5px
 
+// List in the form
 .li
   display: inline
 
