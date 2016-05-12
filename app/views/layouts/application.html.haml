@@ -10,6 +10,7 @@
     = favicon_link_tag '/favicon.png'
     = csrf_meta_tags
 
+  -# flash message
   %body{ class: environment_notice_body_class }
     .page-top
       .notification
@@ -31,7 +32,8 @@
           .alert.alert-info
             %h2 Sorry, it appears that you are using a web browser without JavaScript which prevents us offering you a rich online experience.
             %p Please enable JavaScript or use a different web browser, or alternatively contact the CiCS Helpdesk for assistance.
-
+            
+      -#create the navbar
       .wrap
         %nav#main-nav.navbar.navbar-default.navbar-fixed-top
           .container
@@ -39,10 +41,10 @@
               %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
                 %span.icon-bar
               %img.img-responsive.hidden-xs#logo(src="/images/logo.jpg")
-
+            -#disabling the nav.
             - if @disabled_nav!=true
               .collapse.navbar-collapse
-
+                -# Search Bar
                 %ul.nav.navbar-nav.navbar-left.search-bar
                   %form.navbar-form.navbar-left{role: "search", :action => "/search", :method => "get", :id => "search-form", :name => "search-form"}
                     .custom-search-input
@@ -63,6 +65,7 @@
                     = navbar_link_to :home, title: "Go to the home page", identifier: :home, :id => "navbutton" do
                       Home
 
+                  -# Add new project button
 
                   - if @current_nav_identifier==:add_new_project
                     = navbar_link_to :new_project, title: "Add new project", identifier: :add_new_project, :id => "navbuttonactive" do
@@ -78,31 +81,35 @@
                     = navbar_link_to :articles, title: "News", identifier: :articles, :id => "navbutton" do
                       News
 
-
+                  -# About us button
                   %li.dropdown
                     %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton", identifier: :about_us}
                       About us
                       %span.caret
 
                     %ul.dropdown-menu.dropdown_menu
-
+                      -# Introduction button
                       %li
                       = navbar_link_to :introduction, title: "Introduction", identifier: :introduction, :id => "navbutton" do
                         Introduction
                       %li.divider{:role => "separator"}
+                      -# Contact button
                       %li
                       = navbar_link_to :contact, title: "Contact", identifier: :contact, :id => "navbutton" do
                         Contact
-
+                  -# Check if user is signed in
                   - if signed_in?
+                    -# Check if user is an admin
                     - if current_user.admin?
                       %li.dropdown
+                        -# Admin dropdown
                         %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :admin}
                           Admin
                           %span.caret
 
                         %ul.dropdown-menu
                           %li
+                          -# Check if user is signed in
                           - if signed_in?
 
                             = navbar_link_to :profile, title: "Go to the profile page", identifier: :profile, :id => "navbutton" do
@@ -112,29 +119,35 @@
 
                           %li.divider{:role => "separator"}
                           %li
+                          -# Admin Area button
                           = navbar_link_to :admin, title: "Go to the admin page", identifier: :admin, :id => "navbutton" do
                             Admin Area
 
                           %li.divider{:role => "separator"}
                           %li
+                          -# Invite Button
                           = navbar_link_to :new_user_invitation, title: "Go to the invite page", identifier: :invite, :id => "navbutton" do
                             Invite
                           %li.divider{:role => "separator"}
 
                           %li
+                          -# Log out button
                           = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
                             Log Out
                     - else
                       %li.dropdown
+                        -# User dropdown
                         %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button",:id => "navbutton",:identifier => :user}
                           User
                           %span.caret
 
                         %ul.dropdown-menu
                           %li
+                          -# Check if user is signed in
                           - if signed_in?
 
                             = navbar_link_to :profile, title: "Go to the profile page", identifier: :profile, :id => "navbutton" do
+                              -# name of signed in user to link to his/her profile.
                               = current_user.name
 
                           - else
@@ -142,10 +155,11 @@
 
                           %li.divider{:role => "separator"}
                           %li
+                          -# Log out button
                           = navbar_link_to :destroy_user_session, title: "Log Out", identifier: :log_out, :id => "navbutton", :method => 'delete' do
                             Log Out
         = yield
-
+-# Sticky foter
 - if @sticky_footer
   %footer.navbar-fixed-bottom.col-sm-12
     .container#stickyFooter

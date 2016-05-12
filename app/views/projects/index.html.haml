@@ -16,11 +16,16 @@
         %b.caret
       %ul.dropdown-menu{"role" => "menu"}
         %li
+          -# Show all projects
           = link_to 'All projects', :home
+          -# Show projects with the category Zero Failures
           = link_to 'Zero Failures', :zero_failures
+          -# Show projects with the category Resource Recovery and Efficiency.
           = link_to 'Resource Recovery and Efficiency', :rre
+          -# Show projects with the category Buried Infrastructure Performance.
           = link_to 'Buried Infrastructure Performance', :bip
 
+-# Display Information about the project 
 - @projects.reverse.each do |project|
   %div.container.buffered-top
     - if project.subcategory.name == 'Economic'

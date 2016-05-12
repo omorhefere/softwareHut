@@ -3,13 +3,14 @@
 = stylesheet_link_tag    "story", media: :all
 
 %div.container.buffered-top
-
+  -# Section to show the header
   .container
     .page-header
       .jumbotron.jtron
         %h1
           %b.title
           = @article.title
+          -#show the time the article was created.
           %p.text.time=@article.created_at
 
       .col-xs-12.col-sm-6.col-md-8.move

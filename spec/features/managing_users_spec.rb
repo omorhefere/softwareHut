@@ -31,14 +31,12 @@ describe 'View profile' do
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
     save_and_open_page
-    click_link 'User'
-    click_link 'User'
+    visit '/profile'
     expect(page).to have_content('Your Profile')
     click_link 'Log Out'
     user2 = FactoryGirl.build(:user, admin: true, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
-    click_link 'Admin'
-    click_link 'User'
+    visit '/profile'
     expect(page).to have_content('Your Profile')
   end
 end

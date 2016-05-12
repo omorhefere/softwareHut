@@ -1,10 +1,11 @@
 = stylesheet_link_tag    "application", media: :all
-- @sticky_footer = true
+-# Keeps the footer at the bottom of the page.
+- @sticky_footer=true
 - content_for :title, "Categories-Edit"
 
 .categoryContainer
   %h1 Editing category
-
+  -# renders partial form for creating a category so it can be edited.
   = render 'form'
 
   = link_to 'Show', @category

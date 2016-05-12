@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   match "/zero_failures", to: "pages#zero_failures", via: :all
   match "/rre", to: "pages#rre", via: :all
   match "/bip", to: "pages#bip", via: :all
-  match "/contact", to: "pages#new", via: :all
+  match "/contact", to: "pages#contact", via: :all
   match "/introduction", to: "pages#introduction", via: :all
   match "/profile", to: "users#index", via: :all
   match "/projects/search", to: "projects#search", via: :all

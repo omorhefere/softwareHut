@@ -8,5 +8,6 @@
 #  updated_at :datetime         not null
 #
 
+#Subcategories are managed via Rails admin
 class Subcategory < ActiveRecord::Base
 end

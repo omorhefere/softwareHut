@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  #Actions on categories (Not used due to Rails admin)
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   authorize_resource

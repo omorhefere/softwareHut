@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
 
+  #ZF filter page
   def zero_failures
     @current_nav_identifier = :home
     @projects = Project.all
@@ -9,6 +10,7 @@ class PagesController < ApplicationController
     @current_nav_identifier = :home
   end
 
+  #rre filter page
   def rre
     @current_nav_identifier = :home
     @projects = Project.all
@@ -18,6 +20,7 @@ class PagesController < ApplicationController
     @current_nav_identifier = :home
   end
 
+  #BIP filter page
   def bip
     @current_nav_identifier = :home
     @projects = Project.all
@@ -27,6 +30,7 @@ class PagesController < ApplicationController
     @current_nav_identifier = :home
   end
 
+  #Introduction page
   def introduction
     @current_nav_identifier = :introduction
     @sticky_footer=true

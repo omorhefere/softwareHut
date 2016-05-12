@@ -8,7 +8,7 @@
   %p#subtitle Vision: Reimagining the water system
   %img.img-responsive.hidden-xs#categoryImage(src="/images/pipes.jpg")
 
-
+-# Filter projects
 %div.categories_box.panel.panel-primary
   %ul.nav
     %li
@@ -19,12 +19,16 @@
         %b.caret
       %ul.dropdown-menu{"role" => "menu"}
         %li
+          -# Show all projects
           = link_to 'All projects', :home
+          -# Show projects with the category Zero Failures
           = link_to 'Zero Failures', :zero_failures
+          -# Show projects with the category Resource Recovery and Efficiency.
           = link_to 'Resource Recovery and Efficiency', :rre
+          -# Show projects with the category Buried Infrastructure Performance.
           = link_to 'Buried Infrastructure Performance', :bip
 
-
+-# Display Projects, Each project sub category has a different colour.
 - @projects.reverse.each do |project|
   - if project.category.name == 'Buried Infrastructure Performance'
     %div.container.buffered-top

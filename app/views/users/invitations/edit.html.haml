@@ -1,8 +1,10 @@
 - content_for :title, "Join Sheffield Water Centre"
 = stylesheet_link_tag    "registration", media: :all
 = stylesheet_link_tag    "application", media: :all
+-# Disables the nav bar
 - @disabled_nav = true
-- @sticky_footer= true
+-# Keeps the footer at the bottom of the page.
+- @sticky_footer=true
 .container.buffered-top
   %p.lead Register
   #inputFields.container

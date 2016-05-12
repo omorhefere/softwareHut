@@ -12,6 +12,7 @@
     %span#searchMessageSpan #{params[:search]}
     !
 - else
+  -# Display projects that are related to search terms.
   - @projectsSearch.each do |project|
     %div.container.buffered-top
       - if project.subcategory.name == 'Economic'

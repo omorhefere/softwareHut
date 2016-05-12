@@ -8,12 +8,17 @@
 .container
   .page-header
     .container.button_container.top
-      = link_to 'All Projects', :home, class: "show-flash btn button1  btn-default"
-      = link_to 'Zero Failures', :zero_failures, class: "show-flash btn button2  btn-default"
-      = link_to 'Resource Recovery and Efficiency', :rre, class: "show-flash btn button3  btn-default"
-      = link_to 'Buried Infrastructure Performance', :bip,  class: "show-flash btn button4  btn-default"
-      %hr.line
+      -# Show all projects
+      = link_to 'All projects', :home, class: "show-flash btn button1 btn-default"
+      -# Show projects with the category Zero Failures
+      = link_to 'Zero Failures', :zero_failures, class: "show-flash btn button2 btn-default"
+      -# Show projects with the category Resource Recovery and Efficiency.
+      = link_to 'Resource Recovery and Efficiency', :rre, class: "show-flash btn button3 btn-default"
+      -# Show projects with the category Buried Infrastructure Performance.
+      = link_to 'Buried Infrastructure Performance', :bip , class: "show-flash btn button4 btn-default"
 
+      %hr.line
+    -#Project Title
     .jumbotron.jtron
       %h1
         %b
@@ -27,7 +32,7 @@
       %h6
         %b Stage:
         = @project.stage
-
+    -# only allow admin and project creator to edit.
     .btn-group
     - if (user_signed_in? && (current_user.id == @project.user_id)) || current_user.admin?
       = link_to 'Edit', edit_project_path(@project), class: "show-flash btn button1  btn-default"
