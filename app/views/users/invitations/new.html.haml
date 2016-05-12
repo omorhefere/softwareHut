@@ -2,7 +2,8 @@
 = stylesheet_link_tag    "application", media: :all
 = stylesheet_link_tag    "admin", media: :all
 
-- @sticky_footer = true
+-# Keeps the footer at the bottom of the page.
+- @sticky_footer=true
 - @current_nav_identifier= :invite
 
 .container.buffered-top
@@ -12,4 +13,5 @@
       = devise_error_messages!
       - resource.class.invite_key_fields.each do |field|
         = f.input :email, placeholder: "Email", label:false
+      -# Sends e-mail to the invited user
       = f.button :submit, t("devise.invitations.new.submit_button")

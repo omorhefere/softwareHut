@@ -2,14 +2,16 @@
 = stylesheet_link_tag  "application", media: :all
 = stylesheet_link_tag  "log_in_out", media: :all
 
+-# Stops the nav bar from showing on page.
 - @disabled_nav = true
+-# Keeps the footer at the bottom of the page.
 - @sticky_footer=true
 
 .page-header
   %h1 Sheffield Water Centre
 
 %div.container.buffered-top
-
+  -#centre the form
   .row
     .col-sm-6.col-sm-offset-3.col-lg-4.col-lg-offset-4
       .panel.panel-default.margin-top-20

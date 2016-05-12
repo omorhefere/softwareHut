@@ -1,3 +1,4 @@
+-# Add a new Project
 = simple_form_for @project, html: {multipart: true} do |f|
   = f.error_notification
 
@@ -19,6 +20,7 @@
     = f.input :volunteers, placeholder: "Volunteers", label:false
     = f.hidden_field :user_id , :value => current_user.id
   .ul
+    -# Upload An Image
     .li
       = label_tag :image1, 'Select primary image'
       = f.file_field :image1

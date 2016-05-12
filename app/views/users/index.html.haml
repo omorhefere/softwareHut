@@ -8,14 +8,16 @@
   .image
     %h2
       Your Profile
+  -# Shows the current users profile page.
   .imagebox.col-sm-6
     = image_tag current_user.avatar.url(:medium), :class => "style_image img-responsive"
-
+  -# Renders the information about the user.
   .info.col-sm-6
     = render "info"
+  -# Link to devise registration page.
   .edit.col-sm-12
     = link_to "Edit Profile" , :edit_user_registration, class: "show-flash btn btn-default"
-
+  -# Data pills that render projects that have created or commented on.
   %ul.nav.nav-pills.nav-justified.col-md-6.pill
     %li#one.pill
       %a{"data-toggle" => "tab", :href => "#"} Projects

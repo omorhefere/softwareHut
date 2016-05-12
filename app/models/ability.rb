@@ -5,6 +5,8 @@ class Ability
 
     user ||= User.new
 
+    #Admins can manage all aspects of app. Users can read projects, articles
+    #Users can create projects and comments
     if user.admin?
       can :manage, :all
     else
@@ -14,14 +16,17 @@ class Ability
       can :create, Comment
     end
 
+    #Users can delete and update only their own projects
     can [ :edit, :update, :destroy, :search ], Project do |project|
       project.user_id == user.id
     end
 
+    #Users can delete ony their owm projects
     can [ :destroy ], Comment do |comment|
       @project.comment.commenter == user.email
     end
 
+    #Users can only edit their own details
     can [ :read,:edit, :update, :destroy, :search ], User do |user|
       current_user.email == user.email
     end

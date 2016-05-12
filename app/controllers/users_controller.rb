@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   authorize_resource
 
-  # GET /users
+  # GET /users - Sticky footer is less that one project on profile page
   def index
     @projects = Project.all
     @comments = Comment.all

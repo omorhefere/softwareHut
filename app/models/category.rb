@@ -8,5 +8,6 @@
 #  updated_at :datetime         not null
 #
 
+#Categories are managed via Rails admin
 class Category < ActiveRecord::Base
 end

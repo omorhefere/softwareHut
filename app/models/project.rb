@@ -40,11 +40,13 @@
 #
 
 class Project < ActiveRecord::Base
+  #Relationships
   belongs_to :category
   belongs_to :subcategory
-  has_many :comments,  dependent: :destroy 
+  has_many :comments,  dependent: :destroy
   belongs_to :user
 
+  #Attach and process 4 images for projects
   has_attached_file :image1, styles: { small: "100x100#" , medium: "500x500<" , large: "800x800<"}
   has_attached_file :image2, styles: { small: "100x100#" , medium: "500x500<"}
   has_attached_file :image3, styles: { small: "100x100#" , medium: "500x500<"}
@@ -54,10 +56,12 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image3, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :image4, content_type: /\Aimage\/.*\Z/
 
+
   validates :category, :subcategory, :project_title, :project_number,  presence: true
   validates :time_scale, :numericality => {:allow_blank => true}
   validates :project_title, :project_number, uniqueness:true
 
+  #Search function to use all fields of project
   def self.search(search)
     Project.where("project_title LIKE ? OR
                    project_number LIKE ? OR

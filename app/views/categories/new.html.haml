@@ -1,10 +1,12 @@
 = stylesheet_link_tag    "application", media: :all
-- @sticky_footer = true
+-# Keeps the footer at the bottom of the page.
+- @sticky_footer=true
 - content_for :title, "Categories-New"
 
 .categoryContainer
   %h1 New category
-
+  -# renders partial form for creating a new category .
   = render 'form'
+
 
   = link_to 'Back', categories_path

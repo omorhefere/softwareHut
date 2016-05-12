@@ -1,6 +1,0 @@
-%h1 Editing article
-
-= render 'form'
-= simple_form_for @article, url: users_path do |form|
-  = form.input :avatar, as: :file
-= link_to 'Back', articles_path

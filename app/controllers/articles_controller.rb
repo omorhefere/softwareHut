@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
+  #Action on articles (Not used in final app as admin area is used)
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
   authorize_resource
+
+  #Display all articles on news page
   def index
      @articles = Article.all
      if @articles.count<1
@@ -9,6 +11,7 @@ class ArticlesController < ApplicationController
      end
   end
 
+  #Show article
   def show
   end
 

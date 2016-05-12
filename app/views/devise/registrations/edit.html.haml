@@ -2,8 +2,10 @@
 = stylesheet_link_tag    "registration", media: :all
 = stylesheet_link_tag    "application", media: :all
 
-- @disabled_nav = false
-- @sticky_footer= true
+# Stops the nav bar from showing on page.
+- @disabled_nav = true
+# Keeps the footer at the bottom of the page.
+- @sticky_footer=true
 
 %div.container.buffered-top
 

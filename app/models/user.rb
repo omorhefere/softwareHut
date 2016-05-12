@@ -47,18 +47,22 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  #Allows a user to be invited via email
   devise :invitable, :database_authenticatable, :rememberable, :trackable, :validatable, :registerable, :recoverable, :invite_for => 2.weeks
 
+  #Relationships
   has_many :projects
+  #Attach and process avatar image for user
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/avatar.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates_uniqueness_of :invitation_token, :case_sensitive => false
 
-
+  #Allow users to login after being invited
   def block_from_invitation?
    false
   end
 
+  #Users have to be approved to be able to login
   def active_for_authentication?
     super && approved?
   end
@@ -77,6 +81,7 @@ class User < ActiveRecord::Base
      super
    end
 
+ #Allow users to reset passwords
  def self.send_reset_password_instructions(attributes={})
     recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
     if !recoverable.approved?

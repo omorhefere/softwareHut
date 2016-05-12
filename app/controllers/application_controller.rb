@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :update_headers_to_disable_caching
   before_action :ie_warning
 
+  #Security for login
   before_action :authenticate_user!, except: [:registration, :root ,:forgot_password]
   before_action :configure_permitted_parameters, if: :devise_controller?
   alias_method :devise_current_user, :current_user
@@ -50,6 +51,7 @@ class ApplicationController < ActionController::Base
       return redirect_to(ie_warning_path) if request.user_agent.to_s =~ /MSIE [6-7]/ && request.user_agent.to_s !~ /Trident\/7.0/
     end
 
+    #Identify current user
     def current_user
       if params[:user_id].blank?
         devise_current_user
@@ -58,6 +60,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  #Sanitizing(Whitelisting) parameters 
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_me) }
