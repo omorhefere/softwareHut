@@ -2,8 +2,8 @@ require 'rails_helper'
 
 #MANAGING Projects#
 #Home page tests
-describe 'Search button' do
-  specify 'I can search a project in the database' do
+describe 'Search function' do
+  specify 'I can search for a project' do
     user = FactoryGirl.create(:user, approved: true)
     category = FactoryGirl.create(:category)
     subcategory = FactoryGirl.create(:subcategory)
@@ -20,7 +20,7 @@ describe 'Search button' do
 end
 
 describe 'Categories' do
-  specify 'I can pick category - All projects' do
+  specify 'I can pick All Projects' do
     user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -31,7 +31,7 @@ describe 'Categories' do
 end
 
 describe 'Categories' do
-  specify 'I can pick category - Zero Failures' do
+  specify 'I can pick Zero Failures' do
     user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -42,7 +42,7 @@ describe 'Categories' do
 end
 
 describe 'Categories' do
-  specify 'I can pick category - Resource Recovery and Efficiency' do
+  specify 'I can pick RRE' do
     user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -53,7 +53,7 @@ describe 'Categories' do
 end
 
 describe 'Categories' do
-  specify 'I can pick category - Buried Infrastructure Performance' do
+  specify 'I can pick BIP' do
     user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
@@ -102,8 +102,8 @@ describe 'Delete project' do
   end
 end
 
-describe 'Upload images' do
-  specify 'I can upload images' do
+describe 'Upload images page' do
+  specify 'I can go to upload images page' do
     user = FactoryGirl.create(:user, approved: true, admin: true)
     FactoryGirl.create(:category)
     FactoryGirl.create(:subcategory)
@@ -129,7 +129,7 @@ describe 'Update project' do
   end
 end
 
-describe 'Upload images' do
+describe 'Upload images to project' do
   specify 'I can add images to project' do
     user = FactoryGirl.create(:user, admin: true, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -146,7 +146,7 @@ describe 'Upload images' do
   end
 end
 
-describe 'Remove images' do
+describe 'Remove images from project' do
   specify 'I can remove images from project' do
     user = FactoryGirl.create(:user, admin: true, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -178,7 +178,7 @@ describe 'Remove images' do
 end
 
 # Add new project page tests
-describe 'Create project button' do
+describe 'Create a project' do
   specify 'I can create a new project' do
     user =FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)

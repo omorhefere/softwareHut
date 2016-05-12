@@ -2,7 +2,7 @@ require 'rails_helper'
 
 #MANAGING Articles#
 describe 'Show an article' do
-  specify 'I can click on READ MORE button to view an article' do
+  specify 'I can click on READ MORE to view an article' do
     user = FactoryGirl.create(:user, approved: true)
     FactoryGirl.create(:article)
     login_as(user, :scope => :user, :run_callbacks => false)

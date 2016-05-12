@@ -2,10 +2,15 @@ require 'rails_helper'
 
 #MANAGING Users#
 # Log in page tests
-describe 'Log in as user' do
-  specify 'I can login' do
+describe 'Log In' do
+  specify 'I can login as admin OR user' do
     user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
+    visit '/home'
+    expect(page).to have_content('All projects')
+    click_link 'Log Out'
+    user2 = FactoryGirl.build(:user, admin: true, approved: true)
+    login_as(user2, :scope => :user, :run_callbacks => false)
     visit '/home'
     expect(page).to have_content('All projects')
   end
@@ -20,11 +25,18 @@ describe 'Fail to login' do
   end
 end
 
-describe 'Log in as admin' do
+describe 'View profile' do
   specify 'I can view my profile' do
-    user = FactoryGirl.create(:user, admin: true, approved: true)
+    user = FactoryGirl.create(:user, approved: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/home'
+    save_and_open_page
+    click_link 'User'
+    click_link 'User'
+    expect(page).to have_content('Your Profile')
+    click_link 'Log Out'
+    user2 = FactoryGirl.build(:user, admin: true, approved: true)
+    login_as(user, :scope => :user, :run_callbacks => false)
     click_link 'Admin'
     click_link 'User'
     expect(page).to have_content('Your Profile')
@@ -33,7 +45,7 @@ end
 
 #Invitation page tests
 describe 'Invitation' do
-  specify 'I should complete the right information in the field' do
+  specify 'I can send an invitation' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/users/invitation/new'
@@ -47,7 +59,7 @@ describe 'Invitation' do
 end
 
 # Admin area tests
-describe 'Navigation - Articles' do
+describe 'Dashboard - Articles' do
   specify 'I can see all the articles' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -57,7 +69,7 @@ describe 'Navigation - Articles' do
   end
 end
 
-describe 'Navigation - categories' do
+describe 'Dashboard - Categories' do
   specify 'I can see all the categories' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -67,7 +79,7 @@ describe 'Navigation - categories' do
   end
 end
 
-describe 'Navigation - Comments' do
+describe 'Dashboard- Comments' do
   specify 'I can see all the comments' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -77,7 +89,7 @@ describe 'Navigation - Comments' do
   end
 end
 
-describe 'Navigation - Projects' do
+describe 'Dashboard - Projects' do
   specify 'I can see all the projects' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -87,7 +99,7 @@ describe 'Navigation - Projects' do
   end
 end
 
-describe 'Navigation - Subcategories' do
+describe 'Dashboard - Subcategories' do
   specify 'I can see all the subcategories' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -97,7 +109,7 @@ describe 'Navigation - Subcategories' do
   end
 end
 
-describe 'Navigation - Users' do
+describe 'Dashboard - Users' do
   specify 'I can see all the users' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
@@ -107,15 +119,6 @@ describe 'Navigation - Users' do
   end
 end
 
-describe 'Navigation - Users' do
-  specify 'I can see all the users' do
-    user = FactoryGirl.create(:user,approved: true, admin: true)
-    login_as(user, :scope => :user, :run_callbacks => false)
-    visit '/admin'
-    click_link 'Users'
-    expect(page).to have_content('List of Users')
-  end
-end
 
 describe 'Filtering users' do
   specify 'I can filter the users' do
@@ -129,7 +132,7 @@ describe 'Filtering users' do
 end
 
 describe 'List link' do
-  specify 'I can click link List' do
+  specify 'I can click the List link' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/user'
@@ -139,7 +142,7 @@ describe 'List link' do
 end
 
 describe 'Export Link' do
-  specify 'I can click link Export' do
+  specify 'I can click Export link' do
     user = FactoryGirl.create(:user,approved: true, admin: true)
     login_as(user, :scope => :user, :run_callbacks => false)
     visit '/admin/user'
