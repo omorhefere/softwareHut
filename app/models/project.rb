@@ -72,15 +72,15 @@ class Project < ActiveRecord::Base
                    benefits LIKE ? OR
                    methodology LIKE ? OR
                    volunteers LIKE ?",
-                   "%#{search}%",
-                   "%#{search}%",
-                   "%#{search}%",
-                   "%#{search}%",
-                   "%#{search}%",
-                   "%#{search}%",
-                   "%#{search}%",
-                   "%#{search}%",
-                   "%#{search}%")
+                   "%#{search.strip}%",
+                   "%#{search.strip}%",
+                   "%#{search.strip}%",
+                   "%#{search.strip}%",
+                   "%#{search.strip}%",
+                   "%#{search.strip}%",
+                   "%#{search.strip}%",
+                   "%#{search.strip}%",
+                   "%#{search.strip}%")
   end
 
 end

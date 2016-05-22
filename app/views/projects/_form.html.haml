@@ -18,7 +18,10 @@
     = f.input :methodology, placeholder: "Methodology", label:false
     = f.input :stage, placeholder: "Stage", label:false
     = f.input :volunteers, placeholder: "Volunteers", label:false
-    = f.hidden_field :user_id , :value => current_user.id
+    - if @project.new_record? == false
+      = f.hidden_field :user_id , :value => @project.user_id
+    - else
+      = f.hidden_field :user_id , :value => current_user.id
   .ul
     -# Upload An Image
     .li

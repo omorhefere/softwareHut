@@ -13,7 +13,7 @@ Rails.application.config.assets.precompile += %w( layout.sass)
 Rails.application.config.assets.precompile += %w( contact.css.sass)
 Rails.application.config.assets.precompile += %w( forgot_password.css.sass)
 Rails.application.config.assets.precompile += %w( add_project.css.sass)
-Rails.application.config.assets.precompile += %w( admin.css.sass)
+Rails.application.config.assets.precompile += %w( introduction.css.sass)
 Rails.application.config.assets.precompile += %w( new_password.css.sass)
 Rails.application.config.assets.precompile += %w( custom_flash.sass)
 Rails.application.config.assets.precompile += %w( introduction.css.sass)
@@ -28,4 +28,4 @@ Rails.application.config.assets.precompile += %w( story.css.sass)
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+ Rails.application.config.assets.precompile += %w( profile.js )
